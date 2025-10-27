@@ -141,8 +141,7 @@
     1.  Create your NotebookLM notebook based on the research paper I (Mostafa) will provide as a start.
     2.  Build the sheet for research papers and try to increase their number.
 * **Deliverable: Research Paper**
-    1.  Create your NotebookLM notebook based on the research paper I (Mostafa) will provide as a start.
-    2.  Build the sheet for research papers and try to increase their number.
+    1.  Same as **Deliverable: Proposal & Thesis**
 * **Deliverable: Software Application**
     1.  Write 3 scraping scripts for the top selling new cars from their official websites.
     2.  Compare the different scraping tools (scrapy, Playwright, selenium, others) through videos.
@@ -169,9 +168,9 @@
 ### 7. Long-Term Milestone Check-in
 *Brief status update on the overall project plan.*
 
-* **Current Phase:** Initail backend development.
+* **Current Phase:** Inital backend development.
 * **Status:** On track.
-* **Next Major Milestone:** Builing our dataset.
+* **Next Major Milestone:** Building our dataset.
 
 
 ---
