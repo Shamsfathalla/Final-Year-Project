@@ -95,7 +95,7 @@
 | :--- | :--- |
 | **Project Title:** | Car World Website |
 | **Student:** | Shams Abdelaziz |
-| **Date:** | [YYYY-MM-DD] |
+| **Date:** | 2025-10-27 |
 | **Attendees:** | Mostafa Badr, Shams Abdelaziz |
 
 ---
@@ -176,7 +176,7 @@
 
 ---
 
-**Date of Next Meeting:** [YYYY-MM-DD]
+**Date of Next Meeting:** [2025-11-3]
 
 ---
 ---
