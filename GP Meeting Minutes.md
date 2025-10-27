@@ -88,6 +88,100 @@
 ---
 ---
 
+# Weekly Supervision Meeting Minutes
+
+### Meeting Details
+| | |
+| :--- | :--- |
+| **Project Title:** | Car World Website |
+| **Student:** | Shams Abdelaziz |
+| **Date:** | [YYYY-MM-DD] |
+| **Attendees:** | Mostafa Badr, Shams Abdelaziz |
+
+---
+
+### 1. Agenda
+*Brief points we planned to discuss.*
+
+1.  Review progress on last week's action items.
+2.  Discuss the sources we will scrape car data from (Car brands sheet).
+3.  Discuss the technical stack to use.
+4.  Discuss the AI Models to build in order (Car price prediction, 2 Tower user-car recommendation, AI search Agents)
+5.  Review the roadmap for the whole project.
+
+---
+
+### 2. Student's Progress This Week
+*Student's summary of work completed since the last meeting, tracked by deliverable.*
+
+* **Proposal & Thesis:**
+    * Will start searching for papers on Car price predictions, car-user recommendations, and search agent for cars.
+* **Research Paper:**
+    * Will start searching for papers on Car price predictions, car-user recommendations, and search agent for cars.
+* **Software Application:**
+    * We greed on the stack to use, started scraping Nissan's official webpage.
+
+---
+
+### 3. Discussion Points & Blockers
+*Key topics discussed, decisions made, and problems identified.*
+
+* **Discussion:**
+    * Which models we will try to build in order (car prediction, car-user recommendation twin-tower model, and AI search agent for Cars)
+* **Blockers:**
+    * Some websites don't contain all the data and some don't allow traditional scraping methods.
+    * We still don't have research papers to use for lit. review.
+
+---
+
+### 4. Action Items (Student)
+*Specific, achievable tasks for the student to complete by the next meeting.*
+
+* **Deliverable: Proposal & Thesis**
+    1.  Create your NotebookLM notebook based on the research paper I (Mostafa) will provide as a start.
+    2.  Build the sheet for research papers and try to increase their number.
+* **Deliverable: Research Paper**
+    1.  Create your NotebookLM notebook based on the research paper I (Mostafa) will provide as a start.
+    2.  Build the sheet for research papers and try to increase their number.
+* **Deliverable: Software Application**
+    1.  Write 3 scraping scripts for the top selling new cars from their official websites.
+    2.  Compare the different scraping tools (scrapy, Playwright, selenium, others) through videos.
+    3.  Look at FastAPI and React.js crash courses.
+
+---
+
+### 5. Action Items (Supervisor)
+*Tasks for me to complete to support the student.*
+
+1.  Create the meeting minutes and share it on the student's repo as an .MD file.
+2.  Create a list of research papers on Car price prediction, car-user recommendation (2 tower), AI search agent for cars.  
+3.  Look for scraping tools.
+
+---
+
+### 6. Goals for Next Meeting
+*The main objective(s) for the next session.*
+
+* **Primary Goal:** Start using NotebookLM to find the gaps in research to address.
+
+---
+
+### 7. Long-Term Milestone Check-in
+*Brief status update on the overall project plan.*
+
+* **Current Phase:** Initail backend development.
+* **Status:** On track.
+* **Next Major Milestone:** Builing our dataset.
+
+
+---
+
+**Date of Next Meeting:** [YYYY-MM-DD]
+
+---
+---
+---
+
 # Weekly Supervision Meeting Minutes TEMPLATE
 
 ### Meeting Details
