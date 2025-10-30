@@ -139,7 +139,7 @@
 
 * **Deliverable: Proposal & Thesis**
     1.  Create your NotebookLM notebook based on the research paper I (Mostafa) will provide as a start.
-    2.  Build the sheet for research papers and try to increase their number.
+    2.  Build on the sheet for research papers and try to increase their number.
 * **Deliverable: Research Paper**
     1.  Same as **Deliverable: Proposal & Thesis**
 * **Deliverable: Software Application**
@@ -152,7 +152,7 @@
 ### 5. Action Items (Supervisor)
 *Tasks for me to complete to support the student.*
 
-1.  Create the meeting minutes and share it on the student's repo as an .MD file.
+1.  Update the meeting minutes shared on the student's repo as an .MD file.
 2.  Create a list of research papers on Car price prediction, car-user recommendation (2 tower), AI search agent for cars.  
 3.  Look for scraping tools.
 
