@@ -198,6 +198,109 @@
 ---
 ---
 
+## Weekly Supervision Meeting 3 Minutes
+
+### Meeting Details
+
+| | |
+| :--- | :--- |
+| **Project Title:** | Car World Website |
+| **Student:** | Shams Abdelaziz |
+| **Date:** | [YYYY-MM-DD] |
+| **Attendees:** | Mostafa Badr, Shams Abdelaziz |
+
+---
+
+### 1. Agenda
+
+*Brief points we planned to discuss.*
+
+1. Review progress on last week's action items.
+2. 
+3. 
+4. 
+5. 
+
+---
+
+### 2. Student's Progress This Week
+
+*Student's summary of work completed since the last meeting, tracked by deliverable.*
+
+* **Proposal & Thesis:**
+  * 
+  * 
+* **Research Paper:**
+  * 
+  * 
+* **Software Application:**
+  * 
+  * 
+
+---
+
+### 3. Discussion Points & Blockers
+
+*Key topics discussed, decisions made, and problems identified.*
+
+* **Discussion:**
+  * 
+  * 
+* **Blockers:**
+  * 
+  * 
+
+---
+
+### 4. Action Items (Student)
+
+*Specific, achievable tasks for the student to complete by the next meeting.*
+
+* **Deliverable: Proposal & Thesis**
+    1. 
+    2. 
+* **Deliverable: Research Paper**
+    1. 
+* **Deliverable: Software Application**
+    1. 
+    2. 
+
+---
+
+### 5. Action Items (Supervisor)
+
+*Tasks for me to complete to support the student.*
+
+1. Create the meeting minutes and share it on the student's repo as an .MD file.
+2. 
+3. 
+
+---
+
+### 6. Goals for Next Meeting
+
+*The main objective(s) for the next session.*
+
+* **Primary Goal:** [e.g., Review the complete draft of the Methodology (Thesis) and finalize the technology stack for the web application.]
+
+---
+
+### 7. Long-Term Milestone Check-in
+
+*Brief status update on the overall project plan.*
+
+* **Current Phase:** [e.g., Phase 2: Data Acquisition & Methodology]
+* **Status:** [e.g., On track / Slightly behind / Ahead of schedule]
+* **Next Major Milestone:** [e.g., Mid-term progress report (Due: YYYY-MM-DD)]
+
+---
+
+**Date of Next Meeting:** [YYYY-MM-DD]
+
+---
+---
+---
+
 ## Weekly Supervision Meeting Minutes TEMPLATE
 
 ### Meeting Details
@@ -216,10 +319,10 @@
 *Brief points we planned to discuss.*
 
 1. Review progress on last week's action items.
-2. Discuss [Key Topic 1, e.g., Literature Review for Thesis].
-3. Analyze [Key Topic 2, e.g., App Database Schema].
-4. Identify and resolve current blockers.
-5. Set goals and action items for the coming week.
+2. 
+3. 
+4. 
+5. 
 
 ---
 
@@ -228,14 +331,14 @@
 *Student's summary of work completed since the last meeting, tracked by deliverable.*
 
 * **Proposal & Thesis:**
-  * [e.g., Completed Chapter 2 draft (Literature Review)]
-  * [e.g., Finalized problem statement]
+  * 
+  * 
 * **Research Paper:**
-  * [e.g., Identified 5 potential target journals]
-  * [e.g., Drafted initial 'Methods' section outline]
+  * 
+  * 
 * **Software Application:**
-  * [e.g., Implemented user authentication module]
-  * [e.g., Deployed initial CI/CD pipeline]
+  * 
+  * 
 
 ---
 
@@ -244,11 +347,11 @@
 *Key topics discussed, decisions made, and problems identified.*
 
 * **Discussion:**
-  * [e.g., Explored using a Transformer model vs. a Bi-LSTM for sequence classification. Decided on Transformer due to SOTA performance.]
-  * [e.g., Reviewed UI mockups for the car comparison tool.]
+  * 
+  * 
 * **Blockers:**
-  * [e.g., Student is blocked on accessing the genomics dataset (Access Request Pending).]
-  * [e.g., Uncertainty about how to handle missing data in the car price dataset.]
+  * 
+  * 
 
 ---
 
@@ -257,13 +360,13 @@
 *Specific, achievable tasks for the student to complete by the next meeting.*
 
 * **Deliverable: Proposal & Thesis**
-    1. Draft Chapter 3 (Methodology), focusing on data preprocessing and model architecture.
-    2. Find and summarize 3 new papers related to [specific topic].
+    1. 
+    2. 
 * **Deliverable: Research Paper**
-    1. Write the first draft of the 'Abstract' and 'Introduction' sections.
+    1. 
 * **Deliverable: Software Application**
-    1. Set up the cloud database (e.g., Firebase/PostgreSQL).
-    2. Implement the data preprocessing pipeline as a reusable script.
+    1. 
+    2. 
 
 ---
 
@@ -271,9 +374,9 @@
 
 *Tasks for me to complete to support the student.*
 
-1. [e.g., Email Dr. X to follow up on dataset access for the student.]
-2. [e.g., Send student the 2 papers we discussed on recommender system cold-starts.]
-3. [e.g., Review student's Chapter 2 draft and provide feedback by Tuesday.]
+1. Create the meeting minutes and share it on the student's repo as an .MD file.
+2. 
+3. 
 
 ---
 
