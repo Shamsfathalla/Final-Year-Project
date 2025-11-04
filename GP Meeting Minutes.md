@@ -206,7 +206,7 @@
 | :--- | :--- |
 | **Project Title:** | Car World Website |
 | **Student:** | Shams Abdelaziz |
-| **Date:** | [YYYY-MM-DD] |
+| **Date:** | [2025-11-3] |
 | **Attendees:** | Mostafa Badr, Shams Abdelaziz |
 
 ---
@@ -216,10 +216,9 @@
 *Brief points we planned to discuss.*
 
 1. Review progress on last week's action items.
-2. 
-3. 
-4. 
-5. 
+2. Discussed the car brands websites scraped.
+3. Discussed the technical stack to use.
+4. Discussed the AI models to build.
 
 ---
 
@@ -228,14 +227,16 @@
 *Student's summary of work completed since the last meeting, tracked by deliverable.*
 
 * **Proposal & Thesis:**
-  * 
-  * 
+  * Decided on 3 models to try to build in order:
+    1. The "Multi-Modal Valuation" System (Car Damage/Condition Detection (Computer Vision) + Used Car Price Prediction (Regression)).
+    2. Advanced AI Search Agent (LLM/RAG) (API based).
+    3. The "Guided Purchase" System (Recommender System (Content-Based) + Monthly Ranking Model (Learning-to-Rank)).
+    4. New Car Price Prediction (Unannounced).
 * **Research Paper:**
-  * 
-  * 
+  * Same as **Proposal & Thesis:**
 * **Software Application:**
-  * 
-  * 
+  * Scraped websites for 5 brands.
+  * Compared the different scraping tools.
 
 ---
 
@@ -244,11 +245,10 @@
 *Key topics discussed, decisions made, and problems identified.*
 
 * **Discussion:**
-  * 
-  * 
+  * The order of AI models implementations.
+  * The research process and NotebookLm usage.
 * **Blockers:**
-  * 
-  * 
+  * None.
 
 ---
 
@@ -257,13 +257,11 @@
 *Specific, achievable tasks for the student to complete by the next meeting.*
 
 * **Deliverable: Proposal & Thesis**
-    1. 
-    2. 
+    1. Sheet of papers on Car Damage/Condition Detection (Computer Vision) using Scispace.
 * **Deliverable: Research Paper**
-    1. 
+    1. Same as **Deliverable: Proposal & Thesis**
 * **Deliverable: Software Application**
-    1. 
-    2. 
+    1. Search for a javascript course online.
 
 ---
 
@@ -272,8 +270,8 @@
 *Tasks for me to complete to support the student.*
 
 1. Create the meeting minutes and share it on the student's repo as an .MD file.
-2. 
-3. 
+2. Filter the Used Car Price Prediction (Regression) papers listed in the sheet.
+3. Download the Used Car Price Prediction (Regression) papers listed in the sheet.
 
 ---
 
@@ -281,7 +279,7 @@
 
 *The main objective(s) for the next session.*
 
-* **Primary Goal:** [e.g., Review the complete draft of the Methodology (Thesis) and finalize the technology stack for the web application.]
+* **Primary Goal:** Using NotebookLm for literature review + Evaluating our progress on the javascript course.
 
 ---
 
@@ -289,13 +287,13 @@
 
 *Brief status update on the overall project plan.*
 
-* **Current Phase:** [e.g., Phase 2: Data Acquisition & Methodology]
-* **Status:** [e.g., On track / Slightly behind / Ahead of schedule]
-* **Next Major Milestone:** [e.g., Mid-term progress report (Due: YYYY-MM-DD)]
+* **Current Phase:** Initial research steps and learning for implementation.
+* **Status:** On track.
+* **Next Major Milestone:** Writing literature review and introduction sections of the paper.
 
 ---
 
-**Date of Next Meeting:** [YYYY-MM-DD]
+**Date of Next Meeting:** [2025-11-10]
 
 ---
 ---
