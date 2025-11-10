@@ -1,0 +1,9 @@
+﻿Car,Price,Battery_Capacity (kWh),Battery_Fast Charge Percentage (%),Battery_Fast Charge Time (h),Battery_Max Power (kw),Battery_Max Torque (nm),Battery_Slow Charge Time (h),Battery_Type,Dimensions_Cargo Volume (L),Dimensions_Curb Weight (kg.),Dimensions_Fuel Tank Capacity (L),Dimensions_Ground Clearance (mm),Dimensions_Height (Roof Rack) (mm),Dimensions_Length (mm),Dimensions_Trunk Capacity,Dimensions_Wheelbase (mm),Dimensions_Width (mm),Powertrain_Engine Capacity (L),Powertrain_Power (HP/ RPM),Powertrain_Torque (NM/ RPM),Powertrain_Transmission
+Arrizo 8,1350000,,,,,,,,445,1414,55,,1467,4757,,2770,1832,1.6L Turbo,197 / 5500,290 / 2000-4000,7 DCT-wet
+Tiggo 9 PHEV,1999000,19.43,,,210,,,,143-448,,70,,,4810,,2800,1925,1.5L T,,440,
+eQ7,1599000,65.525,80%,0.5 (30% - 80%),155,285,8 hours (30% - 80%),Lithium Ion,386-1250,1850,,166,1660,4675,,2830,1910,,,,
+Tiggo 4 pro,875000,,,,,,,,340,,51,180,"1,670",4358,,2630,1830,1.5L Turbo,145/5500,"210/ 1750 - 4,000",CVT
+Arizzo 5,675000,,,,,,,,,1297,48,120,1487,4532,430,2650,1825,1499 DVVT,114 HP / 6150 rpm,141 Nm / 3800 rpm,5 Speed MT & 7 Speed CVT
+Tiggo 7 Pro max,1180000,,,,,,,,,1483,51,,1696,4553,,"2,670",1862,1.5L Turbo,145/5500,"210/ 1750 - 4,000",
+Tiggo 8,1195000,,,,,,,,,"1,541",51,,"1,746","4,700",,"2,710","1,860",1.5L Turbo,145/5500,"210/ 1750 - 4,000",6 Speed Wet (DCT)
+Tiggo 8 Pro Max,1425000,,,,,,,,,1607,51,,1705,4720,,"2,710","1,860",1.6L Turbo,"197/ 5,500","290/ 2,000-4,000",7 Speed DCT

@@ -1,0 +1,14 @@
+﻿Car,Trim,Dimensions_Boot Capacity (L),Dimensions_Boot Capacity 2nd Row folded (L),Dimensions_Boot Capacity 3rd Row folded (L),Dimensions_Boot Capacity after Folding 2nd Row (L),Dimensions_Fuel Tank Capacity (L),Dimensions_Minimum Ground Clearance (mm),Dimensions_Minimum ground clearance,Dimensions_Overall Height (mm),Dimensions_Overall Length (mm),Dimensions_Overall Width (mm),Dimensions_Wheelbase (mm),Performance_Boot Capacity 2nd Row Folded,Performance_Boot Capacity 3rd Row Folded,Performance_Drive Type,Performance_Engine,Performance_Engine Capacity,Performance_Front Suspension,"Performance_Horsepower, Total Combined",Performance_Max. Power (HP/rpm),Performance_Max. Power (HP/rpm) Combined,Performance_Max. Torque (Nm/rpm),Performance_Minimum Ground Clearance,Performance_Rear Suspension,"Performance_Torque, Total Combined",Performance_Transmission
+The K4,EX,,,,,47,140,,"1,435","4,710","1,850","2,720",,,Front Wheel Drive,1.6 L Gamma,1591,McPherson Strut-type,,123 Hp @ 6300 rpm,,"151 Nm @ 4,850 rpm",,Coupled Torsion Beam Axle,,6 AT
+The K4,GT,,,,,47,140,,"1,435","4,710","1,850","2,720",,,Front Wheel Drive,1.6 T - GDI,1598,McPherson Strut-type,,"190 HP @ 6,000 rpm",,"264 Nm @ 4,500 rpm",,Multi-Link,,8 AT
+The K4,GT-line Black Edition,,,,,47,140,,"1,435","4,710","1,850","2,720",,,Front Wheel Drive,1.6 T - GDI,1598,McPherson Strut-type,,"190 HP @ 6,000 rpm",,"264 Nm @ 4,500 rpm",,Multi-Link,,8 AT
+The Carnival,Topline,,,,,,,,,,,,4110 L,2461 L,Front Wheel Drive,,Gamma II 1.6 Turbo Engine Hybrid System,MacPherson Strut,245 HP,,,,172 mm,Multilink,366 NM,6-Speed Automatic Transmission
+The Sorento,Topline,,1996 Liter,608 Liter,,67 Liter,,176 mm,,,,,,,Front Wheel Drive,,1.6 L Turbo GDI Hybrid,McPherson Strut-type,,,230 HP/5500,,,Multilink (4-Link),,6 AT
+The Sportage,LX,591,,,"1,780",,170,,,,,,,,,,,,,,,,,,,
+The Sportage,EX,591,,,"1,780",,170,,,,,,,,,,,,,,,,,,,
+The Sportage,Highline,591,,,"1,780",,170,,,,,,,,,,,,,,,,,,,
+The Sportage,Topline,591,,,"1,780",,170,,,,,,,,,,,,,,,,,,,
+The Sportage,GT-line,591,,,"1,780",,170,,,,,,,,,,,,,,,,,,,
+The Seltos,EX,,,,,50,190,,"1,620","4,345","1,800","2,630",,,Front wheel drive,Smartstream G1.5,1497,McPherson Strut,,"115 @ 6,300",,145 @ 4500,,Coupled Torsion Beam Axle,,IVT
+The Seltos,HL-Turbo,,,,,50,190,,"1,620","4,345","1,800","2,630",,,Front wheel drive,Smartstream G1.5 T-GDi,1382 Turbo,McPherson Strut,,"140 @ 6,000",,247 @ 3200,,Coupled Torsion Beam Axle,,7-DCT
+The Seltos,TL-Turbo,,,,,50,190,,"1,620","4,345","1,800","2,630",,,Front wheel drive,Smartstream G1.5 T-GDi,1382 Turbo,McPherson Strut,,"140 @ 6,000",,247 @ 3200,,Coupled Torsion Beam Axle,,7-DCT
