@@ -405,6 +405,107 @@
 ---
 ---
 
+## Weekly Supervision Meeting 5 Minutes
+
+### Meeting Details
+
+| | |
+| :--- | :--- |
+| **Project Title:** | Car World Website |
+| **Student:** | Shams Abdelaziz |
+| **Date:** | [2025-11-17] |
+| **Attendees:** | Mostafa Badr, Shams Abdelaziz |
+
+---
+
+### 1. Agenda
+
+*Brief points we planned to discuss.*
+
+1. Review progress on last week's action items.
+2. Explain the way to filter papers.
+
+---
+
+### 2. Student's Progress This Week
+
+*Student's summary of work completed since the last meeting, tracked by deliverable.*
+
+* **Proposal & Thesis:**
+  * Filter the papers of Car Damage/Condition Detection (Computer Vision).
+  * Download the papers of Car Damage/Condition Detection (Computer Vision).
+* **Research Paper:**
+  * Set an overleaf project with IEEE template of a conference paper and share it with me.
+* **Software Application:**
+  * Finish the rest of the JavaScript course.
+
+---
+
+### 3. Discussion Points & Blockers
+
+*Key topics discussed, decisions made, and problems identified.*
+
+* **Discussion:**
+  * The need for a task on javascript course.
+  * The way of filtering papers.
+* **Blockers:**
+  * None.
+
+---
+
+### 4. Action Items (Student)
+
+*Specific, achievable tasks for the student to complete by the next meeting.*
+
+* **Deliverable: Proposal & Thesis**
+    1. Upload Car Damage papers to NotebookLm in a separate notebook.
+    2. Split your literature review into sections based on literature review of previous papers.
+    3. For each section, write a prompt for NotebookLm to write a complete section of the literature review.
+    4. Gather the sections and write the complete literature review with citations.
+    5. Read and refine the literature review and share it with me.
+    6. Write a sample of what we will be doing in the methodology.
+* **Deliverable: Research Paper**
+    1. Same as **Deliverable: Proposal & Thesis**
+* **Deliverable: Software Application**
+    1. Decide which NodeJs course to take.
+    2. Finish the Full-Stack ML Prediction App Task.
+
+---
+
+### 5. Action Items (Supervisor)
+
+*Tasks for me to complete to support the student.*
+
+1. Create the meeting minutes and share it on the student's repo as an .MD file.
+2. Download all the papers of Multi-Modal Valuation System listed in the sheet and share the folder.
+3. Propose a methodology for the project.
+
+---
+
+### 6. Goals for Next Meeting
+
+*The main objective(s) for the next session.*
+
+* **Primary Goal:** Getting 3 literature reviews (Used car + Car Damage + Multi-Modal Valuation) and Proposing the methodology.
+
+---
+
+### 7. Long-Term Milestone Check-in
+
+*Brief status update on the overall project plan.*
+
+* **Current Phase:** Literature review writing and methodology ideation
+* **Status:** On track
+* **Next Major Milestone:** e.g., Mid-term progress report (Due: 2025-12-8)
+
+---
+
+**Date of Next Meeting:** [2025-11-24]
+
+---
+---
+---
+
 ## Weekly Supervision Meeting Minutes TEMPLATE
 
 ### Meeting Details
