@@ -506,6 +506,99 @@
 ---
 ---
 
+## Weekly Supervision Meeting 6 Minutes
+
+### Meeting Details
+
+| | |
+| :--- | :--- |
+| **Project Title:** | Car World Website |
+| **Student:** | Shams Abdelaziz |
+| **Date:** | [2025-11-24] |
+| **Attendees:** | Mostafa Badr, Shams Abdelaziz |
+
+---
+
+### 1. Agenda
+
+*Brief points we planned to discuss.*
+
+1. Review progress on last week's action items.
+2. Review the upcoming submission requirements.
+
+---
+
+### 2. Student's Progress This Week
+
+*Student's summary of work completed since the last meeting, tracked by deliverable.*
+
+* **Proposal & Thesis:**
+  * Upload Car Damage papers to NotebookLm in a separate notebook.
+* **Research Paper:**
+  * Same as **Proposal & Thesis:**.
+* **Software Application:**
+  * None.
+
+---
+
+### 3. Discussion Points & Blockers
+
+*Key topics discussed, decisions made, and problems identified.*
+
+* **Discussion:**
+  * Finishing a first draft of the upcoming submission.
+* **Blockers:**
+  * None.
+
+---
+
+### 4. Action Items (Student)
+
+*Specific, achievable tasks for the student to complete by the next meeting.*
+
+* **Deliverable: Proposal & Thesis**
+    1. Get a first draft of the upcoming submission.
+* **Deliverable: Research Paper**
+    1. None.
+* **Deliverable: Software Application**
+    1. Delayed.
+
+---
+
+### 5. Action Items (Supervisor)
+
+*Tasks for me to complete to support the student.*
+
+1. Create the meeting minutes and share it on the student's repo as an .MD file.
+2. Review the first draft of the upcoming submission.
+3. Review the literature review shared by the student.
+
+---
+
+### 6. Goals for Next Meeting
+
+*The main objective(s) for the next session.*
+
+* **Primary Goal:** First draft of the upcoming submission.
+
+---
+
+### 7. Long-Term Milestone Check-in
+
+*Brief status update on the overall project plan.*
+
+* **Current Phase:** Literature review writing and methodology ideation
+* **Status:** On track
+* **Next Major Milestone:** e.g., Mid-term progress report (Due: 2025-12-8)
+
+---
+
+**Date of Next Meeting:** [2025-12-1]
+
+---
+---
+---
+
 ## Weekly Supervision Meeting Minutes TEMPLATE
 
 ### Meeting Details
