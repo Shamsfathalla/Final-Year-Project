@@ -1,0 +1,48 @@
+# Scraping
+playwright
+requests
+
+# Data Cleaning (Database + Price Datasets)
+pandas
+numpy
+
+# Notebooks (ML Training & Evaluation)
+torch
+torchvision
+timm
+ultralytics
+joblib
+Pillow
+scikit-learn
+opencv-python
+xgboost
+lightgbm
+catboost
+scipy
+matplotlib
+seaborn
+tqdm
+
+# Website - Chatbot (Flask + LLM)
+Flask
+Flask-Cors
+Werkzeug
+python-dotenv
+SQLAlchemy
+pydantic
+langchain-ollama
+langchain-core
+
+# Website - Price Pipeline (CV Inference)
+torch
+torchvision
+timm
+ultralytics
+joblib
+Pillow
+numpy
+pandas
+SQLAlchemy
+Flask
+Flask-Cors
+python-dotenv
