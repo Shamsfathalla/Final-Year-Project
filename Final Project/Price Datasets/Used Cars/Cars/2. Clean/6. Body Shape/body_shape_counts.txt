@@ -1,0 +1,18 @@
+BODY SHAPE COUNTS
+=================
+Sedan: 7228
+SUV: 2580
+Hatchback: 2060
+4X4: 280
+Sports / Coupe: 133
+Estate: 109
+Coupe: 105
+Van / Bus: 81
+Convertible: 58
+Cabriolet: 57
+MPV: 37
+Station: 34
+Small city car: 31
+Pickup: 29
+Van: 26
+Crossover: 1

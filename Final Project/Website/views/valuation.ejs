@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <%- include('partials/head', { title: 'Car Valuation' }) %>
+    <style>
+        /* --- EXACT 1:1 CSS FROM old_style.css --- */
+        :root { --bg: #0a0a0f; --surface: #1a1a25; --surface-muted: #12121a; --border: rgba(255,255,255,0.08); --text: #f0f0f5; --text-soft: #9ca3af; --primary: #3b82f6; --primary-hover: #2563eb; --success: #10b981; --shadow: 0 10px 30px rgba(0, 0, 0, 0.3); --radius: 16px; --radius-sm: 10px; }
+        .app-container { max-width: 920px; margin: 0 auto; padding: 32px 16px 56px; }
+        .hero { margin-bottom: 20px; padding: 8px 4px; }
+        .eyebrow { margin: 0 0 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); }
+        .hero h1 { margin: 0; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; }
+        .subtitle { max-width: 680px; margin: 12px 0 0; color: var(--text-soft); font-size: 1rem; }
+        .intro-card, .form-section, .results-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+        .intro-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; padding: 18px 20px; }
+        .intro-card h2 { margin: 0 0 4px; font-size: 1rem; }
+        .intro-card p { margin: 0; color: var(--text-soft); }
+        .intro-note { padding: 8px 12px; border-radius: 999px; background: #e9f2ff; color: var(--primary); font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
+        .prediction-form { display: grid; gap: 16px; }
+        .form-section { padding: 22px; }
+        .section-title { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; font-size: 1.05rem; }
+        .step-num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #e9f2ff; color: var(--primary); font-size: 0.9rem; font-weight: 700; }
+        .auto-badge { margin-left: auto; padding: 4px 10px; border-radius: 999px; background: #e9f9ef; color: var(--success); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        .form-grid { display: grid; gap: 16px; }
+        .form-grid.cols-1 { grid-template-columns: 1fr; }
+        .form-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .form-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.92rem; font-weight: 600; }
+        select, input[type="text"], input[type="number"], input[type="file"] { width: 100%; min-height: 46px; padding: 11px 18px !important; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface-muted); color: var(--text); font: inherit; transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; }
+        select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, #6b7280 50%), linear-gradient(135deg, #6b7280 50%, transparent 50%); background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px); background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 44px !important; }
+        select:focus, input:focus { outline: none; border-color: var(--primary); background: var(--surface); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); }
+        select:disabled, input:disabled { background: var(--surface-muted); color: var(--text-soft); opacity: 0.6; cursor: not-allowed; }
+        input::placeholder { color: var(--text-soft); }
+        .auto-field { background: var(--surface); opacity: 0.9; }
+        input.auto-field[readonly] { font-weight: 600; }
+        .computed-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+        .computed-chip { padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-muted); }
+        .chip-label { display: block; margin-bottom: 4px; color: var(--text-soft); font-size: 0.85rem; }
+        .chip-value { font-weight: 700; }
+        #submitSection { display: flex; justify-content: flex-start; }
+        .predict-btn { min-width: 180px; min-height: 48px; padding: 12px 22px; border: none; border-radius: 12px; background: var(--primary); color: #fff; font: inherit; font-weight: 700; cursor: pointer; transition: background-color 0.2s ease, transform 0.2s ease; }
+        .predict-btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+        .predict-btn:disabled { opacity: 0.7; cursor: wait; transform: none; }
+        .results-section { margin-top: 24px; padding: 24px; }
+        .results-title { margin-bottom: 18px; }
+        .results-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 20px; }
+        .result-card { padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface-muted); text-align: center; }
+        .result-icon { font-size: 1.8rem; margin-bottom: 8px; }
+        .result-model { margin-bottom: 8px; color: var(--text-soft); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+        .result-price { font-size: 1.35rem; font-weight: 700; color: var(--success); }
+        .average-price { padding: 18px; border-radius: 14px; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); text-align: center; }
+        .avg-label { margin-bottom: 6px; color: var(--text-soft); font-size: 0.9rem; }
+        .avg-value { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; color: var(--primary); }
+        .loading-overlay { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(4px); z-index: 1000; }
+        .loading-overlay p { margin: 0; color: var(--text); font-weight: 600; }
+        .spinner { width: 42px; height: 42px; border: 4px solid #d9e4f2; border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .fade-in { animation: fadeIn 0.25s ease-out; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 780px) { .form-grid.cols-3, .results-grid, .computed-fields { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .app-container { padding: 24px 14px 40px; } .intro-card { flex-direction: column; align-items: flex-start; } .form-grid.cols-2, .form-grid.cols-3 { grid-template-columns: 1fr; } .form-section, .results-section { padding: 18px; } #submitSection { justify-content: stretch; } .predict-btn { width: 100%; } }
+        
+        /* Inline Styles */
+        .condition-radio-label { display: flex; align-items: center; gap: 5px; cursor: pointer; font-weight: 500; padding: 6px 12px; border-radius: 6px; background: var(--surface-muted); border: 1px solid var(--border); transition: 0.2s; }
+        .condition-radio-label:hover { background: var(--surface); border-color: rgba(255,255,255,0.2); }
+        input[type="radio"]:checked + .condition-radio-label { background: var(--primary); color: white; border-color: var(--primary); }
+        input[type="radio"]:checked + .condition-radio-label input { accent-color: white; }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-100 h-screen overflow-hidden flex flex-col md:flex-row font-outfit">
+    <%- include('partials/sidebar', { activePage: 'valuation' }) %>
+
+    <main class="flex-1 overflow-y-auto w-full h-full relative bg-dark-900">
+        <div class="app-container" style="max-width: 900px;">
+        <header class="hero">
+            <p class="eyebrow">Multimodal Used Car Value Tool</p>
+            <h1><strong>Estimate a fair price in a few steps</strong></h1>
+            <p class="subtitle">Choose the car details, fill in the mileage, and assess the condition visually using AI to get an accurate price.</p>
+        </header>
+
+        <section class="intro-card">
+            <div>
+                <h2>How it works</h2>
+                <p>The car specifications are filled from the dataset after you select the brand, model, trim, and engine. Optionally upload photos to let our assessment AI determine the condition grade.</p>
+            </div>
+            <div class="intro-note" style="color: #ffffff; background-color: #2563eb; padding: 4px 10px; border-radius: 6px; display: inline-block;">Results are shown in EGP.</div>
+        </section>
+
+        <form id="predictionForm" class="prediction-form">
+            <div class="form-section">
+                <h2 class="section-title"><span class="step-num">1</span> Car selection</h2>
+                <div class="form-grid cols-2">
+                    <div class="form-group">
+                        <label for="brand">Brand</label>
+                        <select id="brand" required>
+                            <option value="">Select Brand</option>
+                            <% brands.forEach(function(b) { %><option value="<%= b %>"><%= b %></option><% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="model">Model</label>
+                        <select id="model" disabled required>
+                            <option value="">Select Brand first</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section" id="step2" style="display:none">
+                <h2 class="section-title"><span class="step-num">2</span> Trim & Engine</h2>
+                <div class="form-grid cols-2">
+                    <div class="form-group">
+                        <label for="trim">Trim</label>
+                        <select id="trim" disabled required><option value="">Select Model first</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="engine">Engine</label>
+                        <select id="engine" disabled required><option value="">Select Trim first</option></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section" id="step3" style="display:none">
+                <h2 class="section-title"><span class="step-num">3</span> Specifications <span class="auto-badge" style="background:#e0f7fa; color:#006064; padding:2px 6px; border-radius:4px; font-size:12px; margin-left:8px;">Auto-filled, editable</span></h2>
+                <div class="form-grid cols-3">
+                    <div class="form-group"><label>Engine Capacity</label><input type="text" id="engine_capacity" class="auto-field"></div>
+                    <div class="form-group"><label>Cylinders</label><input type="text" id="cylinder_count" class="auto-field"></div>
+                    <div class="form-group"><label>Turbo Count</label><input type="text" id="turbo_count" class="auto-field"></div>
+                    <div class="form-group"><label>Horsepower</label><input type="text" id="hp" class="auto-field"></div>
+                    <div class="form-group">
+                        <label>Drivetrain</label>
+                        <select id="drivetrain" class="auto-field">
+                            <option value="">—</option>
+                            <% options.drivetrains.forEach(function(op) { %><option value="<%= op %>"><%= op %></option><% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fuel Type</label>
+                        <select id="fuel_type" class="auto-field">
+                            <option value="">—</option>
+                            <% options.fuel_types.forEach(function(op) { %><option value="<%= op %>"><%= op %></option><% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Body Shape</label>
+                        <select id="body_shape" class="auto-field">
+                            <option value="">—</option>
+                            <% options.body_shapes.forEach(function(op) { %><option value="<%= op %>"><%= op %></option><% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Transmission</label>
+                        <select id="transmission" class="auto-field">
+                            <option value="">—</option>
+                            <% options.transmissions.forEach(function(op) { %><option value="<%= op %>"><%= op %></option><% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="computed-fields" style="margin-top:15px; display:flex; gap:10px;">
+                    <div class="computed-chip"><span class="chip-label">Brand Tier</span> <span class="chip-value" id="brand_tier_display">—</span></div>
+                    <div class="computed-chip"><span class="chip-label">Avg Model Price</span> <span class="chip-value" id="model_average_price_display">— EGP</span></div>
+                </div>
+            </div>
+
+            <div class="form-section" id="step4" style="display:none">
+                <h2 class="section-title"><span class="step-num">4</span> Your inputs & Condition</h2>
+                <div class="form-grid cols-2">
+                    <div class="form-group"><label for="year">Year</label><input type="number" id="year" placeholder="e.g. 2018" min="1950" max="2026" required></div>
+                    <div class="form-group"><label for="mileage">Mileage (km)</label><input type="number" id="mileage" placeholder="e.g. 50000" min="0" required></div>
+                    <div class="form-group">
+                        <label for="color">Color</label>
+                        <select id="color" required>
+                            <option value="">Select Color</option>
+                            <% options.colors.forEach(function(c) { %><option value="<%= c %>"><%= c %></option><% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="computed-fields" style="margin-top:25px; display:flex; gap:10px;">
+                            <div class="computed-chip"><span class="chip-label">Car Age</span><span class="chip-value" id="car_age_display">—</span></div>
+                            <div class="computed-chip"><span class="chip-label">Miles/Year</span><span class="chip-value" id="miles_per_year_display">—</span></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="grid-column: span 2; margin-top:20px;">
+                        <label style="font-size:16px; font-weight:600; color:var(--text); margin-bottom:10px; display:block;">Condition Assessment</label>
+                        <div class="condition-tabs" style="display:flex; gap:10px; margin-bottom:15px;">
+                            <label class="condition-radio-label"><input type="radio" name="cond_mode" value="manual" checked> Manual Select</label>
+                            <label class="condition-radio-label"><input type="radio" name="cond_mode" value="auto"> Auto AI Image Assessment</label>
+                        </div>
+                        
+                        <div id="cond_manual_div">
+                            <select id="condition" required style="max-width:300px;">
+                                <% conditions.forEach(function(cond) { %><option value="<%= cond %>" <%= cond === 'Good' ? 'selected' : '' %>><%= cond %></option><% }) %>
+                            </select>
+                        </div>
+                        
+                        <div id="cond_auto_div" style="display:none;">
+                            <div id="dropZone" style="position:relative; border:2px dashed rgba(59,130,246,0.35); border-radius:16px; background:rgba(59,130,246,0.04); padding:40px 20px; text-align:center; cursor:pointer; transition:all 0.3s ease;">
+                                <input type="file" id="image_upload" accept="image/jpeg, image/png, image/webp" multiple style="position:absolute; inset:0; opacity:0; cursor:pointer; z-index:2;">
+                                <div id="dropZoneContent" style="pointer-events:none;">
+                                    <div style="width:64px; height:64px; border-radius:50%; background:rgba(59,130,246,0.12); display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+                                        <i class="fa-solid fa-cloud-arrow-up" style="font-size:28px; color:#3b82f6;"></i>
+                                    </div>
+                                    <p style="font-size:1rem; font-weight:600; color:var(--text); margin:0 0 6px;">Drop your car photos here</p>
+                                    <p style="font-size:0.85rem; color:var(--text-soft); margin:0 0 12px;">or click to browse files</p>
+                                    <div style="display:inline-flex; gap:6px; align-items:center;">
+                                        <span style="padding:4px 10px; border-radius:6px; background:var(--surface-muted); border:1px solid var(--border); font-size:0.75rem; color:var(--text-soft); font-weight:600;">JPG</span>
+                                        <span style="padding:4px 10px; border-radius:6px; background:var(--surface-muted); border:1px solid var(--border); font-size:0.75rem; color:var(--text-soft); font-weight:600;">PNG</span>
+                                        <span style="padding:4px 10px; border-radius:6px; background:var(--surface-muted); border:1px solid var(--border); font-size:0.75rem; color:var(--text-soft); font-weight:600;">WEBP</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="imagePreviewArea" style="display:none; margin-top:14px;">
+                                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                                    <span id="fileCountLabel" style="font-size:0.85rem; font-weight:600; color:var(--text-soft);"></span>
+                                    <button type="button" id="clearImagesBtn" style="padding:4px 12px; border-radius:8px; background:rgba(239,68,68,0.12); color:#ef4444; border:1px solid rgba(239,68,68,0.2); font-size:0.78rem; font-weight:600; cursor:pointer; transition:all 0.2s;">
+                                        <i class="fa-solid fa-trash-can" style="margin-right:4px;"></i>Clear All
+                                    </button>
+                                </div>
+                                <div id="thumbnailGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(100px, 1fr)); gap:10px;"></div>
+                            </div>
+                            <p style="font-size:0.8rem; color:var(--text-soft); margin:14px 0 0; display:flex; align-items:center; gap:6px;">
+                                <i class="fa-solid fa-wand-magic-sparkles" style="color:#3b82f6;"></i>
+                                Images will be analyzed by AI when you click Predict Final Price.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="submitSection" style="display:none; margin-top:30px;">
+                <button type="submit" class="predict-btn" id="predictBtn">Predict Final Price</button>
+            </div>
+        </form>
+
+        <div id="resultsSection" class="results-section" style="display:none">
+            <h2 class="section-title results-title">Price prediction</h2>
+            <div class="results-grid" id="resultsGrid"></div>
+        </div>
+
+        <div id="loadingOverlay" class="loading-overlay" style="display:none">
+            <div class="spinner"></div>
+            <p id="loadingText">Calculating estimate...</p>
+        </div>
+    </div>
+        </div>
+    </main>
+
+<script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getAuth, onAuthStateChanged } from "firebase/auth";
+    import { firebaseConfig } from "/firebase-config.js";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    onAuthStateChanged(auth, (user) => { window.firebaseUser = user; });
+</script>
+<script>
+// Point all Python API requests to the Flask Server directly
+const API_BASE = 'http://127.0.0.1:5001';
+
+const $ = id => document.getElementById(id);
+const brandSel = $('brand'), modelSel = $('model'), trimSel = $('trim'), engineSel = $('engine');
+const yearInp = $('year'), mileageInp = $('mileage');
+
+brandSel.addEventListener('change', async () => {
+    resetFrom('model');
+    if (!brandSel.value) return;
+    const items = await fetchJSON(`${API_BASE}/api/models?brand=${enc(brandSel.value)}`);
+    populate(modelSel, items, 'Select Model');
+    modelSel.disabled = false;
+});
+
+modelSel.addEventListener('change', async () => {
+    resetFrom('trim');
+    if (!modelSel.value) return;
+    const items = await fetchJSON(`${API_BASE}/api/trims?brand=${enc(brandSel.value)}&model=${enc(modelSel.value)}`);
+    populate(trimSel, items, 'Select Trim');
+    trimSel.disabled = false;
+    showStep('step2');
+});
+
+trimSel.addEventListener('change', async () => {
+    resetFrom('engine');
+    if (!trimSel.value) return;
+    const items = await fetchJSON(`${API_BASE}/api/engines?brand=${enc(brandSel.value)}&model=${enc(modelSel.value)}&trim=${enc(trimSel.value)}`);
+    populate(engineSel, items, 'Select Engine');
+    engineSel.disabled = false;
+});
+
+engineSel.addEventListener('change', async () => {
+    hideSteps(['step3','step4','submitSection','resultsSection']);
+    if (!engineSel.value) return;
+    const d = await fetchJSON(`${API_BASE}/api/details?brand=${enc(brandSel.value)}&model=${enc(modelSel.value)}&trim=${enc(trimSel.value)}&engine=${enc(engineSel.value)}`);
+    if (d.error) return;
+    fillSpecs(d);
+});
+
+const updateStats = () => {
+    const year = parseInt(yearInp.value);
+    const mil = parseFloat(mileageInp.value) || 0;
+    if (!isNaN(year) && year > 1900) {
+        const age = Math.max(2026 - year, 1);
+        $('car_age_display').textContent = age + ' yrs';
+        $('miles_per_year_display').textContent = Math.round(mil / age).toLocaleString() + ' km/yr';
+    } else {
+        $('car_age_display').textContent = '—';
+        $('miles_per_year_display').textContent = '—';
+    }
+};
+yearInp.addEventListener('input', updateStats);
+mileageInp.addEventListener('input', updateStats);
+
+document.querySelectorAll('input[name="cond_mode"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+        if (e.target.value === 'manual') {
+            $('cond_manual_div').style.display = 'block';
+            $('cond_auto_div').style.display = 'none';
+        } else {
+            $('cond_manual_div').style.display = 'none';
+            $('cond_auto_div').style.display = 'block';
+        }
+    });
+});
+
+// --- Image Upload: Drag-and-drop + thumbnail previews ---
+const dropZone = $('dropZone');
+const imageUpload = $('image_upload');
+const previewArea = $('imagePreviewArea');
+const thumbnailGrid = $('thumbnailGrid');
+const fileCountLabel = $('fileCountLabel');
+const clearImagesBtn = $('clearImagesBtn');
+
+// Use a DataTransfer to manage the mutable file list
+let managedFiles = new DataTransfer();
+
+function updatePreviews() {
+    thumbnailGrid.innerHTML = '';
+    const files = managedFiles.files;
+    if (files.length === 0) {
+        previewArea.style.display = 'none';
+        dropZone.style.display = 'block';
+        return;
+    }
+    previewArea.style.display = 'block';
+    dropZone.style.display = 'block';
+    fileCountLabel.textContent = files.length + ' photo' + (files.length > 1 ? 's' : '') + ' selected';
+    
+    Array.from(files).forEach((file, idx) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const thumb = document.createElement('div');
+            thumb.style.cssText = 'position:relative; border-radius:12px; overflow:hidden; aspect-ratio:1; background:var(--surface-muted); border:1px solid var(--border); animation:fadeIn 0.25s ease-out;';
+            thumb.innerHTML = `
+                <img src="${e.target.result}" style="width:100%; height:100%; object-fit:cover;" alt="${file.name}">
+                <button type="button" data-idx="${idx}" style="position:absolute; top:4px; right:4px; width:22px; height:22px; border-radius:50%; background:rgba(0,0,0,0.7); color:#ef4444; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:11px; transition:all 0.2s; backdrop-filter:blur(4px);">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            `;
+            thumb.querySelector('button').addEventListener('click', (ev) => {
+                ev.preventDefault();
+                removeFile(idx);
+            });
+            thumbnailGrid.appendChild(thumb);
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+function addFiles(newFiles) {
+    for (const f of newFiles) {
+        if (['image/jpeg','image/png','image/webp'].includes(f.type)) {
+            managedFiles.items.add(f);
+        }
+    }
+    imageUpload.files = managedFiles.files;
+    updatePreviews();
+}
+
+function removeFile(idx) {
+    const dt = new DataTransfer();
+    const files = managedFiles.files;
+    for (let i = 0; i < files.length; i++) {
+        if (i !== idx) dt.items.add(files[i]);
+    }
+    managedFiles = dt;
+    imageUpload.files = managedFiles.files;
+    updatePreviews();
+}
+
+imageUpload.addEventListener('change', () => {
+    if (imageUpload.files.length > 0) {
+        addFiles(imageUpload.files);
+    }
+});
+
+clearImagesBtn.addEventListener('click', () => {
+    managedFiles = new DataTransfer();
+    imageUpload.files = managedFiles.files;
+    updatePreviews();
+});
+
+// Drag-and-drop visual feedback
+['dragenter','dragover'].forEach(evt => {
+    dropZone.addEventListener(evt, (e) => { e.preventDefault(); e.stopPropagation(); dropZone.style.borderColor = '#3b82f6'; dropZone.style.background = 'rgba(59,130,246,0.1)'; });
+});
+['dragleave','drop'].forEach(evt => {
+    dropZone.addEventListener(evt, (e) => { e.preventDefault(); e.stopPropagation(); dropZone.style.borderColor = 'rgba(59,130,246,0.35)'; dropZone.style.background = 'rgba(59,130,246,0.04)'; });
+});
+dropZone.addEventListener('drop', (e) => {
+    if (e.dataTransfer.files.length) addFiles(e.dataTransfer.files);
+});
+
+function enc(v) { return encodeURIComponent(v); }
+async function fetchJSON(url) { return (await fetch(url)).json(); }
+
+function populate(sel, items, ph) {
+    sel.innerHTML = `<option value="">${ph}</option>`;
+    items.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
+    if (items.length === 1) { sel.value = items[0]; sel.dispatchEvent(new Event('change')); }
+}
+
+function resetFrom(level) {
+    const chain = ['model','trim','engine'];
+    const idx = chain.indexOf(level);
+    for (let i = idx; i < chain.length; i++) {
+        if (!chain[i]) continue;
+        const s = $(chain[i]);
+        const label = chain[i].charAt(0).toUpperCase() + chain[i].slice(1);
+        s.innerHTML = `<option value="">Select ${label}</option>`;
+        s.disabled = true;
+    }
+    const stepMap = { model: ['step2','step3','step4','submitSection','resultsSection'], trim:  ['step3','step4','submitSection','resultsSection'], engine:['step3','step4','submitSection','resultsSection'] };
+    hideSteps(stepMap[level] || []);
+}
+
+function showStep(id) { $(id).style.display = 'block'; $(id).classList.add('fade-in'); }
+function hideSteps(ids) { ids.forEach(id => { $(id).style.display = 'none'; }); }
+
+function fillSpecs(d) {
+    $('engine_capacity').value = d.engine_capacity !== undefined ? d.engine_capacity : '';
+    $('cylinder_count').value = d.cylinder_count !== undefined ? d.cylinder_count : '';
+    $('turbo_count').value = d.turbo_count !== undefined ? d.turbo_count : '';
+    $('hp').value = d.hp !== undefined ? d.hp : '';
+    if(d.drivetrain) $('drivetrain').value = d.drivetrain;
+    if(d.fuel_type) $('fuel_type').value = d.fuel_type;
+    if(d.body_shape) $('body_shape').value = d.body_shape;
+    if(d.transmission) $('transmission').value = d.transmission;
+
+    const colorSel = $('color');
+    // FIXED: Wrapped in quotes and parsed to prevent IDE parsing errors
+    const allOpts = JSON.parse('<%- JSON.stringify(options.colors) %>');
+    
+    colorSel.innerHTML = '<option value="">Select Color</option>';
+    if (d.colors && d.colors.length) {
+        d.colors.sort().forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c + ' ★'; colorSel.appendChild(o); });
+        const others = allOpts.filter(c => !d.colors.includes(c));
+        if (others.length) {
+            const sep = document.createElement('option'); sep.disabled = true; sep.textContent = '── Other Colors ──'; colorSel.appendChild(sep);
+            others.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; colorSel.appendChild(o); });
+        }
+        colorSel.value = d.colors[0];
+    } else {
+        allOpts.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; colorSel.appendChild(o); });
+    }
+
+    $('brand_tier_display').textContent = d.brand_tier;
+    $('model_average_price_display').textContent = d.model_average_price ? Number(d.model_average_price).toLocaleString() + ' EGP' : '—';
+    updateStats();
+    showStep('step3'); showStep('step4'); showStep('submitSection');
+}
+
+$('predictionForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = $('predictBtn'), ld = $('loadingOverlay'), txt = $('loadingText');
+    btn.disabled = true; ld.style.display = 'flex';
+
+    let finalCondition = $('condition').value;
+    const condMode = document.querySelector('input[name="cond_mode"]:checked').value;
+    let condError = false;
+
+    try {
+        if (condMode === 'auto') {
+            const files = $('image_upload').files;
+            if (!files.length) { alert("Please select images for AI assessment."); btn.disabled = false; ld.style.display = 'none'; return; }
+            txt.innerText = "Analyzing images for condition...";
+            const fd = new FormData();
+            for (let i = 0; i < files.length; i++) { fd.append('files', files[i]); }
+            
+            const condRes = await fetch(`${API_BASE}/assess`, { method: 'POST', body: fd });
+            const condData = await condRes.json();
+            if (condData.error) { alert("Condition Analysis Error: " + condData.error); condError = true; } 
+            else { finalCondition = condData.condition; }
+        }
+
+        if (condError) return;
+
+        txt.innerText = "Calculating estimated value...";
+        const g = id => { const el = $(id); return el.value; };
+
+        const res = await fetch(`${API_BASE}/predict`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                brand: brandSel.value, model: modelSel.value, trim: trimSel.value,
+                year: yearInp.value, mileage: mileageInp.value,
+                color: g('color'), fuel_type: g('fuel_type'), body_shape: g('body_shape'),
+                transmission: g('transmission'), engine: engineSel.value,
+                engine_capacity: g('engine_capacity'), cylinder_count: g('cylinder_count'),
+                turbo_count: g('turbo_count'), hp: g('hp'), drivetrain: g('drivetrain'),
+                condition: finalCondition,
+            }),
+        });
+        const result = await res.json();
+        if (result.error) { alert('Prediction Error: ' + result.error); }
+        else { showResults(result); }
+    } catch (err) { alert('Request failed: ' + err.message); }
+    finally { btn.disabled = false; ld.style.display = 'none'; txt.innerText = "Calculating estimate..."; }
+});
+
+function showResults(r) {
+    const grid = $('resultsGrid');
+    grid.innerHTML = ''; 
+    const basePrice = Number(r.average);
+    const minPrice = Math.round(basePrice * 0.95);
+    const maxPrice = Math.round(basePrice * 1.05);
+
+    const card = document.createElement('div');
+    card.className = 'result-card';
+    card.style.gridColumn = '1 / -1';
+    card.style.textAlign = 'center';
+    card.style.padding = '30px';
+    
+    card.innerHTML = `
+        <div class="result-icon" style="font-size:36px; margin-bottom:10px;">🏷️</div>
+        <div class="result-model" style="font-size:18px;">Estimated Market Range</div>
+        <div class="result-price" style="font-size:28px; margin-top:15px; color:var(--primary);">
+            ${minPrice.toLocaleString()} - ${maxPrice.toLocaleString()} EGP
+        </div>
+        <div style="font-size:14px; color:var(--text-soft); margin-top:10px;">Average: ${basePrice.toLocaleString()} EGP</div>
+        ${r.inputs && r.inputs.condition_string ? `<div style="font-size:14px; font-weight:bold; color:var(--text); margin-top:15px; background:var(--surface); display:inline-block; padding:5px 15px; border-radius:20px; border: 1px solid var(--border);">Assessed Condition: ${r.inputs.condition_string}</div>` : ''}
+        <div style="margin-top:16px; padding:12px 14px; border:1px solid rgba(59, 130, 246, 0.2); background:rgba(59, 130, 246, 0.08); color:#93c5fd; border-radius:10px; font-size:13px; line-height:1.55; text-align:left;">
+            <strong>Note:</strong> This AI-assisted valuation provides an estimated market range based on your provided details and condition analysis. This is an assistance tool, not financial, legal, or investment advice. Actual market prices may vary due to real-world demand, comprehensive physical inspections, dealer policies, location, and negotiation.
+        </div>
+        <div style="margin-top: 20px;">
+            <button id="saveValuationBtn" class="predict-btn" style="width: auto; min-width: 180px; padding: 10px 20px; font-size: 0.95rem;">Save Valuation</button>
+        </div>
+    `;
+    grid.appendChild(card);
+    
+    // Setup save button logic
+    const saveBtn = $('saveValuationBtn');
+    if (saveBtn) {
+        saveBtn.onclick = async () => {
+            if (!window.firebaseUser) return alert('Please log in to save valuations.');
+            saveBtn.disabled = true;
+            saveBtn.innerText = 'Saving...';
+            try {
+                const token = await window.firebaseUser.getIdToken();
+                const res = await fetch('/api/valuations/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        idToken: token, 
+                        make: brandSel.value,
+                        model: modelSel.value,
+                        year: parseInt(yearInp.value) || new Date().getFullYear(),
+                        predicted_price: basePrice,
+                        features: r.inputs || {}
+                    })
+                });
+                if (res.ok) {
+                    saveBtn.innerText = 'Saved!';
+                    saveBtn.style.backgroundColor = 'var(--success)';
+                } else {
+                    saveBtn.disabled = false;
+                    saveBtn.innerText = 'Save Failed';
+                }
+            } catch (err) {
+                saveBtn.disabled = false;
+                saveBtn.innerText = 'Save Failed';
+            }
+        };
+    }
+
+    if (r.inputs) {
+        $('car_age_display').textContent = r.inputs.car_age + ' yrs';
+        $('miles_per_year_display').textContent = Number(r.inputs.miles_per_year).toLocaleString() + ' km/yr';
+        $('brand_tier_display').textContent = r.inputs.brand_tier;
+        $('model_average_price_display').textContent = r.inputs.model_average_price ? Number(r.inputs.model_average_price).toLocaleString() + ' EGP' : '—';
+    }
+
+    const sec = $('resultsSection');
+    sec.style.display = 'block';
+    sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+<%- include('partials/footer') %>

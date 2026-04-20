@@ -1,0 +1,2 @@
+VAL: id, firebase_uid, car_make, car_model, car_year, predicted_price, features, created_at
+IMP: id, firebase_uid, car_make, car_model, engine_cc, base_price, total_cost, tax_breakdown, created_at

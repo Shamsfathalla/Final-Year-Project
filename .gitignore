@@ -1,0 +1,10 @@
+# Ignore dependencies and environment files in the Website folder
+"Final Project/Website/node_modules/"
+"Final Project/Website/.env"
+"Final Project/Website/firebase-service-account.json"
+
+# General safety (optional but recommended)
+node_modules/
+.env
+*.json
+!package.json

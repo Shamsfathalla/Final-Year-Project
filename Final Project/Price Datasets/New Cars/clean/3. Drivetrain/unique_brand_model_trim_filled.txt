@@ -1,0 +1,767 @@
+Brand | Model | Trim | Drivetrain
+----------------------------------------------------------------------------------------------------
+Alfa Romeo | Giulia | Sprint | RWD
+Alfa Romeo | Giulia | Veloce | AWD
+Alfa Romeo | Stelvio | Sprint | AWD
+Alfa Romeo | Stelvio | Veloce | AWD
+Alfa Romeo | Tonale | Sprint | FWD
+Alfa Romeo | Tonale | Ti | AWD
+Alfa Romeo | Tonale | Veloce | AWD
+Arcfox | Alpha S5 | Air | FWD
+Arcfox | Alpha S5 | Pro | FWD
+Arcfox | Alpha T5 | Air | FWD
+Arcfox | Alpha T5 | Pro | FWD
+Arcfox | Koala S | Air | FWD
+Arcfox | Koala S | Pro | FWD
+Arcfox | T1 | Plus | FWD
+Arcfox | T1 | Pro | FWD
+Audi | A3 | S-Line | FWD
+Audi | A3 | Sport Back | FWD
+Audi | A3 | Sportback S-Line | FWD
+Audi | A4 | S-Line Plus | FWD
+Audi | A5 | Advanced | FWD
+Audi | A5 | S-Line | FWD
+Audi | A5 | S-Line Plus | FWD
+Audi | A6 | S-Line | FWD
+Audi | A8 | S-Line Long | AWD
+Audi | Q2 | S-Line | FWD
+Audi | Q3 | Advanced | FWD
+Audi | Q3 | Baseline | FWD
+Audi | Q3 | S-Line | FWD
+Audi | Q3 | SportBack | FWD
+Audi | Q3 | Sportback S-Line | FWD
+Audi | Q3 | Sportback S-Line Black Package | FWD
+Audi | Q6 E-Tron | Performance S-Line | AWD
+Audi | Q7 | S-Line | AWD
+Audi | Q7 | S-Line 3.0 L | AWD
+Audi | Q7 | S-Line Plus | AWD
+Audi | Q8 | S-Line | AWD
+Audi | Q8 | S-Line Plus | AWD
+Audi | Q8 E-Tron | Baseline | AWD
+Audi | Q8 E-Tron | Sportback | AWD
+Audi | Q8 E-Tron | Top Line | AWD
+Audi | Rs E-Tron GT | S-Line | AWD
+Audi | Rs Q8 | RS | AWD
+Audi | Rs5 Coupe | RS | AWD
+Avatr | 11 | Luxury | RWD
+Avatr | 11 | Performance | AWD
+Avatr | 11 | Premium | AWD
+Avatr | 12 | Gt | AWD
+Avatr | 12 | Luxury | RWD
+BAIC | BJ 30 | Off-Road | AWD
+BAIC | BJ 30 | Pro | FWD
+BAIC | BJ 30 | Ultra | AWD
+BAIC | Beijing X7 | Highline | FWD
+BAIC | Beijing X7 | Premium | FWD
+BAIC | Beijing X7 | Top Line | FWD
+BAIC | U5 Plus | Comfort | FWD
+BAIC | U5 Plus | High Line | FWD
+BAIC | U5 Plus | Highline | FWD
+BAIC | U5 Plus | Top Line | FWD
+BAIC | X55 | Highline | FWD
+BAIC | X55 | Premium | FWD
+BAIC | X55 | Top Line | FWD
+BMW | 118i | M Sport | FWD
+BMW | 218i | M Sport | FWD
+BMW | 320i | Advantage | RWD
+BMW | 320i | Luxury | RWD
+BMW | 320i | M Sport | RWD
+BMW | 320i | Sport | RWD
+BMW | 330i | M Sport | RWD
+BMW | 340i | M Sport | RWD
+BMW | 420i | Convertible | RWD
+BMW | 420i | M Sport | RWD
+BMW | 440i | Xdrive | AWD
+BMW | 520i | Luxury 1.6 | RWD
+BMW | 520i | M Sport | RWD
+BMW | 740i | Pure Excellence Lwb | RWD
+BMW | 760i | Xdrive | AWD
+BMW | 760i | Xdrive M Sport | AWD
+BMW | M135i | Xdrive | AWD
+BMW | M235i | Xdrive | AWD
+BMW | M3 | Competition | RWD
+BMW | M3 | Competition Xdrive | AWD
+BMW | M4 | Competition | RWD
+BMW | M4 | Competition Xdrive | AWD
+BMW | M5 | Competition | AWD
+BMW | M8 | Competition | AWD
+BMW | M850i | Convertible Lci | AWD
+BMW | M850i | Gran Coupe | AWD
+BMW | X1 | Sdrive18I M Sport | FWD
+BMW | X1 | Sdrive18I Xline | FWD
+BMW | X2 | 2.0 A/T M35I Sport | AWD
+BMW | X2 | Sdrive18I M Sport | FWD
+BMW | X3 | Xdrive30I  Xline | AWD
+BMW | X4 | Xdrive30I  M Sport | AWD
+BMW | X5 | M60I | AWD
+BMW | X5 | Xdrive40I Xline | AWD
+BMW | X6 | M60I | AWD
+BMW | X6 | Xdrive40I | AWD
+BMW | X6 M | M | AWD
+BMW | X7 | M60I | AWD
+BMW | i4 | Edrive40  M Sport | RWD
+BMW | i5 | Edrive40 M Sport | RWD
+BMW | i5 | Luxury | RWD
+BMW | i7 | Xdrive60 | AWD
+BMW | i7 | Xdrive60 Pure Excellence | AWD
+BMW | iX | Xdrive40 | AWD
+BMW | iX | Xdrive50 | AWD
+BMW | iX1 | Edrive20 M Sport | FWD
+BMW | iX1 | Xdrive30  Xline | AWD
+BMW | iX2 | Edrive20 M Sport | FWD
+BYD | F3 | 1.5 A/T | FWD
+BYD | F3 | 1.5 M/T | FWD
+Bestune | B70 | Deluxe | FWD
+Bestune | B70 | Premium | FWD
+Bestune | B70S | Limousine | FWD
+Bestune | B70S | Premium | FWD
+Bestune | T55 | Premium Plus | FWD
+Bestune | T77 | 1.5 A/T Turbo Comfort | FWD
+Bestune | T77 | Premium | FWD
+Bestune | T77 Pro | Premium | FWD
+Brilliance | V3 | Base | FWD
+Changan | Cs35 Plus | Elite | FWD
+Changan | Cs35 Plus | Flagship | FWD
+Changan | Cs35 Plus | Premium | FWD
+Changan | Cs55 Plus | Elite | FWD
+Changan | Cs55 Plus | Elite Local | FWD
+Changan | Cs55 Plus | Flagship | FWD
+Changan | Cs55 Plus | Premium Local | FWD
+Changan | Eado Plus | Elite | FWD
+Changan | Eado Plus | Flagship | FWD
+Changan | Eado Plus | Premium | FWD
+Changan | Uni T | Flagship | FWD
+Changan | Uni T | Premium | FWD
+Changan | Uni V | Flagship | FWD
+Chery | Arrizo5 | Baseline Leather | FWD
+Chery | Arrizo5 | Basic Facelift | FWD
+Chery | Arrizo5 | Comfort Facelift | FWD
+Chery | Arrizo5 | Highline | FWD
+Chery | Arrizo5 | Leather | FWD
+Chery | Arrizo5 | Mt Facelift | FWD
+Chery | Arrizo8 | Flagship | FWD
+Chery | Arrizo8 | Luxury | FWD
+Chery | Eq7 | Automtic | RWD
+Chery | Eq7 | Luxury | RWD
+Chery | Tiggo3 | Tinted Glass | FWD
+Chery | Tiggo4 Pro | Comfort | FWD
+Chery | Tiggo4 Pro | Luxury | FWD
+Chery | Tiggo4 Pro | Luxury Turbo | FWD
+Chery | Tiggo4 Pro | Turbo | FWD
+Chery | Tiggo7 | Baseline | FWD
+Chery | Tiggo7 | Comfort | FWD
+Chery | Tiggo7 | Highline | FWD
+Chery | Tiggo7 | Luxury | FWD
+Chery | Tiggo7 Pro | Comfort | FWD
+Chery | Tiggo7 Pro | Luxury | FWD
+Chery | Tiggo7 Pro Max | Comfort | FWD
+Chery | Tiggo7 Pro Max | Flagship | FWD
+Chery | Tiggo8 | Comfor | FWD
+Chery | Tiggo8 | Comfort | FWD
+Chery | Tiggo8 | Luxury | FWD
+Chery | Tiggo8 Pro | Flagship | FWD
+Chery | Tiggo8 Pro | Luxury | FWD
+Chery | Tiggo8 Pro Max | Flagship | AWD
+Chery | Tiggo9 | Luxury | FWD
+Chevrolet | Captiva | Lv3 | FWD
+Chevrolet | Captiva EV | Premier | FWD
+Chevrolet | N300 | Baseline | RWD
+Chevrolet | Optra | Ls | FWD
+Chevrolet | Optra | Lt | FWD
+Chevrolet | Spark EV | Activ | FWD
+Chevrolet | Tfr | Baseline | RWD
+Chevrolet | Tfr | Highline | AWD
+Citroen | C3 | Feel | FWD
+Citroen | C3 | Shine | FWD
+Citroen | C3 Aircross | Feel | FWD
+Citroen | C3 Aircross | Shine | FWD
+Citroen | C4 | Feel | FWD
+Citroen | C4 | Shine | FWD
+Citroen | C4X | Feel | FWD
+Citroen | C4X | Shine | FWD
+Citroen | C5 Aircross | Feel With Out Sunroof | FWD
+Citroen | C5 Aircross | Feel With Sunroof | FWD
+Citroen | C5 Aircross | Shine | FWD
+Citroen | C5 Aircross | Shine Entry | FWD
+Cupra | Formentor | Turbo | FWD
+Cupra | Leon | Control | FWD
+Cupra | Terramar | Control | FWD
+Cupra | Terramar | Impulse | FWD
+DFSK | 600 | Automatic | FWD
+DFSK | E5 | Reev | FWD
+DFSK | E5 Plus | Reev | FWD
+DS | 4 | Performance Line | FWD
+DS | 4 | Trocadero | FWD
+DS | 7 | Etoile | FWD
+DS | 7 | Pallas | FWD
+DS | 7 | Rivoli | FWD
+Deepal | S05 | Bev | RWD
+Deepal | S05 | Reev | RWD
+Deepal | S07 | Bev | RWD
+Deepal | S07 | Reev | RWD
+Dongfeng | A30 | Shine Limited Edition | FWD
+Dongfeng | Box | 330 | FWD
+Dongfeng | Box | 430 | FWD
+Dongfeng | E Pai007 | 530 Pro | RWD
+Dongfeng | E Pai007 | 620 Pro | RWD
+Dongfeng | E70 | Pro | FWD
+Dongfeng | Huge | Hybrid | FWD
+Dongfeng | Huge | Special Color | FWD
+Dongfeng | Mage | Elite | FWD
+Dongfeng | Mage | Highline | FWD
+Dongfeng | Mhero1 | Premium | AWD
+Dongfeng | Shine | Advance | FWD
+Dongfeng | Shine | Sport | FWD
+Dongfeng | Voyah Dream | Premium | AWD
+Dongfeng | Voyah Free | Luxury | AWD
+Dongfeng | Voyah Passion | Premium | AWD
+EXEED | Es | Comfort | RWD
+EXEED | Es | Flagship | AWD
+EXEED | Et | Luxury | AWD
+EXEED | Lx | Comfort | FWD
+EXEED | Lx | Luxury | FWD
+EXEED | Rx | Flagship | AWD
+EXEED | Rx | Luxury | FWD
+EXEED | Vx | Flagship | AWD
+EXEED | Vx | Luxury | AWD
+Fiat | 500X | Cross | FWD
+Fiat | E-Ulysee | Lounge | FWD
+Fiat | Tipo | Entry | FWD
+Fiat | Tipo | Mid | FWD
+Fiat | Tipo | Plus | FWD
+Ford | Focus | Connected 4D | FWD
+Ford | Focus | Connected 5D | FWD
+Ford | Focus | Titanium 4D | FWD
+Ford | Focus | Titanium 5Dr | FWD
+Ford | Focus | Trend 4D | FWD
+Forthing | S7 | Ev | FWD
+Forthing | S7 | Reev | FWD
+Forthing | T5 | Ev | FWD
+Forthing | T5 | Evo | FWD
+Forthing | T5 | Reev | FWD
+Forthing | V9 | Phev | FWD
+GAC | Aion Y | Bev Aion Y Plus | FWD
+GAC | Emkoo | Ge | FWD
+GAC | Emkoo | Gl | FWD
+GAC | Emkoo | Gs | FWD
+GAC | Empow | Gb | FWD
+GAC | Empow | Ge S-Style | FWD
+GAC | Empow | Gs | FWD
+GAC | Gs3 Emzoom | Gb | FWD
+GAC | Gs3 Emzoom | Gl | FWD
+GAC | Gs3 Emzoom | Gs | FWD
+GAC | Gs3 Emzoom | Rs Style | FWD
+GAC | Gs4 | Gb | FWD
+GAC | Gs4 | Ge | FWD
+GAC | Gs4 | Gs | FWD
+GAC | Gs4 Max | Premium | FWD
+Geely | City Ray | Comfort | FWD
+Geely | City Ray | Premium | FWD
+Geely | City Ray | Sport | FWD
+Geely | Coolray | Comfort | FWD
+Geely | Coolray | Gf | FWD
+Geely | Coolray | Gk | FWD
+Geely | Coolray | Gl | FWD
+Geely | Coolray | Premium | FWD
+Geely | Coolray | Premium Local | FWD
+Geely | Coolray | Sport | FWD
+Geely | Emgrand | Gf | FWD
+Geely | Emgrand | Gs | FWD
+Geely | Geometry C | Ev 400 | FWD
+Geely | Geometry C | Ev 550 | FWD
+Geely | Gx3 Pro | Premium | FWD
+Geely | Okavango | Premium | FWD
+Geely | Starray | Comfort | FWD
+Geely | Starray | Premium Abou Ghaly | FWD
+Geely | Starray | Sport+ | FWD
+Genesis | G80 | Advanced | RWD
+Genesis | G80 | Dynamic | AWD
+Genesis | G80 | Performance | AWD
+Genesis | GV60 | Advanced | RWD
+Genesis | GV60 | Dynamic | AWD
+Genesis | GV60 | Performance | AWD
+Genesis | GV70 | Advanced | AWD
+Genesis | GV70 | Dynamic | AWD
+Haval | H6 | Deluxe | FWD
+Haval | H6 | Deluxe Sr | FWD
+Haval | H6 | High Deluxe | FWD
+Haval | H6 | Platinum | FWD
+Haval | H6 | Standard | FWD
+Haval | H6 | Top Line | FWD
+Haval | H6 | Ultra | FWD
+Haval | H7 | Highline | FWD
+Haval | Jolion | Deluxe | FWD
+Haval | Jolion | Deluxe Sr | FWD
+Haval | Jolion | High Deluxe | FWD
+Haval | Jolion | Standard | FWD
+Haval | Jolion Pro | High Deluxe | FWD
+Honda | Accord | Ex | FWD
+Honda | Accord | Ex Turbo | FWD
+Honda | Crv | Ex | AWD
+Honda | Zrv | Ex | FWD
+Hongqi | E Hs9 | Luxury | AWD
+Hongqi | Ehs7 | Bev | RWD
+Hongqi | Hs3 | Luxury | FWD
+Hongqi | Ousado | Comfort | FWD
+Hongqi | Ousado | Luxury | FWD
+Hyundai | Accent Rb | Dab Abs | FWD
+Hyundai | Accent Rb | Dab Abs Plus | FWD
+Hyundai | Accent Rb | Gl | FWD
+Hyundai | Accent Rb | Gl Dab Abs | FWD
+Hyundai | Accent Rb | Gl Highline | FWD
+Hyundai | Accent Rb | Gl Sr | FWD
+Hyundai | Accent Rb | Highline | FWD
+Hyundai | Accent Rb | Sr | FWD
+Hyundai | Elantra Ad | Modern | FWD
+Hyundai | Elantra Ad | Modern Sunroof | FWD
+Hyundai | Elantra Ad | Smart | FWD
+Hyundai | Elantra Ad | Top Line | FWD
+Hyundai | Elantra Cn7 | Black Diamond | FWD
+Hyundai | Elantra Cn7 | Blaze | FWD
+Hyundai | Elantra Cn7 | Redline | FWD
+Hyundai | Elantra Cn7 | Shadow | FWD
+Hyundai | Elantra Hd | Highline Tinted Glass 15 | FWD
+Hyundai | I30 | Fb Blaze | FWD
+Hyundai | I30 | Fb Redline Fastback | FWD
+Hyundai | I30 | Hb Blaze | FWD
+Hyundai | I30 | Hb Redline | FWD
+Hyundai | Ioniq5 | Connect Plus | RWD
+Hyundai | Ioniq5 | Extreme | RWD
+Hyundai | Ioniq5 | Extreme Lr Awd | AWD
+Hyundai | Ioniq5 | N Boost Awd | AWD
+Hyundai | Ioniq6 | Connect Plus Long Range Rwd | RWD
+Hyundai | Ioniq6 | Extreme Long Range Awd | AWD
+Hyundai | Ioniq6 | Extreme Rwd | RWD
+Hyundai | Santa Fe | Hev Calligraphy Awd | AWD
+Hyundai | Santa Fe | Hev Executive Rwd | RWD
+Hyundai | Staria | Hev Premium Lounge 7 Seats | FWD
+Hyundai | Tucson | Black Diamond | FWD
+Hyundai | Tucson | Blaze | FWD
+Hyundai | Tucson | N-Line | FWD
+Hyundai | Tucson | Night | FWD
+Hyundai | Tucson | Redine | FWD
+Hyundai | Tucson | Redine N Pack | FWD
+Hyundai | Tucson | Shadow | FWD
+IM Motors | IM5 | Ultra Efficiency | RWD
+IM Motors | IM5 | Ultra Performance | AWD
+IM Motors | IM5 | Ultra Range | RWD
+IM Motors | IM6 | Ultra Efficiency | RWD
+IM Motors | IM6 | Ultra Range | RWD
+IM Motors | LS7 | Ultra Performance | AWD
+JAC | J7 | Ultimate | FWD
+JAC | Js2 | Smart | FWD
+JAC | Js4 | Ultimat | FWD
+JAC | Js6 | Flagship | FWD
+JAC | Js6 | Limited | FWD
+JAC | Js8 Pro | Flagship | FWD
+JAC | Js8 Pro | Limited | FWD
+JAC | S2 | Smart | FWD
+Jeep | Grand Cherokee | Limited L 4X4 | AWD
+Jetour | Dashing | Comfort | FWD
+Jetour | Dashing | Luxury | FWD
+Jetour | T1 | Automatic | AWD
+Jetour | T1 | Luxury | AWD
+Jetour | T1 | Matt Color | AWD
+Jetour | T2 | Automtic | AWD
+Jetour | T2 | Luxury | AWD
+Jetour | T2 | Matt Color | AWD
+Jetour | X70 | Comfort | FWD
+Jetour | X70 | Luxury | FWD
+Jetour | X70 Plus | Luxury Local | FWD
+Jetour | X90 Plus | Luxury | FWD
+Kaiyi | X3 Pro | Flagship | FWD
+Kaiyi | X3 Pro | Top Line | FWD
+Kaiyi | X7 | Flagship | FWD
+Kgm | Actyon | High Line | FWD
+Kgm | Actyon | Top Line | FWD
+Kgm | Tivoli | Tivoli Automtic | FWD
+Kgm | Tivoli Xlv | Tivoli Xlv Automtic | FWD
+Kgm | Torres | Advance | FWD
+Kgm | Torres | Black Edition | FWD
+Kgm | Torres | Comfort | FWD
+Kgm | Torres | Luxury | FWD
+Kgm | Torres | Premium | FWD
+Kia | Carnival | Top Line | FWD
+Kia | Ev3 | Air | FWD
+Kia | Ev3 | Earth | FWD
+Kia | Ev3 | Gt-Line | FWD
+Kia | Ev5 | Air | FWD
+Kia | Ev5 | Earth | FWD
+Kia | Ev5 | Gt-Line | AWD
+Kia | Ev6 | Earth | RWD
+Kia | Ev6 | Gt-Line | AWD
+Kia | Ev9 | Gt-Line | AWD
+Kia | Ev9 | Gt-Line Relaxing | AWD
+Kia | Ev9 | Gt-Line Swivelling | AWD
+Kia | Ev9 | Gt-LineRelaxing | AWD
+Kia | Grand Cerato | Ex Cam | FWD
+Kia | Grand Cerato | Highline | FWD
+Kia | Grand Cerato | Lx Fo | FWD
+Kia | K4 | Gt-Line | FWD
+Kia | K4 | Gt-Line Black Edition | FWD
+Kia | K4 | Highline | FWD
+Kia | Seltos | Ex | FWD
+Kia | Seltos | Highline | FWD
+Kia | Seltos | Top Line | FWD
+Kia | Sorento | Topline | AWD
+Kia | Sportage | Ex | FWD
+Kia | Sportage | Gt-Line | FWD
+Kia | Sportage | Highline | FWD
+Kia | Sportage | Lx | FWD
+Kia | Sportage | Premium | FWD
+Kia | Sportage | Top Line | FWD
+Kia | Xceed | Highline | FWD
+Kia | Xceed | Panorama | FWD
+Li Auto | L6 | Pro | AWD
+Li Auto | L7 | Ultra | AWD
+Li Auto | L9 | Ultra | AWD
+Lotus | Emeya | Base | AWD
+Lotus | Emeya | R | AWD
+Lotus | Emeya | S | AWD
+Lynk & co | 2 | Halo | FWD
+Lynk & co | 6 | Core Plus | FWD
+Lynk & co | 6 | Hyper Halo | AWD
+Lynk & co | 6 | Hyper Pro | AWD
+M-Hero | 917 | Signature | AWD
+Maserati | Granturismo | Modena | AWD
+Maserati | Granturismo | Trofeo | AWD
+Maserati | Grecale | Modena | AWD
+Mazda | 3 | Highline | FWD
+Mazda | Cx3 | Highline | FWD
+Mercedes | A200 | Progressive | FWD
+Mercedes | B200 | Progressive | FWD
+Mercedes | C180 | Avantgarde Plus | RWD
+Mercedes | C180 | Sport | RWD
+Mercedes | C200 | Sport | RWD
+Mercedes | C43 | 4Matic | AWD
+Mercedes | CLA 200 | Progressive | FWD
+Mercedes | CLA 200 | Sport Cabriolet | FWD
+Mercedes | CLE 200 | Sport | RWD
+Mercedes | E200 | Avantgard | RWD
+Mercedes | E200 | Exclusive | RWD
+Mercedes | EQA 250+ | Progressive | FWD
+Mercedes | EQB 250+ | Progressive | FWD
+Mercedes | EQE 350+ | Amg | RWD
+Mercedes | EQE 350+ | Sport | RWD
+Mercedes | EQS 500 | 4Matic | AWD
+Mercedes | EQS 500 | Amg | AWD
+Mercedes | EQS 500 | Sport | AWD
+Mercedes | EQS 680 | 4M Suv | AWD
+Mercedes | EQS 680 | Night Series | AWD
+Mercedes | G500 | Amg Night Edition | AWD
+Mercedes | G500 | Amg | AWD
+Mercedes | G580 | Eq Technology | AWD
+Mercedes | G580 | Night Edition | AWD
+Mercedes | G63 | Amg Night Edition | AWD
+Mercedes | G63 | Night Eidition | AWD
+Mercedes | GLA 200 | 4Matic Amg | AWD
+Mercedes | GLA 200 | Progressive | FWD
+Mercedes | GLC 200 | Coupe Sport | RWD
+Mercedes | GLC 200 | Progressive | RWD
+Mercedes | GLC 200 | Sport | RWD
+Mercedes | GLC 43 | 4M Coupe Amg | AWD
+Mercedes | GLE 450 | 4Matic | AWD
+Mercedes | GLE 53 | 4Matic | AWD
+Mercedes | GLS 580 | 4Matic | AWD
+Mercedes | GLS 580 | Amg | AWD
+Mercedes | GT 63 | 4Matic | AWD
+Mercedes | S450 | 4Matic Saloon | AWD
+Mercedes | S500 | 4Matic Saloon | AWD
+Mercedes | S680 | Maybach 4Matic | AWD
+Mercedes | SL55 | Amg 4Matic | AWD
+Mercedes | V300 | Avantgarde | RWD
+Mg | 4 | Luxury | RWD
+Mg | 4 | Standard | RWD
+Mg | 5 | Comfort | FWD
+Mg | 5 | Luxury | FWD
+Mg | 7 | Luxury | FWD
+Mg | 7 | Trophy | FWD
+Mg | G50 Plus | Comfort | FWD
+Mg | GT | Comfort | FWD
+Mg | GT | Luxury | FWD
+Mg | Hs | Hev | FWD
+Mg | One | Luxury | FWD
+Mg | Rx5 Plus | Luxury | FWD
+Mg | Zs | Comfort | FWD
+Mg | Zs | Luxury Facelift Mce | FWD
+Mini | Cooper | 3 Doors Classic | FWD
+Mini | Cooper | 5 Doors  Classic | FWD
+Mini | Cooper | JCW | FWD
+Mini | Cooper | JCW Cabrio | FWD
+Mini | Cooper S | 3-Door Iconic | FWD
+Mini | Cooper S | JCW | FWD
+Mini | Cooper SE | Favoured | FWD
+Mini | Countryman | Classic | FWD
+Mini | Countryman | Favoured | FWD
+Mini | Countryman | JCW | AWD
+Mini | Countryman E | Favoured | FWD
+Mini | Countryman E | JCW | AWD
+Mini | Countryman S | Jcw | AWD
+Mitsubishi | Attrage | Elite High Line | FWD
+Mitsubishi | Eclipse Cross | Infinity Pl | AWD
+Mitsubishi | Eclipse Cross | Inspire Hl | FWD
+Mitsubishi | Eclipse Cross | Insport Bl | FWD
+Mitsubishi | Eclipse Cross | Insport Ml Plus | FWD
+Mitsubishi | Eclipse Cross | Instyle Tl | FWD
+Mitsubishi | Mirage | Elite High Line | FWD
+Mitsubishi | Mirage | Highline | FWD
+Mitsubishi | Outlander Sport | High Line | AWD
+Mitsubishi | Outlander Sport | Midline | FWD
+Mitsubishi | Outlander Sport | Premium | AWD
+Mitsubishi | Outlander Sport | Premium Line | AWD
+Mitsubishi | Outlander Sport | Spark High Line | FWD
+Mitsubishi | Xpander | Highline | FWD
+Mitsubishi | Xpander | Mid Line | FWD
+Mitsubishi | Xpander | Midline | FWD
+Mitsubishi | Xpander | Premium Line | FWD
+Mitsubishi | Xpander | Premium Pl | FWD
+Mitsubishi | Xpander | Spark Hl | FWD
+Nissan | Juke | Accenta | FWD
+Nissan | Juke | Acenta | FWD
+Nissan | Juke | N-Design | FWD
+Nissan | Juke | Tekna | FWD
+Nissan | Juke | Tekna N-Design | FWD
+Nissan | Juke | Tekna N-Sport | FWD
+Nissan | Juke | Tekna Perso | FWD
+Nissan | Patrol | Le Platinum City | AWD
+Nissan | Patrol | Le Plt City | AWD
+Nissan | Patrol | Le T1 | AWD
+Nissan | Patrol | Le T2 Sr Rse | AWD
+Nissan | Patrol | Le Titanium | AWD
+Nissan | Patrol | Le1 | AWD
+Nissan | Patrol | Le2 | AWD
+Nissan | Patrol | Se | AWD
+Nissan | Patrol | Se Platinum City | AWD
+Nissan | Patrol | Se Plt City | AWD
+Nissan | Patrol | Se T2 | AWD
+Nissan | Patrol | Se Titanium | AWD
+Nissan | Patrol | Xe | AWD
+Nissan | Qashqai | Accenta | FWD
+Nissan | Qashqai | Accenta 2T | FWD
+Nissan | Qashqai | N-Connecta | FWD
+Nissan | Qashqai | N-Connecta+ | FWD
+Nissan | Qashqai | N-Connecta+ 2T | FWD
+Nissan | Qashqai | N-Design E-Pwr | FWD
+Nissan | Qashqai | Tekna | FWD
+Nissan | Qashqai | Tekna 2T | FWD
+Nissan | Qashqai | Tekna 4Wd | AWD
+Nissan | Qashqai | Tekna 4Wd 2T | AWD
+Nissan | Sentra | Highline | FWD
+Nissan | Sentra | Premium | FWD
+Nissan | Sunny | Baseline | FWD
+Nissan | Sunny | Plus | FWD
+Nissan | Sunny | Super Saloon | FWD
+Nissan | X Trail | Acenta 2Wd | FWD
+Nissan | X Trail | E-4Orce Tekna | AWD
+Nissan | X Trail | N-Terk | FWD
+Opel | Corsa | Gs Line | FWD
+Opel | Corsa | Sport Topline Plus | FWD
+Opel | Crossland | Top Line | FWD
+Opel | Grandland | Top Line | FWD
+Opel | Grandland Shape Facelift | Highline | FWD
+Opel | Mokka | Black Edition | FWD
+Peugeot | 2008 | Allure | FWD
+Peugeot | 2008 | Gt | FWD
+Peugeot | 3008 | Allure | FWD
+Peugeot | 3008 | Gt | FWD
+Peugeot | 408 | Allure | FWD
+Peugeot | 408 | Allure Pack | FWD
+Peugeot | 408 | Gt | FWD
+Peugeot | 5008 | Allure | FWD
+Peugeot | 5008 | Gt | FWD
+Peugeot | 508 | Allure | FWD
+Peugeot | 508 | Gt | FWD
+Porsche | 718 | Boxster | RWD
+Porsche | 718 | Boxster Gts 4.0 | RWD
+Porsche | 718 | Boxster S | RWD
+Porsche | 718 | Boxster Style Edition | RWD
+Porsche | 718 | Cayman | RWD
+Porsche | 718 | Cayman Gt4 Rs | RWD
+Porsche | 718 | Cayman Gts 4.0 | RWD
+Porsche | 718 | Cayman S | RWD
+Porsche | 718 | Cayman Style Edition | RWD
+Porsche | 718 | Spyder Rs | RWD
+Porsche | 911 | Cabriolet | RWD
+Porsche | 911 | Carrera | RWD
+Porsche | 911 | Carrera 4 | AWD
+Porsche | 911 | Carrera 4 Cabriolet | AWD
+Porsche | 911 | Carrera 4 Gts | AWD
+Porsche | 911 | Carrera 4 Gts Cabriolet | AWD
+Porsche | 911 | Carrera 4S | AWD
+Porsche | 911 | Carrera 4S Cabriolet | AWD
+Porsche | 911 | Carrera Cabriolet | RWD
+Porsche | 911 | Carrera Gts | RWD
+Porsche | 911 | Carrera Gts Cabriolet | RWD
+Porsche | 911 | GT3 | RWD
+Porsche | 911 | GT3 Touring Package | RWD
+Porsche | 911 | GT3RS | RWD
+Porsche | 911 | S | RWD
+Porsche | 911 | S Cabriolet | RWD
+Porsche | 911 | Targa 4 | AWD
+Porsche | 911 | Targa 4S | AWD
+Porsche | 911 | Turbo | AWD
+Porsche | 911 | Turbo Cabriolet | AWD
+Porsche | 911 | Turbo S | AWD
+Porsche | 911 | Turbo S Cabriolet | AWD
+Porsche | Cayenne | Baseline | AWD
+Porsche | Cayenne | Coupe Turbo Gt | AWD
+Porsche | Cayenne | Gts | AWD
+Porsche | Cayenne | Gts Coupe | AWD
+Porsche | Cayenne | S Coupe | AWD
+Porsche | Macan | 4 | AWD
+Porsche | Macan | 4S Electric | AWD
+Porsche | Macan | Baseline | AWD
+Porsche | Macan | Gts | AWD
+Porsche | Macan | S | AWD
+Porsche | Macan | Turbo | AWD
+Porsche | Panamera | 4 E-Hybrid | AWD
+Porsche | Panamera | 4 E-Hybrid Executive | AWD
+Porsche | Panamera | 4S E-Hybrid | AWD
+Porsche | Panamera | Baseline | RWD
+Porsche | Panamera | Gts | AWD
+Porsche | Panamera | Turbo E-Hybrid | AWD
+Porsche | Panamera | Turbo S E-Hybrid | AWD
+Porsche | Taycan | 4 | AWD
+Porsche | Taycan | 4S | AWD
+Porsche | Taycan | Baseline | RWD
+Porsche | Taycan | Highli Turbo Gt With Weissach Packagene | AWD
+Porsche | Taycan | Turbo | AWD
+Porsche | Taycan | Turbo Gt | AWD
+Porsche | Taycan | Turbo S | AWD
+Proton | Saga | Baseline | FWD
+Renault | Austral | Baseline | FWD
+Renault | Austral | Esprit Alpine | FWD
+Renault | Austral | Evolution | FWD
+Renault | Austral | Iconic | FWD
+Renault | Austral | Techno | FWD
+Renault | Duster | Authentic | FWD
+Renault | Duster | Evolution | FWD
+Renault | Duster | H1 | FWD
+Renault | Duster | H2 | FWD
+Renault | Duster | H3 | FWD
+Renault | Duster | Techno | FWD
+Renault | Kardian | Evolution | FWD
+Renault | Kardian | Iconic | FWD
+Renault | Kardian | Techno | FWD
+Renault | Megane | Dynamic | FWD
+Renault | Megane | Signature | FWD
+Renault | Megane | Signature Turbo | FWD
+Renault | Taliant | Evolution | FWD
+Renault | Taliant | Techno | FWD
+Rox | 1 | Aviation 6 Seats | AWD
+Rox | 1 | Family 7 Seats | AWD
+Seat | Arona | Black | FWD
+Seat | Ateca | Style Plus | FWD
+Seat | Ibiza | Black Series | FWD
+Seat | Ibiza | Fr | FWD
+Seat | Ibiza | Reference | FWD
+Seat | Leon | Advance | FWD
+Skoda | Karoq | Luxury | FWD
+Skoda | Karoq | Suite | FWD
+Skoda | Kodiaq | Loft | FWD
+Skoda | Kodiaq | Lounge | FWD
+Skoda | Kodiaq | Sportline | AWD
+Skoda | Kodiaq | Suite | FWD
+Skoda | Octavia | Loft | FWD
+Skoda | Octavia | Lounge | FWD
+Skoda | Octavia | Suite | FWD
+Skoda | Superb | L&K | FWD
+Skoda | Superb | Suite | FWD
+Smart | 1 | Brabus | AWD
+Smart | 1 | Premium | RWD
+Smart | 1 | Pro | RWD
+Smart | 1 | Pure | RWD
+Smart | 3 | Brabus | AWD
+Smart | 3 | Premium | RWD
+Smart | 3 | Pro | RWD
+Soueast | Dx5 | Top Line | FWD
+Soueast | Dx7 Nova | Highline | FWD
+Soueast | Dx8S Coupe | Active | FWD
+Soueast | S05 | Highline | FWD
+Soueast | S06 | Highline | FWD
+Soueast | S06 | Premium | FWD
+Soueast | S06 | Smart | FWD
+Soueast | S07 | Highline | FWD
+Soueast | S07 | Premium | FWD
+Soueast | S09 | Premium | FWD
+Subaru | Crosstrek | Baseline | AWD
+Subaru | Foreste | R | AWD
+Subaru | Xv Crosstrek | Baseline | AWD
+Suzuki | Baleno | 1.4 A/T F/O Screen | FWD
+Suzuki | Ciaz | Gl | FWD
+Suzuki | Ciaz | Glx | FWD
+Suzuki | Ciaz | L Roof | FWD
+Suzuki | Dzire | Glx | FWD
+Suzuki | Dzire | Glx With Screen | FWD
+Suzuki | Ertiga | Glx | FWD
+Suzuki | Fronx | Gl | FWD
+Suzuki | Fronx | Gl 2 Tone | FWD
+Suzuki | Fronx | Glx | FWD
+Suzuki | Fronx | Glx 2 Tone | FWD
+Suzuki | Grand Vitara | Glx | FWD
+Suzuki | Grand Vitara | Glx 2 Tone | FWD
+Suzuki | Jimny | 1 Tone | AWD
+Suzuki | Jimny | 2 Tone | AWD
+Suzuki | S Presso | Alloy | FWD
+Suzuki | S Presso | Baseline | FWD
+Suzuki | Swift | Glx | FWD
+Toyota | Camry | High Line | FWD
+Toyota | Corolla | Active | FWD
+Toyota | Corolla | Comfort | FWD
+Toyota | Corolla | Elegance | FWD
+Toyota | Corolla | Hybrid | FWD
+Toyota | Corolla | Smart | FWD
+Toyota | Corolla | Smart With Sunroof | FWD
+Toyota | Corolla | Sun Roof | FWD
+Toyota | Fortuner | Elegance | RWD
+Toyota | Fortuner | Smart | AWD
+Toyota | Fortuner | Sport | AWD
+Toyota | Land Cruiser | Prado - Highline | AWD
+Toyota | Land Cruiser | Prado - Vx Petrol | AWD
+Toyota | Rav4 | Full Option | AWD
+Toyota | Urban Cruiser | Active | FWD
+Toyota | Urban Cruiser | Comfort | FWD
+Vgv | U70Pro Plus | Flagship | FWD
+Vgv | U70Pro Plus | Highline | FWD
+Vgv | U70Pro Plus | Top Line | FWD
+Volkswagen | Golf | Life | FWD
+Volkswagen | Id.6 Crozz | Pro | RWD
+Volkswagen | Id7 | Pro Plus | RWD
+Volkswagen | T Roc | R-Line | FWD
+Volkswagen | Tayron | R-Line | FWD
+Volkswagen | Tiguan | R-Line | FWD
+Volkswagen | Touareg | R-Line | AWD
+Volvo | C40 | Single Motor | RWD
+Volvo | C40 | Twin Motor | AWD
+Volvo | Ex30 | Single Plus Extended Range | RWD
+Volvo | Ex30 | Single Ultra Extended Range | RWD
+Volvo | Ex30 | Twin Plus Performance | AWD
+Volvo | Xc40 | Black Edition | FWD
+Volvo | Xc40 | Essential | FWD
+Volvo | Xc40 | Ultra Dark | FWD
+Volvo | Xc60 | Black Edition | AWD
+Volvo | Xc60 | Essential | AWD
+Volvo | Xc90 | Ultimate | AWD
+Voyah | Dream | Signature | AWD
+Voyah | Free | Signature | AWD
+Voyah | Passion | Phev 1260 | AWD
+Xpeng | G6 | Long Range | RWD
+Xpeng | G6 | Standard Range | RWD
+Xpeng | G9 | Long Range | RWD
+Xpeng | G9 | Long Range + Nappa | RWD
+Xpeng | G9 | Performance | AWD
+Xpeng | Mona M03 | R18 | FWD
+Xpeng | Mona M03 | R19 | FWD
+Xpeng | P7 | Long Range | RWD
+Xpeng | X9 | Pro | FWD
+Xpeng | X9 | Pro Plus | FWD
+Zeekr | 001 | Long Range | RWD
+Zeekr | 001 | Performance Awd | AWD
+Zeekr | 001 | Privilege Awd | AWD
+Zeekr | 7X | Long Range | RWD
+Zeekr | 7X | Performance | AWD
+Zeekr | 7X | Standard | RWD
+Zeekr | X | Long Range | RWD
+Zeekr | X | Performance | AWD
+Zotye | T300 | Automatic | FWD
+Zotye | T300 | Manual | FWD

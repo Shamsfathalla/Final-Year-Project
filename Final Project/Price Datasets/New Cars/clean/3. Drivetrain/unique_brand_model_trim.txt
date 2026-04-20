@@ -1,0 +1,767 @@
+Brand                     | Model                | Trim                                | Drivetrain
+----------------------------------------------------------------------------------------------------
+Alfa Romeo                | Giulia               | Sprint                              | 
+Alfa Romeo                | Giulia               | Veloce                              | 
+Alfa Romeo                | Stelvio              | Sprint                              | 
+Alfa Romeo                | Stelvio              | Veloce                              | 
+Alfa Romeo                | Tonale               | Sprint                              | 
+Alfa Romeo                | Tonale               | Ti                                  | 
+Alfa Romeo                | Tonale               | Veloce                              | 
+Arcfox                    | Alpha S5             | Air                                 | 
+Arcfox                    | Alpha S5             | Pro                                 | 
+Arcfox                    | Alpha T5             | Air                                 | 
+Arcfox                    | Alpha T5             | Pro                                 | 
+Arcfox                    | Koala S              | Air                                 | 
+Arcfox                    | Koala S              | Pro                                 | 
+Arcfox                    | T1                   | Plus                                | 
+Arcfox                    | T1                   | Pro                                 | 
+Audi                      | A3                   | S-Line                              | 
+Audi                      | A3                   | Sport Back                          | 
+Audi                      | A3                   | Sportback S-Line                    | 
+Audi                      | A4                   | S-Line Plus                         | 
+Audi                      | A5                   | Advanced                            | 
+Audi                      | A5                   | S-Line                              | 
+Audi                      | A5                   | S-Line Plus                         | 
+Audi                      | A6                   | S-Line                              | 
+Audi                      | A8                   | S-Line Long                         | 
+Audi                      | Q2                   | S-Line                              | 
+Audi                      | Q3                   | Advanced                            | 
+Audi                      | Q3                   | Baseline                            | 
+Audi                      | Q3                   | S-Line                              | 
+Audi                      | Q3                   | SportBack                           | 
+Audi                      | Q3                   | Sportback S-Line                    | 
+Audi                      | Q3                   | Sportback S-Line Black Package      | 
+Audi                      | Q6 E-Tron            | Performance S-Line                  | 
+Audi                      | Q7                   | S-Line                              | 
+Audi                      | Q7                   | S-Line 3.0 L                        | 
+Audi                      | Q7                   | S-Line Plus                         | 
+Audi                      | Q8                   | S-Line                              | 
+Audi                      | Q8                   | S-Line Plus                         | 
+Audi                      | Q8 E-Tron            | Baseline                            | 
+Audi                      | Q8 E-Tron            | Sportback                           | 
+Audi                      | Q8 E-Tron            | Top Line                            | 
+Audi                      | Rs E-Tron GT         | S-Line                              | 
+Audi                      | Rs Q8                | RS                                  | 
+Audi                      | Rs5 Coupe            | RS                                  | 
+Avatr                     | 11                   | Luxury                              | 
+Avatr                     | 11                   | Performance                         | 
+Avatr                     | 11                   | Premium                             | 
+Avatr                     | 12                   | Gt                                  | 
+Avatr                     | 12                   | Luxury                              | 
+BAIC                      | BJ 30                | Off-Road                            | 
+BAIC                      | BJ 30                | Pro                                 | 
+BAIC                      | BJ 30                | Ultra                               | 
+BAIC                      | Beijing X7           | Highline                            | 
+BAIC                      | Beijing X7           | Premium                             | 
+BAIC                      | Beijing X7           | Top Line                            | 
+BAIC                      | U5 Plus              | Comfort                             | 
+BAIC                      | U5 Plus              | High Line                           | 
+BAIC                      | U5 Plus              | Highline                            | 
+BAIC                      | U5 Plus              | Top Line                            | 
+BAIC                      | X55                  | Highline                            | 
+BAIC                      | X55                  | Premium                             | 
+BAIC                      | X55                  | Top Line                            | 
+BMW                       | 118i                 | M Sport                             | 
+BMW                       | 218i                 | M Sport                             | 
+BMW                       | 320i                 | Advantage                           | 
+BMW                       | 320i                 | Luxury                              | 
+BMW                       | 320i                 | M Sport                             | 
+BMW                       | 320i                 | Sport                               | 
+BMW                       | 330i                 | M Sport                             | 
+BMW                       | 340i                 | M Sport                             | 
+BMW                       | 420i                 | Convertible                         | 
+BMW                       | 420i                 | M Sport                             | 
+BMW                       | 440i                 | Xdrive                              | 
+BMW                       | 520i                 | Luxury 1.6                          | 
+BMW                       | 520i                 | M Sport                             | 
+BMW                       | 740i                 | Pure Excellence Lwb                 | 
+BMW                       | 760i                 | Xdrive                              | 
+BMW                       | 760i                 | Xdrive M Sport                      | 
+BMW                       | M135i                | Xdrive                              | 
+BMW                       | M235i                | Xdrive                              | 
+BMW                       | M3                   | Competition                         | 
+BMW                       | M3                   | Competition Xdrive                  | 
+BMW                       | M4                   | Competition                         | 
+BMW                       | M4                   | Competition Xdrive                  | 
+BMW                       | M5                   | Competition                         | 
+BMW                       | M8                   | Competition                         | 
+BMW                       | M850i                | Convertible Lci                     | 
+BMW                       | M850i                | Gran Coupe                          | 
+BMW                       | X1                   | Sdrive18I M Sport                   | 
+BMW                       | X1                   | Sdrive18I Xline                     | 
+BMW                       | X2                   | 2.0 A/T M35I Sport                  | 
+BMW                       | X2                   | Sdrive18I M Sport                   | 
+BMW                       | X3                   |  Xdrive30I  Xline                   | 
+BMW                       | X4                   |  Xdrive30I  M Sport                 | 
+BMW                       | X5                   | M60I                                | 
+BMW                       | X5                   | Xdrive40I Xline                     | 
+BMW                       | X6                   |  M60I                               | 
+BMW                       | X6                   | Xdrive40I                           | 
+BMW                       | X6 M                 | M                                   | 
+BMW                       | X7                   | M60I                                | 
+BMW                       | i4                   | Edrive40  M Sport                   | 
+BMW                       | i5                   | Edrive40 M Sport                    | 
+BMW                       | i5                   | Luxury                              | 
+BMW                       | i7                   | Xdrive60                            | 
+BMW                       | i7                   | Xdrive60 Pure Excellence            | 
+BMW                       | iX                   | Xdrive40                            | 
+BMW                       | iX                   | Xdrive50                            | 
+BMW                       | iX1                  | Edrive20 M Sport                    | 
+BMW                       | iX1                  | Xdrive30  Xline                     | 
+BMW                       | iX2                  | Edrive20 M Sport                    | 
+BYD                       | F3                   | 1.5 A/T                             | 
+BYD                       | F3                   | 1.5 M/T                             | 
+Bestune                   | B70                  | Deluxe                              | 
+Bestune                   | B70                  | Premium                             | 
+Bestune                   | B70S                 | Limousine                           | 
+Bestune                   | B70S                 | Premium                             | 
+Bestune                   | T55                  | Premium Plus                        | 
+Bestune                   | T77                  | 1.5 A/T Turbo Comfort               | 
+Bestune                   | T77                  | Premium                             | 
+Bestune                   | T77 Pro              | Premium                             | 
+Brilliance                | V3                   | Base                                | 
+Changan                   | Cs35 Plus            | Elite                               | 
+Changan                   | Cs35 Plus            | Flagship                            | 
+Changan                   | Cs35 Plus            | Premium                             | 
+Changan                   | Cs55 Plus            | Elite                               | 
+Changan                   | Cs55 Plus            | Elite Local                         | 
+Changan                   | Cs55 Plus            | Flagship                            | 
+Changan                   | Cs55 Plus            | Premium Local                       | 
+Changan                   | Eado Plus            | Elite                               | 
+Changan                   | Eado Plus            | Flagship                            | 
+Changan                   | Eado Plus            | Premium                             | 
+Changan                   | Uni T                | Flagship                            | 
+Changan                   | Uni T                | Premium                             | 
+Changan                   | Uni V                | Flagship                            | 
+Chery                     | Arrizo5              | Baseline Leather                    | 
+Chery                     | Arrizo5              | Basic Facelift                      | 
+Chery                     | Arrizo5              | Comfort Facelift                    | 
+Chery                     | Arrizo5              | Highline                            | 
+Chery                     | Arrizo5              | Leather                             | 
+Chery                     | Arrizo5              | Mt Facelift                         | 
+Chery                     | Arrizo8              | Flagship                            | 
+Chery                     | Arrizo8              | Luxury                              | 
+Chery                     | Eq7                  | Automtic                            | 
+Chery                     | Eq7                  | Luxury                              | 
+Chery                     | Tiggo3               | Tinted Glass                        | 
+Chery                     | Tiggo4 Pro           | Comfort                             | 
+Chery                     | Tiggo4 Pro           | Luxury                              | 
+Chery                     | Tiggo4 Pro           | Luxury Turbo                        | 
+Chery                     | Tiggo4 Pro           | Turbo                               | 
+Chery                     | Tiggo7               | Baseline                            | 
+Chery                     | Tiggo7               | Comfort                             | 
+Chery                     | Tiggo7               | Highline                            | 
+Chery                     | Tiggo7               | Luxury                              | 
+Chery                     | Tiggo7 Pro           | Comfort                             | 
+Chery                     | Tiggo7 Pro           | Luxury                              | 
+Chery                     | Tiggo7 Pro Max       | Comfort                             | 
+Chery                     | Tiggo7 Pro Max       | Flagship                            | 
+Chery                     | Tiggo8               | Comfor                              | 
+Chery                     | Tiggo8               | Comfort                             | 
+Chery                     | Tiggo8               | Luxury                              | 
+Chery                     | Tiggo8 Pro           | Flagship                            | 
+Chery                     | Tiggo8 Pro           | Luxury                              | 
+Chery                     | Tiggo8 Pro Max       | Flagship                            | 
+Chery                     | Tiggo9               | Luxury                              | 
+Chevrolet                 | Captiva              | Lv3                                 | 
+Chevrolet                 | Captiva EV           | Premier                             | 
+Chevrolet                 | N300                 | Baseline                            | 
+Chevrolet                 | Optra                | Ls                                  | 
+Chevrolet                 | Optra                | Lt                                  | 
+Chevrolet                 | Spark EV             | Activ                               | 
+Chevrolet                 | Tfr                  | Baseline                            | 
+Chevrolet                 | Tfr                  | Highline                            | 
+Citroen                   | C3                   | Feel                                | 
+Citroen                   | C3                   | Shine                               | 
+Citroen                   | C3 Aircross          | Feel                                | 
+Citroen                   | C3 Aircross          | Shine                               | 
+Citroen                   | C4                   | Feel                                | 
+Citroen                   | C4                   | Shine                               | 
+Citroen                   | C4X                  | Feel                                | 
+Citroen                   | C4X                  | Shine                               | 
+Citroen                   | C5 Aircross          | Feel With Out Sunroof               | 
+Citroen                   | C5 Aircross          | Feel With Sunroof                   | 
+Citroen                   | C5 Aircross          | Shine                               | 
+Citroen                   | C5 Aircross          | Shine Entry                         | 
+Cupra                     | Formentor            | Turbo                               | 
+Cupra                     | Leon                 | Control                             | 
+Cupra                     | Terramar             | Control                             | 
+Cupra                     | Terramar             | Impulse                             | 
+DFSK                      | 600                  | Automatic                           | 
+DFSK                      | E5                   | Reev                                | 
+DFSK                      | E5 Plus              | Reev                                | 
+DS                        | 4                    | Performance Line                    | 
+DS                        | 4                    | Trocadero                           | 
+DS                        | 7                    | Etoile                              | 
+DS                        | 7                    | Pallas                              | 
+DS                        | 7                    | Rivoli                              | 
+Deepal                    | S05                  | Bev                                 | 
+Deepal                    | S05                  | Reev                                | 
+Deepal                    | S07                  | Bev                                 | 
+Deepal                    | S07                  | Reev                                | 
+Dongfeng                  | A30                  | Shine Limited Edition               | 
+Dongfeng                  | Box                  | 330                                 | 
+Dongfeng                  | Box                  | 430                                 | 
+Dongfeng                  | E Pai007             | 530 Pro                             | 
+Dongfeng                  | E Pai007             | 620 Pro                             | 
+Dongfeng                  | E70                  | Pro                                 | 
+Dongfeng                  | Huge                 | Hybrid                              | 
+Dongfeng                  | Huge                 | Special Color                       | 
+Dongfeng                  | Mage                 | Elite                               | 
+Dongfeng                  | Mage                 | Highline                            | 
+Dongfeng                  | Mhero1               | Premium                             | 
+Dongfeng                  | Shine                | Advance                             | 
+Dongfeng                  | Shine                | Sport                               | 
+Dongfeng                  | Voyah Dream          | Premium                             | 
+Dongfeng                  | Voyah Free           | Luxury                              | 
+Dongfeng                  | Voyah Passion        | Premium                             | 
+EXEED                     | Es                   | Comfort                             | 
+EXEED                     | Es                   | Flagship                            | 
+EXEED                     | Et                   | Luxury                              | 
+EXEED                     | Lx                   | Comfort                             | 
+EXEED                     | Lx                   | Luxury                              | 
+EXEED                     | Rx                   | Flagship                            | 
+EXEED                     | Rx                   | Luxury                              | 
+EXEED                     | Vx                   | Flagship                            | 
+EXEED                     | Vx                   | Luxury                              | 
+Fiat                      | 500X                 | Cross                               | 
+Fiat                      | E-Ulysee             | Lounge                              | 
+Fiat                      | Tipo                 | Entry                               | 
+Fiat                      | Tipo                 | Mid                                 | 
+Fiat                      | Tipo                 | Plus                                | 
+Ford                      | Focus                | Connected 4D                        | 
+Ford                      | Focus                | Connected 5D                        | 
+Ford                      | Focus                | Titanium 4D                         | 
+Ford                      | Focus                | Titanium 5Dr                        | 
+Ford                      | Focus                | Trend 4D                            | 
+Forthing                  | S7                   | Ev                                  | 
+Forthing                  | S7                   | Reev                                | 
+Forthing                  | T5                   | Ev                                  | 
+Forthing                  | T5                   | Evo                                 | 
+Forthing                  | T5                   | Reev                                | 
+Forthing                  | V9                   | Phev                                | 
+GAC                       | Aion Y               | Bev Aion Y Plus                     | 
+GAC                       | Emkoo                | Ge                                  | 
+GAC                       | Emkoo                | Gl                                  | 
+GAC                       | Emkoo                | Gs                                  | 
+GAC                       | Empow                | Gb                                  | 
+GAC                       | Empow                | Ge S-Style                          | 
+GAC                       | Empow                | Gs                                  | 
+GAC                       | Gs3 Emzoom           | Gb                                  | 
+GAC                       | Gs3 Emzoom           | Gl                                  | 
+GAC                       | Gs3 Emzoom           | Gs                                  | 
+GAC                       | Gs3 Emzoom           | Rs Style                            | 
+GAC                       | Gs4                  | Gb                                  | 
+GAC                       | Gs4                  | Ge                                  | 
+GAC                       | Gs4                  | Gs                                  | 
+GAC                       | Gs4 Max              | Premium                             | 
+Geely                     | City Ray             | Comfort                             | 
+Geely                     | City Ray             | Premium                             | 
+Geely                     | City Ray             | Sport                               | 
+Geely                     | Coolray              | Comfort                             | 
+Geely                     | Coolray              | Gf                                  | 
+Geely                     | Coolray              | Gk                                  | 
+Geely                     | Coolray              | Gl                                  | 
+Geely                     | Coolray              | Premium                             | 
+Geely                     | Coolray              | Premium Local                       | 
+Geely                     | Coolray              | Sport                               | 
+Geely                     | Emgrand              | Gf                                  | 
+Geely                     | Emgrand              | Gs                                  | 
+Geely                     | Geometry C           | Ev 400                              | 
+Geely                     | Geometry C           | Ev 550                              | 
+Geely                     | Gx3 Pro              | Premium                             | 
+Geely                     | Okavango             | Premium                             | 
+Geely                     | Starray              | Comfort                             | 
+Geely                     | Starray              | Premium Abou Ghaly                  | 
+Geely                     | Starray              | Sport+                              | 
+Genesis                   | G80                  | Advanced                            | 
+Genesis                   | G80                  | Dynamic                             | 
+Genesis                   | G80                  | Performance                         | 
+Genesis                   | GV60                 | Advanced                            | 
+Genesis                   | GV60                 | Dynamic                             | 
+Genesis                   | GV60                 | Performance                         | 
+Genesis                   | GV70                 | Advanced                            | 
+Genesis                   | GV70                 | Dynamic                             | 
+Haval                     | H6                   | Deluxe                              | 
+Haval                     | H6                   | Deluxe Sr                           | 
+Haval                     | H6                   | High Deluxe                         | 
+Haval                     | H6                   | Platinum                            | 
+Haval                     | H6                   | Standard                            | 
+Haval                     | H6                   | Top Line                            | 
+Haval                     | H6                   | Ultra                               | 
+Haval                     | H7                   | Highline                            | 
+Haval                     | Jolion               | Deluxe                              | 
+Haval                     | Jolion               | Deluxe Sr                           | 
+Haval                     | Jolion               | High Deluxe                         | 
+Haval                     | Jolion               | Standard                            | 
+Haval                     | Jolion Pro           | High Deluxe                         | 
+Honda                     | Accord               | Ex                                  | 
+Honda                     | Accord               | Ex Turbo                            | 
+Honda                     | Crv                  | Ex                                  | 
+Honda                     | Zrv                  | Ex                                  | 
+Hongqi                    | E Hs9                | Luxury                              | 
+Hongqi                    | Ehs7                 | Bev                                 | 
+Hongqi                    | Hs3                  | Luxury                              | 
+Hongqi                    | Ousado               | Comfort                             | 
+Hongqi                    | Ousado               | Luxury                              | 
+Hyundai                   | Accent Rb            | Dab Abs                             | 
+Hyundai                   | Accent Rb            | Dab Abs Plus                        | 
+Hyundai                   | Accent Rb            | Gl                                  | 
+Hyundai                   | Accent Rb            | Gl Dab Abs                          | 
+Hyundai                   | Accent Rb            | Gl Highline                         | 
+Hyundai                   | Accent Rb            | Gl Sr                               | 
+Hyundai                   | Accent Rb            | Highline                            | 
+Hyundai                   | Accent Rb            | Sr                                  | 
+Hyundai                   | Elantra Ad           | Modern                              | 
+Hyundai                   | Elantra Ad           | Modern Sunroof                      | 
+Hyundai                   | Elantra Ad           | Smart                               | 
+Hyundai                   | Elantra Ad           | Top Line                            | 
+Hyundai                   | Elantra Cn7          | Black Diamond                       | 
+Hyundai                   | Elantra Cn7          | Blaze                               | 
+Hyundai                   | Elantra Cn7          | Redline                             | 
+Hyundai                   | Elantra Cn7          | Shadow                              | 
+Hyundai                   | Elantra Hd           | Highline Tinted Glass 15            | 
+Hyundai                   | I30                  | Fb Blaze                            | 
+Hyundai                   | I30                  | Fb Redline Fastback                 | 
+Hyundai                   | I30                  | Hb Blaze                            | 
+Hyundai                   | I30                  | Hb Redline                          | 
+Hyundai                   | Ioniq5               | Connect Plus                        | 
+Hyundai                   | Ioniq5               | Extreme                             | 
+Hyundai                   | Ioniq5               | Extreme Lr Awd                      | 
+Hyundai                   | Ioniq5               | N Boost Awd                         | 
+Hyundai                   | Ioniq6               | Connect Plus Long Range Rwd         | 
+Hyundai                   | Ioniq6               | Extreme Long Range Awd              | 
+Hyundai                   | Ioniq6               | Extreme Rwd                         | 
+Hyundai                   | Santa Fe             | Hev Calligraphy Awd                 | 
+Hyundai                   | Santa Fe             | Hev Executive Rwd                   | 
+Hyundai                   | Staria               | Hev Premium Lounge 7 Seats          | 
+Hyundai                   | Tucson               | Black Diamond                       | 
+Hyundai                   | Tucson               | Blaze                               | 
+Hyundai                   | Tucson               | N-Line                              | 
+Hyundai                   | Tucson               | Night                               | 
+Hyundai                   | Tucson               | Redine                              | 
+Hyundai                   | Tucson               | Redine N Pack                       | 
+Hyundai                   | Tucson               | Shadow                              | 
+IM Motors                 | IM5                  | Ultra Efficiency                    | 
+IM Motors                 | IM5                  | Ultra Performance                   | 
+IM Motors                 | IM5                  | Ultra Range                         | 
+IM Motors                 | IM6                  | Ultra Efficiency                    | 
+IM Motors                 | IM6                  | Ultra Range                         | 
+IM Motors                 | LS7                  | Ultra Performance                   | 
+JAC                       | J7                   | Ultimate                            | 
+JAC                       | Js2                  | Smart                               | 
+JAC                       | Js4                  | Ultimat                             | 
+JAC                       | Js6                  | Flagship                            | 
+JAC                       | Js6                  | Limited                             | 
+JAC                       | Js8 Pro              | Flagship                            | 
+JAC                       | Js8 Pro              | Limited                             | 
+JAC                       | S2                   | Smart                               | 
+Jeep                      | Grand Cherokee       | Limited L 4X4                       | 
+Jetour                    | Dashing              | Comfort                             | 
+Jetour                    | Dashing              | Luxury                              | 
+Jetour                    | T1                   | Automatic                           | 
+Jetour                    | T1                   | Luxury                              | 
+Jetour                    | T1                   | Matt Color                          | 
+Jetour                    | T2                   | Automtic                            | 
+Jetour                    | T2                   | Luxury                              | 
+Jetour                    | T2                   | Matt Color                          | 
+Jetour                    | X70                  | Comfort                             | 
+Jetour                    | X70                  | Luxury                              | 
+Jetour                    | X70 Plus             | Luxury Local                        | 
+Jetour                    | X90 Plus             | Luxury                              | 
+Kaiyi                     | X3 Pro               | Flagship                            | 
+Kaiyi                     | X3 Pro               | Top Line                            | 
+Kaiyi                     | X7                   | Flagship                            | 
+Kgm                       | Actyon               | High Line                           | 
+Kgm                       | Actyon               | Top Line                            | 
+Kgm                       | Tivoli               | Tivoli Automtic                     | 
+Kgm                       | Tivoli Xlv           | Tivoli Xlv Automtic                 | 
+Kgm                       | Torres               | Advance                             | 
+Kgm                       | Torres               | Black Edition                       | 
+Kgm                       | Torres               | Comfort                             | 
+Kgm                       | Torres               | Luxury                              | 
+Kgm                       | Torres               | Premium                             | 
+Kia                       | Carnival             | Top Line                            | 
+Kia                       | Ev3                  | Air                                 | 
+Kia                       | Ev3                  | Earth                               | 
+Kia                       | Ev3                  | Gt-Line                             | 
+Kia                       | Ev5                  | Air                                 | 
+Kia                       | Ev5                  | Earth                               | 
+Kia                       | Ev5                  | Gt-Line                             | 
+Kia                       | Ev6                  | Earth                               | 
+Kia                       | Ev6                  | Gt-Line                             | 
+Kia                       | Ev9                  | Gt-Line                             | 
+Kia                       | Ev9                  | Gt-Line Relaxing                    | 
+Kia                       | Ev9                  | Gt-Line Swivelling                  | 
+Kia                       | Ev9                  | Gt-LineRelaxing                     | 
+Kia                       | Grand Cerato         | Ex Cam                              | 
+Kia                       | Grand Cerato         | Highline                            | 
+Kia                       | Grand Cerato         | Lx Fo                               | 
+Kia                       | K4                   | Gt-Line                             | 
+Kia                       | K4                   | Gt-Line Black Edition               | 
+Kia                       | K4                   | Highline                            | 
+Kia                       | Seltos               | Ex                                  | 
+Kia                       | Seltos               | Highline                            | 
+Kia                       | Seltos               | Top Line                            | 
+Kia                       | Sorento              | Topline                             | 
+Kia                       | Sportage             | Ex                                  | 
+Kia                       | Sportage             | Gt-Line                             | 
+Kia                       | Sportage             | Highline                            | 
+Kia                       | Sportage             | Lx                                  | 
+Kia                       | Sportage             | Premium                             | 
+Kia                       | Sportage             | Top Line                            | 
+Kia                       | Xceed                | Highline                            | 
+Kia                       | Xceed                | Panorama                            | 
+Li Auto                   | L6                   | Pro                                 | 
+Li Auto                   | L7                   | Ultra                               | 
+Li Auto                   | L9                   | Ultra                               | 
+Lotus                     | Emeya                | Base                                | 
+Lotus                     | Emeya                | R                                   | 
+Lotus                     | Emeya                | S                                   | 
+Lynk & co                 | 2                    | Halo                                | 
+Lynk & co                 | 6                    | Core Plus                           | 
+Lynk & co                 | 6                    | Hyper Halo                          | 
+Lynk & co                 | 6                    | Hyper Pro                           | 
+M-Hero                    | 917                  | Signature                           | 
+Maserati                  | Granturismo          | Modena                              | 
+Maserati                  | Granturismo          | Trofeo                              | 
+Maserati                  | Grecale              | Modena                              | 
+Mazda                     | 3                    | Highline                            | 
+Mazda                     | Cx3                  | Highline                            | 
+Mercedes                  | A200                 | Progressive                         | 
+Mercedes                  | B200                 | Progressive                         | 
+Mercedes                  | C180                 | Avantgarde Plus                     | 
+Mercedes                  | C180                 | Sport                               | 
+Mercedes                  | C200                 | Sport                               | 
+Mercedes                  | C43                  | 4Matic                              | 
+Mercedes                  | CLA 200              | Progressive                         | 
+Mercedes                  | CLA 200              | Sport Cabriolet                     | 
+Mercedes                  | CLE 200              | Sport                               | 
+Mercedes                  | E200                 | Avantgard                           | 
+Mercedes                  | E200                 | Exclusive                           | 
+Mercedes                  | EQA 250+             | Progressive                         | 
+Mercedes                  | EQB 250+             | Progressive                         | 
+Mercedes                  | EQE 350+             | Amg                                 | 
+Mercedes                  | EQE 350+             | Sport                               | 
+Mercedes                  | EQS 500              | 4Matic                              | 
+Mercedes                  | EQS 500              | Amg                                 | 
+Mercedes                  | EQS 500              | Sport                               | 
+Mercedes                  | EQS 680              | 4M Suv                              | 
+Mercedes                  | EQS 680              | Night Series                        | 
+Mercedes                  | G500                 | Amg Night Edition                   | 
+Mercedes                  | G500                 | Amg                                 | 
+Mercedes                  | G580                 | Eq Technology                       | 
+Mercedes                  | G580                 | Night Edition                       | 
+Mercedes                  | G63                  | Amg Night Edition                   | 
+Mercedes                  | G63                  | Night Eidition                      | 
+Mercedes                  | GLA 200              | 4Matic Amg                          | 
+Mercedes                  | GLA 200              | Progressive                         | 
+Mercedes                  | GLC 200              | Coupe Sport                         | 
+Mercedes                  | GLC 200              | Progressive                         | 
+Mercedes                  | GLC 200              | Sport                               | 
+Mercedes                  | GLC 43               | 4M Coupe Amg                        | 
+Mercedes                  | GLE 450              | 4Matic                              | 
+Mercedes                  | GLE 53               | 4Matic                              | 
+Mercedes                  | GLS 580              | 4Matic                              | 
+Mercedes                  | GLS 580              | Amg                                 | 
+Mercedes                  | GT 63                | 4Matic                              | 
+Mercedes                  | S450                 | 4Matic Saloon                       | 
+Mercedes                  | S500                 | 4Matic Saloon                       | 
+Mercedes                  | S680                 | Maybach 4Matic                      | 
+Mercedes                  | SL55                 | Amg 4Matic                          | 
+Mercedes                  | V300                 | Avantgarde                          | 
+Mg                        | 4                    | Luxury                              | 
+Mg                        | 4                    | Standard                            | 
+Mg                        | 5                    | Comfort                             | 
+Mg                        | 5                    | Luxury                              | 
+Mg                        | 7                    | Luxury                              | 
+Mg                        | 7                    | Trophy                              | 
+Mg                        | G50 Plus             | Comfort                             | 
+Mg                        | GT                   | Comfort                             | 
+Mg                        | GT                   | Luxury                              | 
+Mg                        | Hs                   | Hev                                 | 
+Mg                        | One                  | Luxury                              | 
+Mg                        | Rx5 Plus             | Luxury                              | 
+Mg                        | Zs                   | Comfort                             | 
+Mg                        | Zs                   | Luxury Facelift Mce                 | 
+Mini                      | Cooper               | 3 Doors Classic                     | 
+Mini                      | Cooper               | 5 Doors  Classic                    | 
+Mini                      | Cooper               | JCW                                 | 
+Mini                      | Cooper               | JCW Cabrio                          | 
+Mini                      | Cooper S             | 3-Door Iconic                       | 
+Mini                      | Cooper S             | JCW                                 | 
+Mini                      | Cooper SE            | Favoured                            | 
+Mini                      | Countryman           | Classic                             | 
+Mini                      | Countryman           | Favoured                            | 
+Mini                      | Countryman           | JCW                                 | 
+Mini                      | Countryman E         | Favoured                            | 
+Mini                      | Countryman E         | JCW                                 | 
+Mini                      | Countryman S         | Jcw                                 | 
+Mitsubishi                | Attrage              | Elite High Line                     | 
+Mitsubishi                | Eclipse Cross        | Infinity Pl                         | 
+Mitsubishi                | Eclipse Cross        | Inspire Hl                          | 
+Mitsubishi                | Eclipse Cross        | Insport Bl                          | 
+Mitsubishi                | Eclipse Cross        | Insport Ml Plus                     | 
+Mitsubishi                | Eclipse Cross        | Instyle Tl                          | 
+Mitsubishi                | Mirage               | Elite High Line                     | 
+Mitsubishi                | Mirage               | Highline                            | 
+Mitsubishi                | Outlander Sport      | High Line                           | 
+Mitsubishi                | Outlander Sport      | Midline                             | 
+Mitsubishi                | Outlander Sport      | Premium                             | 
+Mitsubishi                | Outlander Sport      | Premium Line                        | 
+Mitsubishi                | Outlander Sport      | Spark High Line                     | 
+Mitsubishi                | Xpander              | Highline                            | 
+Mitsubishi                | Xpander              | Mid Line                            | 
+Mitsubishi                | Xpander              | Midline                             | 
+Mitsubishi                | Xpander              | Premium Line                        | 
+Mitsubishi                | Xpander              | Premium Pl                          | 
+Mitsubishi                | Xpander              | Spark Hl                            | 
+Nissan                    | Juke                 | Accenta                             | 
+Nissan                    | Juke                 | Acenta                              | 
+Nissan                    | Juke                 | N-Design                            | 
+Nissan                    | Juke                 | Tekna                               | 
+Nissan                    | Juke                 | Tekna N-Design                      | 
+Nissan                    | Juke                 | Tekna N-Sport                       | 
+Nissan                    | Juke                 | Tekna Perso                         | 
+Nissan                    | Patrol               | Le Platinum City                    | 
+Nissan                    | Patrol               | Le Plt City                         | 
+Nissan                    | Patrol               | Le T1                               | 
+Nissan                    | Patrol               | Le T2 Sr Rse                        | 
+Nissan                    | Patrol               | Le Titanium                         | 
+Nissan                    | Patrol               | Le1                                 | 
+Nissan                    | Patrol               | Le2                                 | 
+Nissan                    | Patrol               | Se                                  | 
+Nissan                    | Patrol               | Se Platinum City                    | 
+Nissan                    | Patrol               | Se Plt City                         | 
+Nissan                    | Patrol               | Se T2                               | 
+Nissan                    | Patrol               | Se Titanium                         | 
+Nissan                    | Patrol               | Xe                                  | 
+Nissan                    | Qashqai              | Accenta                             | 
+Nissan                    | Qashqai              | Accenta 2T                          | 
+Nissan                    | Qashqai              | N-Connecta                          | 
+Nissan                    | Qashqai              | N-Connecta+                         | 
+Nissan                    | Qashqai              | N-Connecta+ 2T                      | 
+Nissan                    | Qashqai              | N-Design E-Pwr                      | 
+Nissan                    | Qashqai              | Tekna                               | 
+Nissan                    | Qashqai              | Tekna 2T                            | 
+Nissan                    | Qashqai              | Tekna 4Wd                           | 
+Nissan                    | Qashqai              | Tekna 4Wd 2T                        | 
+Nissan                    | Sentra               | Highline                            | 
+Nissan                    | Sentra               | Premium                             | 
+Nissan                    | Sunny                | Baseline                            | 
+Nissan                    | Sunny                | Plus                                | 
+Nissan                    | Sunny                | Super Saloon                        | 
+Nissan                    | X Trail              | Acenta 2Wd                          | 
+Nissan                    | X Trail              | E-4Orce Tekna                       | 
+Nissan                    | X Trail              | N-Terk                              | 
+Opel                      | Corsa                | Gs Line                             | 
+Opel                      | Corsa                | Sport Topline Plus                  | 
+Opel                      | Crossland            | Top Line                            | 
+Opel                      | Grandland            | Top Line                            | 
+Opel                      | Grandland Shape Facelift | Highline                            | 
+Opel                      | Mokka                | Black Edition                       | 
+Peugeot                   | 2008                 | Allure                              | 
+Peugeot                   | 2008                 | Gt                                  | 
+Peugeot                   | 3008                 | Allure                              | 
+Peugeot                   | 3008                 | Gt                                  | 
+Peugeot                   | 408                  | Allure                              | 
+Peugeot                   | 408                  | Allure Pack                         | 
+Peugeot                   | 408                  | Gt                                  | 
+Peugeot                   | 5008                 | Allure                              | 
+Peugeot                   | 5008                 | Gt                                  | 
+Peugeot                   | 508                  | Allure                              | 
+Peugeot                   | 508                  | Gt                                  | 
+Porsche                   | 718                  | Boxster                             | 
+Porsche                   | 718                  | Boxster Gts 4.0                     | 
+Porsche                   | 718                  | Boxster S                           | 
+Porsche                   | 718                  | Boxster Style Edition               | 
+Porsche                   | 718                  | Cayman                              | 
+Porsche                   | 718                  | Cayman Gt4 Rs                       | 
+Porsche                   | 718                  | Cayman Gts 4.0                      | 
+Porsche                   | 718                  | Cayman S                            | 
+Porsche                   | 718                  | Cayman Style Edition                | 
+Porsche                   | 718                  | Spyder Rs                           | 
+Porsche                   | 911                  | Cabriolet                           | 
+Porsche                   | 911                  | Carrera                             | 
+Porsche                   | 911                  | Carrera 4                           | 
+Porsche                   | 911                  | Carrera 4 Cabriolet                 | 
+Porsche                   | 911                  | Carrera 4 Gts                       | 
+Porsche                   | 911                  | Carrera 4 Gts Cabriolet             | 
+Porsche                   | 911                  | Carrera 4S                          | 
+Porsche                   | 911                  | Carrera 4S Cabriolet                | 
+Porsche                   | 911                  | Carrera Cabriolet                   | 
+Porsche                   | 911                  | Carrera Gts                         | 
+Porsche                   | 911                  | Carrera Gts Cabriolet               | 
+Porsche                   | 911                  | GT3                                 | 
+Porsche                   | 911                  | GT3 Touring Package                 | 
+Porsche                   | 911                  | GT3RS                               | 
+Porsche                   | 911                  | S                                   | 
+Porsche                   | 911                  | S Cabriolet                         | 
+Porsche                   | 911                  | Targa 4                             | 
+Porsche                   | 911                  | Targa 4S                            | 
+Porsche                   | 911                  | Turbo                               | 
+Porsche                   | 911                  | Turbo Cabriolet                     | 
+Porsche                   | 911                  | Turbo S                             | 
+Porsche                   | 911                  | Turbo S Cabriolet                   | 
+Porsche                   | Cayenne              | Baseline                            | 
+Porsche                   | Cayenne              | Coupe Turbo Gt                      | 
+Porsche                   | Cayenne              | Gts                                 | 
+Porsche                   | Cayenne              | Gts Coupe                           | 
+Porsche                   | Cayenne              | S Coupe                             | 
+Porsche                   | Macan                | 4                                   | 
+Porsche                   | Macan                | 4S Electric                         | 
+Porsche                   | Macan                | Baseline                            | 
+Porsche                   | Macan                | Gts                                 | 
+Porsche                   | Macan                | S                                   | 
+Porsche                   | Macan                | Turbo                               | 
+Porsche                   | Panamera             | 4 E-Hybrid                          | 
+Porsche                   | Panamera             | 4 E-Hybrid Executive                | 
+Porsche                   | Panamera             | 4S E-Hybrid                         | 
+Porsche                   | Panamera             | Baseline                            | 
+Porsche                   | Panamera             | Gts                                 | 
+Porsche                   | Panamera             | Turbo E-Hybrid                      | 
+Porsche                   | Panamera             | Turbo S E-Hybrid                    | 
+Porsche                   | Taycan               | 4                                   | 
+Porsche                   | Taycan               | 4S                                  | 
+Porsche                   | Taycan               | Baseline                            | 
+Porsche                   | Taycan               | Highli Turbo Gt With Weissach Packagene | 
+Porsche                   | Taycan               | Turbo                               | 
+Porsche                   | Taycan               | Turbo Gt                            | 
+Porsche                   | Taycan               | Turbo S                             | 
+Proton                    | Saga                 | Baseline                            | 
+Renault                   | Austral              | Baseline                            | 
+Renault                   | Austral              | Esprit Alpine                       | 
+Renault                   | Austral              | Evolution                           | 
+Renault                   | Austral              | Iconic                              | 
+Renault                   | Austral              | Techno                              | 
+Renault                   | Duster               | Authentic                           | 
+Renault                   | Duster               | Evolution                           | 
+Renault                   | Duster               | H1                                  | 
+Renault                   | Duster               | H2                                  | 
+Renault                   | Duster               | H3                                  | 
+Renault                   | Duster               | Techno                              | 
+Renault                   | Kardian              | Evolution                           | 
+Renault                   | Kardian              | Iconic                              | 
+Renault                   | Kardian              | Techno                              | 
+Renault                   | Megane               | Dynamic                             | 
+Renault                   | Megane               | Signature                           | 
+Renault                   | Megane               | Signature Turbo                     | 
+Renault                   | Taliant              | Evolution                           | 
+Renault                   | Taliant              | Techno                              | 
+Rox                       | 1                    | Aviation 6 Seats                    | 
+Rox                       | 1                    | Family 7 Seats                      | 
+Seat                      | Arona                | Black                               | 
+Seat                      | Ateca                | Style Plus                          | 
+Seat                      | Ibiza                | Black Series                        | 
+Seat                      | Ibiza                | Fr                                  | 
+Seat                      | Ibiza                | Reference                           | 
+Seat                      | Leon                 | Advance                             | 
+Skoda                     | Karoq                | Luxury                              | 
+Skoda                     | Karoq                | Suite                               | 
+Skoda                     | Kodiaq               | Loft                                | 
+Skoda                     | Kodiaq               | Lounge                              | 
+Skoda                     | Kodiaq               | Sportline                           | 
+Skoda                     | Kodiaq               | Suite                               | 
+Skoda                     | Octavia              | Loft                                | 
+Skoda                     | Octavia              | Lounge                              | 
+Skoda                     | Octavia              | Suite                               | 
+Skoda                     | Superb               | L&K                                 | 
+Skoda                     | Superb               | Suite                               | 
+Smart                     | 1                    | Brabus                              | 
+Smart                     | 1                    | Premium                             | 
+Smart                     | 1                    | Pro                                 | 
+Smart                     | 1                    | Pure                                | 
+Smart                     | 3                    | Brabus                              | 
+Smart                     | 3                    | Premium                             | 
+Smart                     | 3                    | Pro                                 | 
+Soueast                   | Dx5                  | Top Line                            | 
+Soueast                   | Dx7 Nova             | Highline                            | 
+Soueast                   | Dx8S Coupe           | Active                              | 
+Soueast                   | S05                  | Highline                            | 
+Soueast                   | S06                  | Highline                            | 
+Soueast                   | S06                  | Premium                             | 
+Soueast                   | S06                  | Smart                               | 
+Soueast                   | S07                  | Highline                            | 
+Soueast                   | S07                  | Premium                             | 
+Soueast                   | S09                  | Premium                             | 
+Subaru                    | Crosstrek            | Baseline                            | 
+Subaru                    | Foreste              | R                                   | 
+Subaru                    | Xv Crosstrek         | Baseline                            | 
+Suzuki                    | Baleno               | 1.4 A/T F/O Screen                  | 
+Suzuki                    | Ciaz                 | Gl                                  | 
+Suzuki                    | Ciaz                 | Glx                                 | 
+Suzuki                    | Ciaz                 | L Roof                              | 
+Suzuki                    | Dzire                | Glx                                 | 
+Suzuki                    | Dzire                | Glx With Screen                     | 
+Suzuki                    | Ertiga               | Glx                                 | 
+Suzuki                    | Fronx                | Gl                                  | 
+Suzuki                    | Fronx                | Gl 2 Tone                           | 
+Suzuki                    | Fronx                | Glx                                 | 
+Suzuki                    | Fronx                | Glx 2 Tone                          | 
+Suzuki                    | Grand Vitara         | Glx                                 | 
+Suzuki                    | Grand Vitara         | Glx 2 Tone                          | 
+Suzuki                    | Jimny                | 1 Tone                              | 
+Suzuki                    | Jimny                | 2 Tone                              | 
+Suzuki                    | S Presso             | Alloy                               | 
+Suzuki                    | S Presso             | Baseline                            | 
+Suzuki                    | Swift                | Glx                                 | 
+Toyota                    | Camry                | High Line                           | 
+Toyota                    | Corolla              | Active                              | 
+Toyota                    | Corolla              | Comfort                             | 
+Toyota                    | Corolla              | Elegance                            | 
+Toyota                    | Corolla              | Hybrid                              | 
+Toyota                    | Corolla              | Smart                               | 
+Toyota                    | Corolla              | Smart With Sunroof                  | 
+Toyota                    | Corolla              | Sun Roof                            | 
+Toyota                    | Fortuner             | Elegance                            | 
+Toyota                    | Fortuner             | Smart                               | 
+Toyota                    | Fortuner             | Sport                               | 
+Toyota                    | Land Cruiser         | Prado - Highline                    | 
+Toyota                    | Land Cruiser         | Prado - Vx Petrol                   | 
+Toyota                    | Rav4                 | Full Option                         | 
+Toyota                    | Urban Cruiser        | Active                              | 
+Toyota                    | Urban Cruiser        | Comfort                             | 
+Vgv                       | U70Pro Plus          | Flagship                            | 
+Vgv                       | U70Pro Plus          | Highline                            | 
+Vgv                       | U70Pro Plus          | Top Line                            | 
+Volkswagen                | Golf                 | Life                                | 
+Volkswagen                | Id.6 Crozz           | Pro                                 | 
+Volkswagen                | Id7                  | Pro Plus                            | 
+Volkswagen                | T Roc                | R-Line                              | 
+Volkswagen                | Tayron               | R-Line                              | 
+Volkswagen                | Tiguan               | R-Line                              | 
+Volkswagen                | Touareg              | R-Line                              | 
+Volvo                     | C40                  | Single Motor                        | 
+Volvo                     | C40                  | Twin Motor                          | 
+Volvo                     | Ex30                 | Single Plus Extended Range          | 
+Volvo                     | Ex30                 | Single Ultra Extended Range         | 
+Volvo                     | Ex30                 | Twin Plus Performance               | 
+Volvo                     | Xc40                 | Black Edition                       | 
+Volvo                     | Xc40                 | Essential                           | 
+Volvo                     | Xc40                 | Ultra Dark                          | 
+Volvo                     | Xc60                 | Black Edition                       | 
+Volvo                     | Xc60                 | Essential                           | 
+Volvo                     | Xc90                 | Ultimate                            | 
+Voyah                     | Dream                | Signature                           | 
+Voyah                     | Free                 | Signature                           | 
+Voyah                     | Passion              | Phev 1260                           | 
+Xpeng                     | G6                   | Long Range                          | 
+Xpeng                     | G6                   | Standard Range                      | 
+Xpeng                     | G9                   | Long Range                          | 
+Xpeng                     | G9                   | Long Range + Nappa                  | 
+Xpeng                     | G9                   | Performance                         | 
+Xpeng                     | Mona M03             | R18                                 | 
+Xpeng                     | Mona M03             | R19                                 | 
+Xpeng                     | P7                   | Long Range                          | 
+Xpeng                     | X9                   | Pro                                 | 
+Xpeng                     | X9                   | Pro Plus                            | 
+Zeekr                     | 001                  | Long Range                          | 
+Zeekr                     | 001                  | Performance Awd                     | 
+Zeekr                     | 001                  | Privilege Awd                       | 
+Zeekr                     | 7X                   | Long Range                          | 
+Zeekr                     | 7X                   | Performance                         | 
+Zeekr                     | 7X                   | Standard                            | 
+Zeekr                     | X                    | Long Range                          | 
+Zeekr                     | X                    | Performance                         | 
+Zotye                     | T300                 | Automatic                           | 
+Zotye                     | T300                 | Manual                              | 

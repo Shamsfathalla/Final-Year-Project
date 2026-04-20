@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <%- include('partials/head', { title: title }) %>
+</head>
+<body class="bg-dark-900 text-gray-100 h-screen overflow-hidden flex flex-col md:flex-row font-outfit">
+    <%- include('partials/sidebar', { activePage: 'trends' }) %>
+
+    <main class="flex-1 overflow-y-auto w-full h-full relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="mb-8">
+                <a href="/trends" class="text-gray-500 hover:text-blue-400 mb-4 font-semibold text-sm transition-colors inline-flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Trends
+                </a>
+                <h1 id="model-title" class="text-4xl md:text-5xl font-black text-gray-100 tracking-tight mt-3 flex flex-wrap items-center gap-3">
+                    <%= brand %> <span class="text-gray-400 font-normal"><%= model %></span>
+                </h1>
+                <p class="text-lg text-gray-500 font-medium mt-1">Overall Price History</p>
+            </div>
+
+            <div id="loading" class="flex justify-center py-20">
+                <i class="fa-solid fa-spinner fa-spin text-4xl text-blue-500"></i>
+            </div>
+
+            <div id="error-msg" class="hidden text-center py-20 text-red-400 font-bold text-xl"></div>
+
+            <div id="content" class="hidden animate-fade-in-up">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <div class="trend-stat-card" id="stat-min">
+                        <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Minimum Price</div>
+                        <div id="stat-min-val" class="text-2xl font-black text-green-400">—</div>
+                        <div id="stat-min-date" class="text-xs text-gray-600 mt-1">—</div>
+                    </div>
+                    <div class="trend-stat-card active" id="stat-avg">
+                        <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Average Price</div>
+                        <div id="stat-avg-val" class="text-2xl font-black text-blue-400">—</div>
+                        <div id="stat-avg-date" class="text-xs text-gray-600 mt-1">—</div>
+                    </div>
+                    <div class="trend-stat-card" id="stat-max">
+                        <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Maximum Price</div>
+                        <div id="stat-max-val" class="text-2xl font-black text-orange-400">—</div>
+                        <div id="stat-max-date" class="text-xs text-gray-600 mt-1">—</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="text-xs text-gray-500 font-bold uppercase tracking-wider mr-2">Time Range:</span>
+                    <button class="time-range-btn active" data-range="all" onclick="setRange('all')">All</button>
+                    <button class="time-range-btn" data-range="5y" onclick="setRange('5y')">5Y</button>
+                    <button class="time-range-btn" data-range="3y" onclick="setRange('3y')">3Y</button>
+                    <button class="time-range-btn" data-range="2y" onclick="setRange('2y')">2Y</button>
+                    <button class="time-range-btn" data-range="1y" onclick="setRange('1y')">1Y</button>
+                </div>
+
+                <div class="bg-dark-700 rounded-2xl border border-white/5 p-6 shadow-lg mb-8">
+                    <canvas id="price-chart" height="340"></canvas>
+                </div>
+
+                <div class="bg-dark-700 rounded-2xl border border-white/5 p-6 shadow-lg">
+                    <h3 class="text-lg font-bold text-gray-200 mb-4">Price Summary</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="summary-stats">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script>
+        const brand = "<%= brand %>";
+        const model = "<%= model %>";
+
+        let fullHistory = [];
+        let filteredHistory = [];
+        let priceChart = null;
+        let currentRange = 'all';
+
+        function formatEGP(val) {
+            if (!val) return 'N/A';
+            return Math.round(val).toLocaleString() + ' EGP';
+        }
+
+        function formatMonthYear(dateStr) {
+            if (!dateStr || dateStr === '—') return '—';
+            const parts = dateStr.split('-');
+            if (parts.length !== 2) return dateStr;
+            const months = { 'Jan': 'January', 'Feb': 'February', 'Mar': 'March', 'Apr': 'April', 'May': 'May', 'Jun': 'June', 'Jul': 'July', 'Aug': 'August', 'Sep': 'September', 'Oct': 'October', 'Nov': 'November', 'Dec': 'December' };
+            const month = months[parts[0]] || parts[0];
+            let year = parseInt(parts[1], 10);
+            if (year < 100) year += 2000;
+            return `${month} ${year}`;
+        }
+
+        function parseDate(dateStr) {
+            if (!dateStr) return new Date(0);
+            const parts = dateStr.split('-');
+            if (parts.length === 2) {
+                const months = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+                if (months[parts[0]] !== undefined) {
+                    let year = parseInt(parts[1]);
+                    if (year < 100) year += 2000;
+                    return new Date(year, months[parts[0]], 1);
+                }
+                return new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, 1);
+            }
+            return new Date(dateStr);
+        }
+
+        function filterByRange(data, range) {
+            if (range === 'all') return data;
+            const now = new Date();
+            const years = { '1y': 1, '2y': 2, '3y': 3, '5y': 5 };
+            const cutoff = new Date(now.getFullYear() - (years[range] || 100), now.getMonth(), 1);
+            return data.filter(d => parseDate(d.date) >= cutoff);
+        }
+
+        function updateStatCards(data) {
+            if (data.length === 0) return;
+            const latest = data[data.length - 1];
+            
+            document.getElementById('stat-min-val').textContent = formatEGP(latest.min_price);
+            document.getElementById('stat-min-date').textContent = `As of ${formatMonthYear(latest.date)}`;
+            document.getElementById('stat-avg-val').textContent = formatEGP(latest.average_price);
+            document.getElementById('stat-avg-date').textContent = `As of ${formatMonthYear(latest.date)}`;
+            document.getElementById('stat-max-val').textContent = formatEGP(latest.max_price);
+            document.getElementById('stat-max-date').textContent = `As of ${formatMonthYear(latest.date)}`;
+        }
+
+        function updateSummary(data) {
+            if (data.length === 0) return;
+            const avgPrices = data.map(d => d.average_price).filter(Boolean);
+            const minPrices = data.map(d => d.min_price).filter(Boolean);
+            const maxPrices = data.map(d => d.max_price).filter(Boolean);
+
+            const overallMin = Math.min(...minPrices);
+            const overallMax = Math.max(...maxPrices);
+
+            const firstAvg = avgPrices[0];
+            const lastAvg = avgPrices[avgPrices.length - 1];
+            const pctChange = ((lastAvg - firstAvg) / firstAvg * 100);
+            const changeClass = pctChange >= 0 ? 'text-green-400' : 'text-red-400';
+            const changeIcon = pctChange >= 0 ? 'fa-arrow-up' : 'fa-arrow-down';
+
+            document.getElementById('summary-stats').innerHTML = `
+                <div class="bg-dark-600 p-4 rounded-xl border border-white/5">
+                    <div class="text-xs text-gray-500 font-bold uppercase mb-1">All-Time Low</div>
+                    <div class="text-lg font-bold text-green-400">${formatEGP(overallMin)}</div>
+                </div>
+                <div class="bg-dark-600 p-4 rounded-xl border border-white/5">
+                    <div class="text-xs text-gray-500 font-bold uppercase mb-1">All-Time High</div>
+                    <div class="text-lg font-bold text-orange-400">${formatEGP(overallMax)}</div>
+                </div>
+                <div class="bg-dark-600 p-4 rounded-xl border border-white/5">
+                    <div class="text-xs text-gray-500 font-bold uppercase mb-1">Price Change</div>
+                    <div class="text-lg font-bold ${changeClass}">
+                        <i class="fa-solid ${changeIcon} text-sm"></i> ${Math.abs(pctChange).toFixed(1)}%
+                    </div>
+                    <div class="text-[10px] text-gray-600 mt-0.5">${formatMonthYear(data[0].date)} → ${formatMonthYear(data[data.length-1].date)}</div>
+                </div>
+            `;
+        }
+
+        function renderChart(data) {
+            const ctx = document.getElementById('price-chart').getContext('2d');
+            
+            const labels = data.map(d => formatMonthYear(d.date));
+            const avgData = data.map(d => d.average_price);
+            const minData = data.map(d => d.min_price);
+            const maxData = data.map(d => d.max_price);
+
+            if (priceChart) priceChart.destroy();
+
+            priceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Average Price',
+                            data: avgData,
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.08)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3,
+                            pointRadius: data.length > 30 ? 0 : 4,
+                            pointHoverRadius: 6,
+                            pointBackgroundColor: '#3b82f6',
+                            pointBorderColor: '#0a0a0f',
+                            pointBorderWidth: 2,
+                            order: 1
+                        },
+                        {
+                            label: 'Min Price',
+                            data: minData,
+                            borderColor: '#10b981',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            fill: false,
+                            tension: 0.3,
+                            pointRadius: 0,
+                            pointHoverRadius: 5,
+                            pointBackgroundColor: '#10b981',
+                            order: 2
+                        },
+                        {
+                            label: 'Max Price',
+                            data: maxData,
+                            borderColor: '#f97316',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            fill: false,
+                            tension: 0.3,
+                            pointRadius: 0,
+                            pointHoverRadius: 5,
+                            pointBackgroundColor: '#f97316',
+                            order: 3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#9ca3af',
+                                font: { family: 'Outfit', size: 13, weight: '600' },
+                                usePointStyle: true,
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(18, 18, 26, 0.95)',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            titleColor: '#f0f0f5',
+                            bodyColor: '#9ca3af',
+                            titleFont: { family: 'Outfit', size: 14, weight: '700' },
+                            bodyFont: { family: 'Outfit', size: 13 },
+                            padding: 14,
+                            cornerRadius: 12,
+                            boxPadding: 6,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${formatEGP(context.parsed.y)}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255,255,255,0.03)', drawBorder: false },
+                            ticks: {
+                                color: '#6b7280',
+                                font: { family: 'Outfit', size: 11 },
+                                maxRotation: 45,
+                                maxTicksLimit: 12
+                            }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.03)', drawBorder: false },
+                            ticks: {
+                                color: '#6b7280',
+                                font: { family: 'Outfit', size: 11 },
+                                callback: function(value) {
+                                    if (value >= 1e6) return (value / 1e6).toFixed(1) + 'M';
+                                    if (value >= 1e3) return (value / 1e3).toFixed(0) + 'K';
+                                    return value;
+                                }
+                            }
+                        }
+                    },
+                    onHover: function(event, elements) {
+                        if (elements.length > 0) {
+                            const idx = elements[0].index;
+                            const dataPoint = filteredHistory[idx];
+                            if (dataPoint) {
+                                document.getElementById('stat-min-val').textContent = formatEGP(dataPoint.min_price);
+                                document.getElementById('stat-min-date').textContent = formatMonthYear(dataPoint.date);
+                                document.getElementById('stat-avg-val').textContent = formatEGP(dataPoint.average_price);
+                                document.getElementById('stat-avg-date').textContent = formatMonthYear(dataPoint.date);
+                                document.getElementById('stat-max-val').textContent = formatEGP(dataPoint.max_price);
+                                document.getElementById('stat-max-date').textContent = formatMonthYear(dataPoint.date);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        window.setRange = function(range) {
+            currentRange = range;
+            document.querySelectorAll('.time-range-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.time-range-btn[data-range="${range}"]`).classList.add('active');
+            
+            filteredHistory = filterByRange(fullHistory, range);
+            renderChart(filteredHistory);
+            updateStatCards(filteredHistory);
+            updateSummary(filteredHistory);
+        }
+
+        async function loadHistory() {
+            try {
+                const res = await fetch(`/api/trends/history?brand=${encodeURIComponent(brand)}&model=${encodeURIComponent(model)}`);
+                const data = await res.json();
+
+                document.getElementById('loading').classList.add('hidden');
+
+                if (!data.history || data.history.length === 0) {
+                    document.getElementById('error-msg').classList.remove('hidden');
+                    document.getElementById('error-msg').textContent = 'No price history data available for this car.';
+                    return;
+                }
+
+                fullHistory = data.history;
+                
+                if (fullHistory.length > 0 && fullHistory[0].production_years && fullHistory[0].production_years !== 'All') {
+                    const title = document.getElementById('model-title');
+                    if (!document.getElementById('badge-year')) {
+                        title.innerHTML += `<span id="badge-year" class="text-lg font-bold text-blue-400 border border-blue-500/20 bg-blue-500/10 px-3 py-1 rounded-lg">${fullHistory[0].production_years}</span>`;
+                    }
+                }
+
+                filteredHistory = fullHistory;
+
+                document.getElementById('content').classList.remove('hidden');
+                renderChart(filteredHistory);
+                updateStatCards(filteredHistory);
+                updateSummary(filteredHistory);
+
+            } catch(e) {
+                console.error(e);
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('error-msg').classList.remove('hidden');
+                document.getElementById('error-msg').textContent = 'Error loading price history.';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadHistory);
+    </script>
+</body>
+</html>
