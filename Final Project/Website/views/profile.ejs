@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <%- include('partials/head', { title: 'My Profile' }) %>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .profile-tabs { display: flex; gap: 4px; background: #12121a; border-radius: 14px; padding: 5px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 28px; flex-wrap: wrap; }
+        .profile-tab { flex: 1; min-width: 100px; padding: 11px 8px; border: none; border-radius: 10px; font-family: inherit; font-size: 0.85rem; font-weight: 700; color: #9ca3af; background: transparent; cursor: pointer; transition: all 0.25s ease; text-align: center; }
+        .profile-tab.active { background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+        .profile-tab:not(.active):hover { color: #f0f0f5; background: rgba(255,255,255,0.04); }
+        .profile-tab .tab-icon { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+        .tab-content { display: none; animation: fadeTabIn 0.35s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeTabIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .fav-card { background: #1a1a25; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; transition: all 0.3s; }
+        .fav-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+
+        .comp-card { background: #1a1a25; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; transition: all 0.3s; }
+        .comp-card:hover { border-color: rgba(59,130,246,0.2); }
+
+        .chat-entry { background: #1a1a25; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.3s; }
+        .chat-entry:hover { border-color: rgba(59,130,246,0.3); background: #1e1e2a; }
+        .chat-entry-expanded .chat-messages { display: block !important; }
+
+        .chat-messages { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+        .chat-bubble-user { background: #2563eb; color: white; border-radius: 16px 16px 4px 16px; padding: 10px 16px; max-width: 80%; margin-left: auto; margin-bottom: 8px; font-size: 0.88rem; }
+        .chat-bubble-bot { background: #1a1a25; border: 1px solid rgba(255,255,255,0.08); color: #d1d5db; border-radius: 16px 16px 16px 4px; padding: 10px 16px; max-width: 80%; margin-bottom: 8px; font-size: 0.88rem; }
+        .chat-bubble-bot .markdown-body p { margin-bottom: 0.3rem; }
+        .chat-bubble-bot .markdown-body ul { list-style-type: disc; margin-left: 1.2rem; }
+
+        .empty-state-icon { font-size: 3.5rem; color: #374151; margin-bottom: 16px; }
+        .empty-state-text { color: #6b7280; font-size: 1rem; }
+
+        .comp-detail-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); z-index: 100; display: none; align-items: center; justify-content: center; }
+        .comp-detail-modal.show { display: flex; }
+        .comp-detail-inner { background: #12121a; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; max-width: 900px; width: 95%; max-height: 85vh; overflow-y: auto; padding: 28px; }
+
+        .delete-btn { opacity: 0; transition: opacity 0.2s; }
+        .comp-card:hover .delete-btn, .chat-entry:hover .delete-btn { opacity: 1; }
+    </style>
+    <script type="module">
+        import { initializeApp } from "firebase/app";
+        import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+        import { firebaseConfig } from "/firebase-config.js";
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                window.location.replace('/auth');
+            } else {
+                window.firebaseUser = user;
+                window._cachedToken = await user.getIdToken();
+
+                document.getElementById('user-email').textContent = user.email;
+                document.getElementById('user-uid').textContent = user.uid;
+                document.getElementById('user-created').textContent = new Date(user.metadata.creationTime).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('profile-content').classList.remove('hidden');
+            }
+        });
+
+        window.handleSignOut = async () => {
+            try {
+                await signOut(auth);
+                window.location.replace('/auth');
+            } catch (error) {
+                console.error("Sign out error", error);
+            }
+        };
+    </script>
+</head>
+<body class="bg-dark-900 text-gray-100 h-screen overflow-hidden flex flex-col md:flex-row font-outfit">
+    <%- include('partials/sidebar', { activePage: 'profile' }) %>
+    <main id="main-content" class="flex-1 overflow-y-auto w-full h-full relative bg-dark-900 p-6 md:p-8 flex flex-col items-center justify-center">
+        <div id="loading" class="text-gray-400 text-xl font-semibold flex items-center gap-3">
+            <i class="fa-solid fa-spinner fa-spin text-blue-500"></i> Authenticating...
+        </div>
+        <div id="profile-content" class="max-w-5xl w-full hidden">
+            <h1 class="text-3xl font-black mb-6 text-white tracking-tight">My Profile</h1>
+
+            <!-- Tabs -->
+            <div class="profile-tabs">
+                <button class="profile-tab active" onclick="switchProfileTab('account', this)">
+                    <span class="tab-icon"><i class="fa-solid fa-user"></i></span> Account
+                </button>
+                <button class="profile-tab" onclick="switchProfileTab('favorites', this)">
+                    <span class="tab-icon"><i class="fa-solid fa-heart"></i></span> Favorites
+                </button>
+                <button class="profile-tab" onclick="switchProfileTab('comparisons', this)">
+                    <span class="tab-icon"><i class="fa-solid fa-code-compare"></i></span> Comparisons
+                </button>
+                <button class="profile-tab" onclick="switchProfileTab('valuations', this)">
+                    <span class="tab-icon"><i class="fa-solid fa-tags"></i></span> Valuations
+                </button>
+                <button class="profile-tab" onclick="switchProfileTab('imports', this)">
+                    <span class="tab-icon"><i class="fa-solid fa-ship"></i></span> Imports
+                </button>
+                <button class="profile-tab" onclick="switchProfileTab('chathistory', this)">
+                    <span class="tab-icon"><i class="fa-solid fa-comments"></i></span> Chat History
+                </button>
+            </div>
+
+            <!-- Account Tab -->
+            <div id="tab-account" class="tab-content active">
+                <div class="bg-dark-800 rounded-2xl p-6 border border-white/10 shadow-lg">
+                    <h2 class="text-xl font-bold mb-5 text-blue-400"><i class="fa-solid fa-id-card mr-2"></i>Account Details</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Email</p>
+                            <p class="text-lg text-gray-100 font-semibold" id="user-email"></p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Member Since</p>
+                            <p class="text-lg text-gray-100 font-semibold" id="user-created"></p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">User ID</p>
+                            <p class="text-sm text-gray-400 font-mono break-all" id="user-uid"></p>
+                        </div>
+                    </div>
+                    <button onclick="handleSignOut()" class="mt-8 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold transition-all shadow hover:-translate-y-0.5 focus:ring-4 focus:ring-red-500/20">
+                        <i class="fa-solid fa-right-from-bracket mr-2"></i>Sign Out
+                    </button>
+                </div>
+            </div>
+
+            <!-- Favorites Tab -->
+            <div id="tab-favorites" class="tab-content">
+                <div id="fav-loading" class="flex justify-center py-16"><i class="fa-solid fa-spinner fa-spin text-3xl text-blue-500"></i></div>
+                <div id="fav-empty" class="hidden text-center py-16">
+                    <div class="empty-state-icon"><i class="fa-solid fa-heart"></i></div>
+                    <p class="empty-state-text">No favorite cars yet. Browse cars and tap the heart button to save them here.</p>
+                </div>
+                <div id="fav-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden"></div>
+            </div>
+
+            <!-- Comparisons Tab -->
+            <div id="tab-comparisons" class="tab-content">
+                <div id="comp-loading" class="flex justify-center py-16"><i class="fa-solid fa-spinner fa-spin text-3xl text-blue-500"></i></div>
+                <div id="comp-empty" class="hidden text-center py-16">
+                    <div class="empty-state-icon"><i class="fa-solid fa-code-compare"></i></div>
+                    <p class="empty-state-text">No saved comparisons. Compare cars and save them for later reference.</p>
+                </div>
+                <div id="comp-list" class="space-y-4 hidden"></div>
+            </div>
+
+            <!-- Chat History Tab -->
+            <div id="tab-chathistory" class="tab-content">
+                <div id="chat-loading" class="flex justify-center py-16"><i class="fa-solid fa-spinner fa-spin text-3xl text-blue-500"></i></div>
+                <div id="chat-empty" class="hidden text-center py-16">
+                    <div class="empty-state-icon"><i class="fa-solid fa-comments"></i></div>
+                    <p class="empty-state-text">No chat history yet. Start a conversation with the AI assistant to see it here.</p>
+                </div>
+                <div id="chat-list" class="space-y-4 hidden"></div>
+            </div>
+
+            <!-- Valuations Tab -->
+            <div id="tab-valuations" class="tab-content">
+                <div id="val-loading" class="flex justify-center py-16"><i class="fa-solid fa-spinner fa-spin text-3xl text-blue-500"></i></div>
+                <div id="val-empty" class="hidden text-center py-16">
+                    <div class="empty-state-icon"><i class="fa-solid fa-tags"></i></div>
+                    <p class="empty-state-text">No saved valuations. Value a car to see it here.</p>
+                </div>
+                <div id="val-list" class="space-y-4 hidden"></div>
+            </div>
+
+            <!-- Imports Tab -->
+            <div id="tab-imports" class="tab-content">
+                <div id="imp-loading" class="flex justify-center py-16"><i class="fa-solid fa-spinner fa-spin text-3xl text-blue-500"></i></div>
+                <div id="imp-empty" class="hidden text-center py-16">
+                    <div class="empty-state-icon"><i class="fa-solid fa-ship"></i></div>
+                    <p class="empty-state-text">No saved import calculations. Calculate import costs to see them here.</p>
+                </div>
+                <div id="imp-list" class="space-y-4 hidden"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Comparison Detail Modal -->
+    <div id="comp-modal" class="comp-detail-modal" onclick="if(event.target===this)closeCompModal()">
+        <div class="comp-detail-inner">
+            <div class="flex justify-between items-center mb-5">
+                <h3 class="text-xl font-bold text-gray-100"><i class="fa-solid fa-code-compare mr-2 text-blue-400"></i>Comparison Details</h3>
+                <button onclick="closeCompModal()" class="text-gray-500 hover:text-red-400 transition-colors"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            </div>
+            <div id="comp-modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        const DEFAULT_IMG = 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800';
+
+        // === Tab switching ===
+        window.switchProfileTab = function(tab, btn) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.profile-tab').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            btn.classList.add('active');
+
+            // Lazy-load data
+            if (tab === 'favorites' && !window._favsLoaded) loadFavorites();
+            if (tab === 'comparisons' && !window._compsLoaded) loadComparisons();
+            if (tab === 'chathistory' && !window._chatsLoaded) loadChatHistory();
+            if (tab === 'valuations' && !window._valsLoaded) loadValuations();
+            if (tab === 'imports' && !window._impsLoaded) loadImports();
+        };
+
+        // === Favorites ===
+        async function loadFavorites() {
+            const loading = document.getElementById('fav-loading');
+            const empty = document.getElementById('fav-empty');
+            const grid = document.getElementById('fav-grid');
+            try {
+                const token = window._cachedToken || await window.firebaseUser.getIdToken();
+                const res = await fetch('/api/favorites', { headers: { 'Authorization': 'Bearer ' + token } });
+                const cars = await res.json();
+                loading.classList.add('hidden');
+
+                if (!cars.length) { empty.classList.remove('hidden'); return; }
+
+                grid.classList.remove('hidden');
+                grid.innerHTML = cars.map(car => {
+                    const imgs = parseImagesLogic(car.image_paths);
+                    const cover = imgs.length > 0 ? imgs[0] : DEFAULT_IMG;
+                    const price = car.price ? Number(car.price).toLocaleString() + ' EGP' : 'N/A';
+                    return `
+                    <a href="/car/${car.car_id}" class="fav-card group block">
+                        <div class="relative h-40 bg-dark-800 overflow-hidden">
+                            <img src="${cover}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='${DEFAULT_IMG}'">
+                            <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded shadow-sm">
+                                <span class="text-xs font-black text-white">${car.year || ''}</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-base font-bold text-gray-100 group-hover:text-blue-400 transition-colors">${car.brand} <span class="font-normal text-gray-400">${car.model}</span></h3>
+                            ${car.trim ? `<p class="text-xs text-gray-500 mt-0.5 truncate">${car.trim}</p>` : ''}
+                            <div class="text-blue-400 font-extrabold text-base mt-2">${price}</div>
+                        </div>
+                    </a>`;
+                }).join('');
+                window._favsLoaded = true;
+            } catch(e) {
+                console.error('Error loading favorites:', e);
+                loading.classList.add('hidden');
+                empty.classList.remove('hidden');
+            }
+        }
+
+        // === Comparisons ===
+        async function loadComparisons() {
+            const loading = document.getElementById('comp-loading');
+            const empty = document.getElementById('comp-empty');
+            const list = document.getElementById('comp-list');
+            try {
+                const token = window._cachedToken || await window.firebaseUser.getIdToken();
+                const res = await fetch('/api/comparisons', { headers: { 'Authorization': 'Bearer ' + token } });
+                const comps = await res.json();
+                loading.classList.add('hidden');
+
+                if (!comps.length) { empty.classList.remove('hidden'); return; }
+
+                list.classList.remove('hidden');
+                list.innerHTML = comps.map((comp, idx) => {
+                    const data = typeof comp.comparison_data === 'string' ? JSON.parse(comp.comparison_data) : comp.comparison_data;
+                    const carNames = data.map(c => `${c.brand} ${c.model}`).join(' vs ');
+                    const date = new Date(comp.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                    const thumbnails = data.map(c => {
+                        const imgs = parseImagesLogic(c.image_paths);
+                        return imgs.length > 0 ? imgs[0] : DEFAULT_IMG;
+                    });
+                    return `
+                    <div class="comp-card">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3 flex-1 min-w-0">
+                                <div class="flex -space-x-3 flex-shrink-0">
+                                    ${thumbnails.map(t => `<img src="${t}" class="w-10 h-10 rounded-full border-2 border-dark-800 object-cover" onerror="this.src='${DEFAULT_IMG}'">`).join('')}
+                                </div>
+                                <div class="min-w-0">
+                                    <h3 class="text-sm font-bold text-gray-100 truncate">${carNames}</h3>
+                                    <p class="text-xs text-gray-500">${date}</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 flex-shrink-0">
+                                <button onclick='viewComparison(${JSON.stringify(data).replace(/'/g, "&#39;")})' class="px-4 py-2 text-sm font-bold text-blue-400 bg-blue-500/10 hover:bg-blue-500/20 rounded-lg transition-colors border border-blue-500/20">
+                                    <i class="fa-solid fa-eye mr-1"></i> View
+                                </button>
+                                <button onclick="deleteComparison(${comp.id}, this)" class="delete-btn px-3 py-2 text-sm font-bold text-red-400 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors border border-red-500/20">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>`;
+                }).join('');
+                window._compsLoaded = true;
+            } catch(e) {
+                console.error('Error loading comparisons:', e);
+                loading.classList.add('hidden');
+                empty.classList.remove('hidden');
+            }
+        }
+
+        window.viewComparison = function(data) {
+            const modal = document.getElementById('comp-modal');
+            const body = document.getElementById('comp-modal-body');
+
+            const features = [
+                { key: 'price', label: 'Price', fmt: v => v ? Number(v).toLocaleString() + ' EGP' : 'N/A' },
+                { key: 'year', label: 'Year' },
+                { key: 'mileage', label: 'Mileage', fmt: v => v ? Number(v).toLocaleString() + ' km' : 'N/A' },
+                { key: 'transmission', label: 'Transmission' },
+                { key: 'fuel_type', label: 'Fuel Type' },
+                { key: 'body_type', label: 'Body Type' },
+                { key: 'engine', label: 'Engine' },
+                { key: 'horsepower', label: 'Horsepower', fmt: v => v ? v + ' HP' : 'N/A' }
+            ];
+
+            let html = '<div class="overflow-x-auto"><table class="w-full text-left border-collapse min-w-[500px]">';
+            html += '<thead><tr><th class="p-3 border-b border-white/10 text-xs text-gray-500 uppercase font-bold"></th>';
+            data.forEach(c => {
+                const imgs = parseImagesLogic(c.image_paths);
+                const cover = imgs.length > 0 ? imgs[0] : DEFAULT_IMG;
+                html += `<th class="p-3 border-b border-white/10 text-center">
+                    <img src="${cover}" class="w-20 h-14 object-cover rounded-lg mx-auto mb-2" onerror="this.src='${DEFAULT_IMG}'">
+                    <div class="text-sm font-bold text-gray-100">${c.brand} ${c.model}</div>
+                    <div class="text-xs text-gray-500">${c.trim || ''}</div>
+                </th>`;
+            });
+            html += '</tr></thead><tbody>';
+            features.forEach(f => {
+                html += `<tr class="hover:bg-white/[0.02]"><td class="p-3 text-xs font-bold text-gray-500 uppercase border-b border-white/5">${f.label}</td>`;
+                data.forEach(c => {
+                    let val = c[f.key];
+                    if (f.fmt) val = f.fmt(val);
+                    html += `<td class="p-3 text-sm font-semibold text-gray-200 text-center border-b border-white/5">${val || '<span class="text-gray-700">-</span>'}</td>`;
+                });
+                html += '</tr>';
+            });
+            html += '</tbody></table></div>';
+            body.innerHTML = html;
+            modal.classList.add('show');
+        };
+
+        window.closeCompModal = function() {
+            document.getElementById('comp-modal').classList.remove('show');
+        };
+
+        window.deleteComparison = async function(id, btn) {
+            if (!confirm('Delete this comparison?')) return;
+            try {
+                const token = window._cachedToken || await window.firebaseUser.getIdToken();
+                await fetch('/api/comparisons/' + id, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                btn.closest('.comp-card').remove();
+                // Check if list is now empty
+                const list = document.getElementById('comp-list');
+                if (!list.children.length) {
+                    list.classList.add('hidden');
+                    document.getElementById('comp-empty').classList.remove('hidden');
+                }
+            } catch(e) { console.error('Error deleting comparison:', e); }
+        };
+
+        // === Chat Helpers ===
+        function createMiniCarCard(car) {
+            const safeId = car['Car ID'] || car.car_id || car.carId || car.id || '';
+            const brand = car.brand || '';
+            const model = car.model || '';
+            const year = car.year || '';
+            const priceVal = car.price || car.avg_price;
+            const price = priceVal ? Number(priceVal).toLocaleString() + ' EGP' : 'N/A';
+            const imgs = typeof parseImagesLogic !== 'undefined' ? parseImagesLogic(car['image paths'] || car.image_paths || car.ImagePaths || car.images || '') : [];
+            const cover = imgs.length > 0 ? imgs[0] : 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800';
+            
+            return `
+            <a href="/car/${safeId}" class="fav-card group block border border-white/5 bg-dark-800 rounded-xl overflow-hidden hover:-translate-y-1 transition duration-300">
+                <div class="relative h-28 bg-dark-900 overflow-hidden">
+                    <img src="${cover}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800'">
+                    <div class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded shadow-sm">
+                        <span class="text-[10px] font-black text-white">${year}</span>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <h3 class="text-sm font-bold text-gray-100 truncate">${brand} <span class="font-normal text-gray-400">${model}</span></h3>
+                    <div class="text-blue-400 font-extrabold text-[13px] mt-1">${price}</div>
+                </div>
+            </a>`;
+        }
+
+        // === Chat History ===
+        async function loadChatHistory() {
+            const loading = document.getElementById('chat-loading');
+            const empty = document.getElementById('chat-empty');
+            const list = document.getElementById('chat-list');
+            try {
+                const token = window._cachedToken || await window.firebaseUser.getIdToken();
+                const res = await fetch('/api/chats/me', { headers: { 'Authorization': 'Bearer ' + token } });
+                const chats = await res.json();
+                loading.classList.add('hidden');
+
+                if (!chats.length) { empty.classList.remove('hidden'); return; }
+
+                list.classList.remove('hidden');
+                list.innerHTML = chats.map(chat => {
+                    const log = typeof chat.chat_log === 'string' ? JSON.parse(chat.chat_log) : chat.chat_log;
+                    const date = new Date(chat.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                    const msgCount = log.length;
+                    const firstMsg = log.find(m => m.role === 'user');
+                    const preview = firstMsg ? (firstMsg.text.length > 80 ? firstMsg.text.substring(0, 80) + '...' : firstMsg.text) : 'No messages';
+
+                    // Render messages
+                    let msgsHtml = log.map(m => {
+                        if (m.role === 'user') {
+                            return `<div class="chat-bubble-user" style="max-width: 85%; margin-left: auto;">${m.text}</div>`;
+                        } else {
+                            let carHtml = '';
+                            if (m.cars && m.cars.length > 0) {
+                                let cards = m.cars.map(c => createMiniCarCard(c)).join('');
+                                carHtml = `<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4 px-2">${cards}</div>`;
+                            }
+                            return `<div class="chat-bubble-bot" style="max-width: 100%;"><div class="markdown-body">${marked.parse(m.text || '')}</div>${carHtml}</div>`;
+                        }
+                    }).join('');
+
+                    return `
+                    <div class="chat-entry group cursor-pointer" onclick="this.classList.toggle('chat-entry-expanded')">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-comments"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-sm font-bold text-gray-200 truncate group-hover:text-blue-400 transition-colors">${preview}</p>
+                                    <p class="text-xs text-gray-500">${date} · ${msgCount} messages</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-gray-600 text-sm transition-transform flex-shrink-0 group-hover:text-blue-400"></i>
+                        </div>
+                        <div class="chat-messages pt-4 !mt-4 border-t border-white/5 w-full">
+                            ${msgsHtml}
+                        </div>
+                    </div>`;
+                }).join('');
+                window._chatsLoaded = true;
+            } catch(e) {
+                console.error('Error loading chat history:', e);
+                loading.classList.add('hidden');
+                empty.classList.remove('hidden');
+            }
+        }
+
+        // === Valuations History ===
+        async function loadValuations() {
+            const loading = document.getElementById('val-loading');
+            const empty = document.getElementById('val-empty');
+            const list = document.getElementById('val-list');
+            try {
+                const token = window._cachedToken || await window.firebaseUser.getIdToken();
+                const res = await fetch('/api/valuations/me', { headers: { 'Authorization': 'Bearer ' + token } });
+                const vals = await res.json();
+                loading.classList.add('hidden');
+
+                if (!vals.length || typeof vals.length === 'undefined') { empty.classList.remove('hidden'); return; }
+
+                list.classList.remove('hidden');
+                list.innerHTML = vals.map(val => {
+                    const price = Number(val.predicted_price).toLocaleString();
+                    const date = new Date(val.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                    return `
+                    <div class="comp-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex flex-col min-w-0">
+                                <h3 class="text-sm font-bold text-gray-100">${val.car_make} ${val.car_model}</h3>
+                                <p class="text-xs text-gray-400">Year: ${val.car_year} • Saved on: ${date}</p>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <span class="text-lg font-black text-blue-400 border border-blue-500/20 bg-blue-500/10 px-3 py-1 rounded-lg">${price} EGP</span>
+                            </div>
+                        </div>
+                    </div>`;
+                }).join('');
+                window._valsLoaded = true;
+            } catch(e) {
+                console.error('Error loading valuations:', e);
+                loading.classList.add('hidden');
+                empty.classList.remove('hidden');
+            }
+        }
+
+        // === Imports History ===
+        async function loadImports() {
+            const loading = document.getElementById('imp-loading');
+            const empty = document.getElementById('imp-empty');
+            const list = document.getElementById('imp-list');
+            try {
+                const token = window._cachedToken || await window.firebaseUser.getIdToken();
+                const res = await fetch('/api/imports/me', { headers: { 'Authorization': 'Bearer ' + token } });
+                const imps = await res.json();
+                loading.classList.add('hidden');
+
+                if (!imps.length || typeof imps.length === 'undefined') { empty.classList.remove('hidden'); return; }
+
+                list.classList.remove('hidden');
+                list.innerHTML = imps.map(imp => {
+                    const cost = Number(imp.total_cost).toLocaleString();
+                    const date = new Date(imp.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                    return `
+                    <div class="comp-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex flex-col min-w-0">
+                                <h3 class="text-sm font-bold text-gray-100">${imp.car_make} • ${imp.car_model}</h3>
+                                <p class="text-xs text-gray-400">Engine: ${imp.engine_cc}cc • Base Price: $${imp.base_price} • Saved on: ${date}</p>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <span class="text-lg font-black text-emerald-400 border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 rounded-lg">${cost} EGP</span>
+                            </div>
+                        </div>
+                    </div>`;
+                }).join('');
+                window._impsLoaded = true;
+            } catch(e) {
+                console.error('Error loading imports:', e);
+                loading.classList.add('hidden');
+                empty.classList.remove('hidden');
+            }
+        }
+    </script>
+
+<%- include('partials/footer') %>

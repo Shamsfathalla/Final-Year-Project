@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <%- include('partials/head', { title: 'Import Calculator' }) %>
+  <style>
+    :root { 
+      --bg: #0a0a0f;
+      --card: #1a1a25; 
+      --border: rgba(255,255,255,0.08); 
+      --text: #f0f0f5; 
+      --muted: #9ca3af; 
+      --primary: #3b82f6; 
+      --primary-soft: rgba(59,130,246,0.15); 
+      --accent: #2563eb; 
+      --warn-bg: rgba(251,146,60,0.15); 
+      --warn-text: #fb923c; 
+      --radius: 12px;
+      --input-bg: #2a2a38;
+    }
+    .main { padding: 32px 16px 56px; }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    .simple-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+    .page-title { margin: 0 0 6px; font-size: clamp(1.8rem, 3vw, 2.3rem); line-height: 1.15; }
+    .page-subtitle { margin: 0; color: var(--muted); font-size: 0.98rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); margin-bottom: 18px; }
+    .card-title { margin: 0 0 6px; font-size: 1.05rem; }
+    .card-copy { margin: 0 0 18px; color: var(--muted); font-size: 0.93rem; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .field > label { font-size: 0.9rem; font-weight: 600; }
+    .hint { color: var(--muted); font-weight: 400; font-size: 0.82rem; }
+    .field > input, .field > select { width: 100%; padding: 11px 12px; font: inherit; color: var(--text); background: var(--input-bg); border: 1px solid var(--border); border-radius: 10px; }
+    .field > input:focus, .field > select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); }
+    .field > input::placeholder { color: #6b7280; }
+    .field > input:disabled, .field > select:disabled { background: #1e1e28; color: #6b7280; }
+    .field.dim { opacity: 0.7; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; border-radius: 10px; padding: 10px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-primary:disabled { opacity: 0.7; cursor: not-allowed; }
+    .btn-secondary { background: var(--input-bg); border-color: var(--border); color: var(--text); }
+    .btn-secondary:hover { background: #323242; }
+    .btn-full { width: 100%; margin-top: 4px; }
+    .section-label { margin: 0 0 10px; color: var(--muted); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+    .divider { border: 0; border-top: 1px solid var(--border); margin: 18px 0; }
+    .result-list { display: flex; flex-direction: column; gap: 8px; }
+    .r-row, .bd-row, .final-box { display: flex; justify-content: space-between; gap: 12px; }
+    .r-row { padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--input-bg); }
+    .r-row span:first-child { color: var(--muted); }
+    .r-row span:last-child { font-weight: 600; }
+    .r-row em { font-style: normal; color: #6b7280; margin-left: 4px; }
+    .r-total { background: var(--primary-soft); border-color: #3b82f6; }
+    .breakdown { padding: 10px 12px; border: 1px dashed var(--border); border-radius: 10px; background: var(--card); }
+    .bd-row { padding: 2px 0; font-size: 0.86rem; color: var(--muted); }
+    .cif-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cif-box { padding: 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--input-bg); }
+    .cif-box span { display: block; color: var(--muted); font-size: 0.82rem; margin-bottom: 4px; }
+    .cif-box strong { font-size: 1.05rem; }
+    .cif-hi { background: var(--primary-soft); border-color: #3b82f6; }
+    .final-box { padding: 14px 16px; border-radius: 10px; background: #1e3a8a; color: #fff; align-items: center; }
+    .final-box strong { font-size: 1.2rem; }
+    .disclaimer { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: var(--warn-bg); color: var(--warn-text); font-size: 0.9rem; }
+    .modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); opacity: 0; visibility: hidden; transition: 0.2s ease; z-index: 1000; }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal-box { width: 100%; max-width: 760px; max-height: 88vh; overflow: hidden; background: var(--card); border-radius: 14px; border: 1px solid var(--border); }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid var(--border); }
+    .modal-head h2 { margin: 0; font-size: 1.05rem; }
+    .modal-close { border: 0; background: transparent; color: var(--text); font-size: 1.4rem; cursor: pointer; }
+    .modal-body { max-height: calc(88vh - 64px); overflow: auto; padding: 18px; }
+    .guide-section { margin-bottom: 22px; }
+    .guide-section h3, .guide-section h4 { margin: 0 0 10px; color: var(--primary); }
+    .guide-section ul, .guide-section ol { margin: 0; padding-left: 20px; }
+    .guide-section li { margin-bottom: 6px; color: var(--text); }
+    .tax-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .tax-table th, .tax-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    .tax-table thead th { background: var(--input-bg); color: var(--text); }
+    @media (max-width: 700px) { .simple-header, .row2, .cif-row { grid-template-columns: 1fr; } .simple-header { display: grid; } .btn-secondary { width: 100%; } .r-row, .bd-row, .final-box { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body class="bg-dark-900 text-gray-100 h-screen overflow-hidden flex flex-col md:flex-row font-outfit">
+  <%- include('partials/sidebar', { activePage: 'import' }) %>
+
+  <main class="flex-1 overflow-y-auto w-full h-full relative bg-dark-900">
+    <div class="main">
+      <div class="wrap">
+      <section class="simple-header">
+        <div>
+          <h1 class="page-title"><strong>Egypt Car Import Calculator</strong></h1>
+          <p class="page-subtitle">Simple estimate for shipping, taxes, and final import cost.</p>
+        </div>
+        <button class="btn btn-secondary" id="openGuideBtn">Import Guide</button>
+      </section>
+
+      <div class="card card-form">
+        <h2 class="card-title">Vehicle Details</h2>
+        <p class="card-copy">Enter the car details below, then calculate.</p>
+        <form id="importForm">
+
+          <div class="row2">
+            <div class="field">
+              <label for="origin_type">Origin Region</label>
+              <select id="origin_type" name="origin_type" required>
+                <option value="">Select region…</option>
+                <option value="EU">European Union (EU)</option>
+                <option value="NON_EU">Non-EU Countries</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="country">Country</label>
+              <select id="country" name="country" required disabled>
+                <option value="">Select country…</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label for="car_type">Car Type</label>
+              <select id="car_type" name="car_type" required>
+                <option value="">Select type…</option>
+                <option value="electric">⚡ Electric</option>
+                <option value="hybrid">🔋 Hybrid</option>
+                <option value="fuel">⛽ Petrol / Diesel</option>
+              </select>
+            </div>
+            <div class="field" id="engineGroup">
+              <label for="engine_cc">Engine Size (CC) <span class="hint">Fuel &amp; hybrid only</span></label>
+              <input type="number" id="engine_cc" name="engine_cc" placeholder="e.g. 1600" min="1" max="10000" step="any" disabled />
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label for="car_price_usd" id="priceLabel">Car Price (USD)</label>
+              <input type="number" id="car_price_usd" name="car_price_usd" placeholder="e.g. 25000" min="1" step="any" required />
+            </div>
+            <div class="field">
+              <label for="exchange_rate" id="rateLabel">Exchange Rate (EGP / USD)</label>
+              <input type="number" id="exchange_rate" name="exchange_rate" placeholder="e.g. 50" min="0.01" step="0.01" required />
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label for="insurance_usd" id="insLabel">Insurance Cost (USD) <span class="hint">Optional</span></label>
+              <input type="number" id="insurance_usd" name="insurance_usd" placeholder="e.g. 200" min="0" step="any" />
+            </div>
+            <div class="field">
+              <label for="shipping_method">Shipping Method</label>
+              <select id="shipping_method" name="shipping_method" required>
+                <option value="">Select…</option>
+                <option value="container">📦 Container (base rate)</option>
+                <option value="roro">🚗 RoRo (−20%)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="port">Destination Port</label>
+            <select id="port" name="port" required>
+              <option value="">Select port…</option>
+              <option value="Alexandria">🚢 Alexandria (base)</option>
+              <option value="Port Said">🚢 Port Said (+4%)</option>
+              <option value="Sokhna">🚢 Sokhna (+6%)</option>
+              <option value="Damietta">🚢 Damietta (+8%)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="calculateBtn">
+            Calculate Import Cost →
+          </button>
+        </form>
+      </div>
+
+      <div class="card results-card" id="resultsSection" style="display:none;">
+        <h2 class="card-title">📊 Cost Breakdown</h2>
+        <p class="card-copy">Your estimate will appear here.</p>
+
+        <p class="section-label">Base Costs (USD)</p>
+        <div class="result-list" id="baseCosts"></div>
+
+        <div class="divider"></div>
+
+        <p class="section-label">CIF Value</p>
+        <div class="cif-row" id="cifValues"></div>
+
+        <div class="divider"></div>
+
+        <p class="section-label">Taxes &amp; Duties (EGP)</p>
+        <div class="result-list" id="taxBreakdown"></div>
+
+        <div class="divider"></div>
+
+        <div id="finalCost"></div>
+        <div class="disclaimer" id="disclaimer"></div>
+      </div>
+
+    </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="guideModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>📚 Import Guide – Egypt 2025</h2>
+        <button class="modal-close" id="closeGuideBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <div class="guide-section">
+          <h3>1. Import Eligibility</h3>
+          <ul>
+            <li><strong>Personal Limit:</strong> One vehicle per person every 5 years.</li>
+            <li><strong>Age Restriction:</strong> Current model year or max 1 year old.</li>
+            <li><strong>Ownership:</strong> Must hold title ≥ 3 months before shipment.</li>
+            <li><strong>Payment:</strong> Through authorized Egyptian banks only.</li>
+            <li><strong>Required Forms:</strong> Form No. 4 mandatory.</li>
+          </ul>
+        </div>
+
+        <div class="guide-section">
+          <h3>2. Required Documents</h3>
+          <ul>
+            <li><strong>Vehicle Title:</strong> Original clear title.</li>
+            <li><strong>Purchase Invoice:</strong> Full transaction details.</li>
+            <li><strong>Certificate of Origin</strong></li>
+            <li><strong>Bill of Lading</strong></li>
+            <li><strong>Import Authorization Permit</strong></li>
+            <li><strong>Personal ID:</strong> Passport + National ID.</li>
+          </ul>
+        </div>
+
+        <div class="guide-section">
+          <h3>3. Customs &amp; Tax Rates</h3>
+          <h4>Non-EU Imports</h4>
+          <table class="tax-table">
+            <thead><tr><th>Engine CC</th><th>Customs</th><th>Dev.</th><th>VAT</th><th>Table</th><th>Total</th></tr></thead>
+            <tbody>
+              <tr><td>≤ 1600</td><td>40%</td><td>3%</td><td>14%</td><td>1%</td><td><strong>58%</strong></td></tr>
+              <tr><td>1601–1999</td><td>135%</td><td>5%</td><td>14%</td><td>15%</td><td><strong>169%</strong></td></tr>
+              <tr><td>2000+</td><td>135%</td><td>8.5%</td><td>14%</td><td>30%</td><td><strong>187.5%</strong></td></tr>
+            </tbody>
+          </table>
+          <h4 style="margin-top:16px">EU Imports (Customs Exempt)</h4>
+          <table class="tax-table">
+            <thead><tr><th>Engine CC</th><th>Customs</th><th>Dev.</th><th>VAT</th><th>Table</th><th>Total</th></tr></thead>
+            <tbody>
+              <tr><td>≤ 1600</td><td>0%</td><td>3%</td><td>14%</td><td>1%</td><td><strong>18%</strong></td></tr>
+              <tr><td>1601–1999</td><td>0%</td><td>5%</td><td>14%</td><td>15%</td><td><strong>34%</strong></td></tr>
+              <tr><td>2000+</td><td>0%</td><td>8.5%</td><td>14%</td><td>30%</td><td><strong>52.5%</strong></td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px"><strong>⚡ Electric vehicles:</strong> 0% customs, 0% dev, 0% table — only 14% VAT.</p>
+        </div>
+
+        <div class="guide-section">
+          <h3>4. Tips</h3>
+          <ul>
+            <li>✅ Smaller engines = lower duties.</li>
+            <li>✅ EU imports benefit from customs exemption.</li>
+            <li>✅ Container shipping is safer than RoRo for cars.</li>
+            <li>✅ Always declare the actual purchase price.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getAuth, onAuthStateChanged } from "firebase/auth";
+    import { firebaseConfig } from "/firebase-config.js";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    onAuthStateChanged(auth, (user) => { window.firebaseUser = user; });
+  </script>
+  <script id="shipping-rates-json" type="application/json"><%- JSON.stringify(shippingRates) %></script>
+  <script>
+    const shippingRates = JSON.parse(document.getElementById('shipping-rates-json').textContent || '{}');
+    const currencyMap = {
+      'Germany':     { code:'EUR', sym:'€' }, 'France':      { code:'EUR', sym:'€' },
+      'Italy':       { code:'EUR', sym:'€' }, 'Netherlands': { code:'EUR', sym:'€' },
+      'Other EU':    { code:'EUR', sym:'€' }, 'UK':          { code:'GBP', sym:'£' },
+      'USA':         { code:'USD', sym:'$' }, 'Japan':       { code:'JPY', sym:'¥' },
+      'South Korea': { code:'KRW', sym:'₩' }, 'China':       { code:'CNY', sym:'¥' },
+      'UAE':         { code:'AED', sym:'AED' }, 'Qatar':     { code:'QAR', sym:'QAR' },
+      'Kuwait':      { code:'KWD', sym:'KWD' }, 'Libya':     { code:'LYD', sym:'LYD' },
+      'Other':       { code:'USD', sym:'$' }
+    };
+    let cur = { code:'USD', sym:'$' };
+
+    const originSel   = document.getElementById('origin_type');
+    const countrySel  = document.getElementById('country');
+    const carTypeSel  = document.getElementById('car_type');
+    const engineGroup = document.getElementById('engineGroup');
+    const engineInput = document.getElementById('engine_cc');
+    const form        = document.getElementById('importForm');
+    const resultsEl   = document.getElementById('resultsSection');
+    const priceLabel  = document.getElementById('priceLabel');
+    const rateLabel   = document.getElementById('rateLabel');
+    const insLabel    = document.getElementById('insLabel');
+
+    originSel.addEventListener('change', () => {
+      const origin = originSel.value;
+      countrySel.innerHTML = '<option value="">Select country…</option>';
+      if (origin && shippingRates[origin]) {
+        countrySel.disabled = false;
+        Object.keys(shippingRates[origin]).forEach(c => {
+          const o = document.createElement('option'); o.value = c; o.textContent = c;
+          countrySel.appendChild(o);
+        });
+      } else { countrySel.disabled = true; }
+      cur = { code:'USD', sym:'$' };
+      updateLabels();
+    });
+
+    countrySel.addEventListener('change', () => {
+      if (countrySel.value) { cur = currencyMap[countrySel.value] || { code:'USD', sym:'$' }; updateLabels(); }
+    });
+
+    function updateLabels() {
+      priceLabel.textContent = `Car Price (${cur.code})`;
+      rateLabel.textContent  = `Exchange Rate (EGP / ${cur.code})`;
+      insLabel.innerHTML     = `Insurance Cost (${cur.code}) <span class="hint">Optional</span>`;
+    }
+
+    carTypeSel.addEventListener('change', () => {
+      const needCC = carTypeSel.value === 'fuel' || carTypeSel.value === 'hybrid';
+      engineInput.disabled = !needCC;
+      if (needCC) { engineInput.setAttribute('required',''); engineInput.placeholder = 'e.g. 1600'; engineGroup.classList.remove('dim'); }
+      else        { engineInput.removeAttribute('required'); engineInput.value = ''; engineInput.placeholder = 'N/A for electric'; engineGroup.classList.add('dim'); }
+    });
+
+    const fmt = n => new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = document.getElementById('calculateBtn');
+      btn.disabled = true; btn.textContent = 'Calculating…';
+      const payload = {
+        origin_type: originSel.value, country: countrySel.value, car_type: carTypeSel.value,
+        car_price_usd: parseFloat(document.getElementById('car_price_usd').value),
+        exchange_rate: parseFloat(document.getElementById('exchange_rate').value),
+        engine_cc: engineInput.value ? parseInt(engineInput.value) : null,
+        insurance_usd: document.getElementById('insurance_usd').value !== '' ? parseFloat(document.getElementById('insurance_usd').value) : 200,
+        shipping_method: document.getElementById('shipping_method').value,
+        port: document.getElementById('port').value
+      };
+      try {
+        const res = await fetch('/api/calculate-import', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Calculation failed');
+        renderResults(data);
+      } catch(err) { alert('Error: ' + err.message); }
+      finally { btn.disabled = false; btn.textContent = 'Calculate Import Cost →'; }
+    });
+
+    function ri(label, val) { return `<div class="r-row"><span>${label}</span><span>${val}</span></div>`; }
+
+    function renderResults(d) {
+      const s = cur.sym, c = cur.code;
+      const mLabel = d.shipping.method === 'container' ? '📦 Container' : '🚗 RoRo';
+      const mPct   = ((d.shipping.method_multiplier - 1)*100).toFixed(0);
+      const pPct   = ((d.shipping.port_multiplier  - 1)*100).toFixed(0);
+
+      document.getElementById('baseCosts').innerHTML =
+        ri('Car Price', `${s}${fmt(d.costs.car_price_usd)}`) +
+        ri(`Shipping — ${mLabel}`, `$${fmt(d.costs.shipping_usd)}`) +
+        `<div class="breakdown">
+          <div class="bd-row"><span>Base (${d.shipping.port})</span><span>$${fmt(d.shipping.base_price)}</span></div>
+          <div class="bd-row"><span>${mLabel}</span><span>${mPct >= 0 ? '+':''}${mPct}%</span></div>
+          <div class="bd-row"><span>🚢 ${d.shipping.port}</span><span>+${pPct}%</span></div>
+         </div>` +
+        ri('Insurance',      `${s}${fmt(d.costs.insurance_usd)}`) +
+        ri('Port Clearance', `$${fmt(d.costs.port_clearance_usd)}`) +
+        ri('Customs Broker', `$${fmt(d.costs.customs_broker_usd)}`);
+
+      document.getElementById('cifValues').innerHTML =
+        `<div class="cif-box"><span>CIF (${c})</span><strong>${s}${fmt(d.costs.cif_usd)}</strong></div>` +
+        `<div class="cif-box cif-hi"><span>CIF (EGP)</span><strong>EGP ${fmt(d.costs.cif_egp)}</strong></div>`;
+
+      document.getElementById('taxBreakdown').innerHTML =
+        ri(`Customs Duty <em>${d.taxes.customs.rate}%</em>`,         `EGP ${fmt(d.taxes.customs.value)}`) +
+        ri(`Development Fee <em>${d.taxes.development_fee.rate}%</em>`, `EGP ${fmt(d.taxes.development_fee.value)}`) +
+        ri(`Table Tax <em>${d.taxes.table_tax.rate}%</em>`,          `EGP ${fmt(d.taxes.table_tax.value)}`) +
+        ri(`VAT <em>${d.taxes.vat.rate}%</em>`,                      `EGP ${fmt(d.taxes.vat.value)}`) +
+        `<div class="r-row r-total"><span>Total Taxes</span><span>EGP ${fmt(d.total_taxes_egp)}</span></div>`;
+
+      document.getElementById('finalCost').innerHTML =
+        `<div class="final-box"><span>🎯 Total Import Cost</span><strong>EGP ${fmt(d.final_import_cost_egp)}</strong></div>` +
+        `<div style="margin-top: 16px; text-align: right;"><button id="saveImportBtn" class="btn btn-primary">Save Calculation</button></div>`;
+
+      // Setup Save Button Logic
+      const saveBtn = document.getElementById('saveImportBtn');
+      if (saveBtn) {
+          saveBtn.onclick = async () => {
+              if (!window.firebaseUser) return alert('Please log in to save import calculations.');
+              saveBtn.disabled = true;
+              saveBtn.innerText = 'Saving...';
+              try {
+                  const token = await window.firebaseUser.getIdToken();
+                  const engineVal = parseInt(document.getElementById('engine_cc').value);
+                  const priceVal = parseFloat(document.getElementById('car_price_usd').value);
+                  
+                  const payload = {
+                      idToken: token,
+                      make: document.getElementById('origin_type').value || 'N/A', // storing origin as make
+                      model: document.getElementById('country').value || 'N/A',    // storing country as model
+                      engine_cc: isNaN(engineVal) ? 0 : engineVal,
+                      base_price: isNaN(priceVal) ? 0 : priceVal,
+                      total_cost: d.final_import_cost_egp,
+                      tax_breakdown: d.taxes || {}
+                  };
+                  
+                  const res = await fetch('/api/imports/save', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(payload)
+                  });
+                  if (res.ok) {
+                      saveBtn.innerText = 'Saved!';
+                      saveBtn.style.backgroundColor = '#10b981';
+                  } else {
+                      saveBtn.disabled = false;
+                      saveBtn.innerText = 'Save Failed';
+                  }
+              } catch (err) {
+                  saveBtn.disabled = false;
+                  saveBtn.innerText = 'Save Failed';
+              }
+          };
+      }
+
+      document.getElementById('disclaimer').innerHTML = `<p>⚠️ ${d.disclaimer}</p>`;
+
+      resultsEl.style.display = 'block';
+      resultsEl.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+
+    // Modal
+    const modal      = document.getElementById('guideModal');
+    const openBtn    = document.getElementById('openGuideBtn');
+    const closeBtn   = document.getElementById('closeGuideBtn');
+
+    openBtn.onclick   = () => { modal.classList.add('open'); document.body.style.overflow='hidden'; };
+    closeBtn.onclick  = () => { modal.classList.remove('open'); document.body.style.overflow=''; };
+
+    modal.addEventListener('click', e => { if(e.target===modal){ modal.classList.remove('open'); document.body.style.overflow=''; } });
+    document.addEventListener('keydown', e => { if(e.key==='Escape') { modal.classList.remove('open'); document.body.style.overflow=''; } });
+  </script>
+  <%- include('partials/footer') %>

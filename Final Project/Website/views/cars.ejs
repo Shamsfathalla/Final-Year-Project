@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <%- include('partials/head', { title: title }) %>
+</head>
+<body class="bg-dark-900 text-gray-100 h-screen overflow-hidden flex flex-col md:flex-row font-outfit">
+    <%- include('partials/sidebar', { activePage: conditionContext === 'new' ? 'new' : 'used' }) %>
+
+    <main class="flex-1 overflow-y-auto w-full h-full relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8 items-start">
+            <aside class="w-full lg:w-72 flex-shrink-0 bg-dark-700 rounded-2xl shadow-lg border border-white/5 max-h-[calc(100vh-2rem)] overflow-y-auto lg:sticky lg:top-8 custom-scrollbar">
+                <h2 class="text-xl font-bold p-6 pb-4 flex justify-between items-center text-gray-100 border-b border-white/5 sticky top-0 bg-dark-700 z-20 shadow-sm rounded-t-2xl">
+                    Filters
+                    <button id="resetBtn" class="text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors">Clear All</button>
+                </h2>
+                <form id="filterForm" class="space-y-4 p-6 pt-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-400 mb-1">Brand</label>
+                        <select id="brand" name="brand" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow"><option value="">Any Brand</option></select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-400 mb-1">Model</label>
+                        <select id="model" name="model" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow"><option value="">Any Model</option></select>
+                    </div>
+                    
+                    <div class="flex gap-2">
+                        <div class="w-1/2">
+                            <label class="block text-sm font-semibold text-gray-400 mb-1">Min Price</label>
+                            <input type="number" id="minPrice" name="minPrice" placeholder="0 EGP" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow">
+                        </div>
+                        <div class="w-1/2">
+                            <label class="block text-sm font-semibold text-gray-400 mb-1">Max Price</label>
+                            <input type="number" id="maxPrice" name="maxPrice" placeholder="Any" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow">
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <div class="w-1/2">
+                            <label class="block text-sm font-semibold text-gray-400 mb-1">Min Year</label>
+                            <input type="number" id="minYear" name="minYear" placeholder="Ex: 2018" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow">
+                        </div>
+                        <div class="w-1/2">
+                            <label class="block text-sm font-semibold text-gray-400 mb-1">Max Year</label>
+                            <input type="number" id="maxYear" name="maxYear" placeholder="Ex: 2024" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow">
+                        </div>
+                    </div>
+
+                    <% if (conditionContext === 'used') { %>
+                    <div class="flex gap-2">
+                        <div class="w-1/2">
+                            <label class="block text-sm font-semibold text-gray-400 mb-1">Min Mileage</label>
+                            <input type="number" id="minMileage" name="minMileage" placeholder="0" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow">
+                        </div>
+                        <div class="w-1/2">
+                            <label class="block text-sm font-semibold text-gray-400 mb-1">Max Mileage</label>
+                            <input type="number" id="maxMileage" name="maxMileage" placeholder="Any" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-400 mb-1">Condition</label>
+                        <select id="detailed_condition" name="detailed_condition" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow">
+                            <option value="">Any Condition</option>
+                            <option value="excellent">Excellent</option>
+                            <option value="very good">Very Good</option>
+                            <option value="good">Good</option>
+                            <option value="fair">Fair</option>
+                            <option value="poor">Poor</option>
+                        </select>
+                    </div>
+                    <% } %>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-400 mb-1">Body Shape</label>
+                        <select id="body_type" name="body_type" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow"><option value="">Any Shape</option></select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-400 mb-1">Fuel Type</label>
+                        <select id="fuel_type" name="fuel_type" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow"><option value="">Any Fuel Type</option></select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-400 mb-1">Color</label>
+                        <select id="color" name="color" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow"><option value="">Any Color</option></select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-400 mb-1">Transmission</label>
+                        <select id="transmission" name="transmission" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow"><option value="">Any Transmission</option></select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-400 mb-1">Drivetrain</label>
+                        <select id="drivetrain" name="drivetrain" class="w-full p-2.5 border border-white/10 rounded-lg text-sm bg-dark-600 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow"><option value="">Any Drivetrain</option></select>
+                    </div>
+                </form>
+            </aside>
+
+            <main class="w-full md:w-3/4 lg:w-4/5 flex flex-col">
+                <div class="flex justify-between items-end mb-6 border-b border-white/5 pb-4">
+                    <h1 class="text-4xl font-extrabold text-gray-100 tracking-tight"><%= title %></h1>
+                    <p id="resultsCount" class="text-sm text-gray-500 font-medium mb-1">0 results</p>
+                </div>
+                
+                <div id="carsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                </div>
+                
+                <div id="loading" class="hidden flex justify-center py-16">
+                    <i class="fa-solid fa-spinner fa-spin text-4xl text-blue-500"></i>
+                </div>
+                
+                <div class="text-center mt-12 mb-8">
+                    <button id="showMoreBtn" class="hidden px-8 py-3.5 bg-dark-700 border border-white/10 font-bold rounded-xl text-gray-300 hover:bg-dark-600 hover:text-blue-400 shadow-sm transition-all focus:ring-4 focus:ring-blue-500/10 uppercase tracking-widest text-sm w-full md:w-auto">
+                        Load More Cars
+                    </button>
+                </div>
+            </main>
+        </div>
+    </main>
+
+    <script>
+    const conditionContext = "<%= conditionContext %>";
+    const form = document.getElementById('filterForm');
+    const brandSelect = document.getElementById('brand');
+    let currentOffset = 0;
+    const LIMIT = 12;
+    let cachedCarsList = [];
+    const URL_FILTER_KEYS = [
+        'brand', 'model', 'minPrice', 'maxPrice', 'minYear', 'maxYear',
+        'minMileage', 'maxMileage', 'detailed_condition', 'body_type',
+        'fuel_type', 'color', 'transmission', 'drivetrain'
+    ];
+
+    function buildFilterParams() {
+        const params = new URLSearchParams(new FormData(form));
+        for (const [key, value] of [...params.entries()]) {
+            if (!value) params.delete(key);
+        }
+        return params;
+    }
+
+    function updateListStateUrl() {
+        const params = buildFilterParams();
+        if (currentOffset > 0) params.set('offset', String(currentOffset));
+        const nextUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+        history.replaceState({}, '', nextUrl);
+    }
+
+    function applyFiltersFromUrl() {
+        const query = new URLSearchParams(window.location.search);
+        URL_FILTER_KEYS.forEach((key) => {
+            const el = form.elements.namedItem(key);
+            if (!el) return;
+            const val = query.get(key);
+            if (val !== null) el.value = val;
+        });
+    }
+
+    const populateOptions = (id, options, defaultText) => {
+        const sel = document.getElementById(id);
+        if (!sel) return;
+        sel.innerHTML = `<option value="">${defaultText}</option>`;
+        options.forEach(opt => {
+            const option = document.createElement('option');
+            option.value = opt;
+            option.textContent = opt;
+            sel.appendChild(option);
+        });
+    };
+
+    async function loadOptions(brand = '') {
+        try {
+            const url = brand ? `/api/options?brand=${encodeURIComponent(brand)}` : '/api/options';
+            const res = await fetch(url);
+            const data = await res.json();
+            if (!brand) {
+                populateOptions('brand', data.brands, 'Any Brand');
+                populateOptions('color', data.colors, 'Any Color');
+                populateOptions('transmission', data.transmissions, 'Any Transmission');
+                populateOptions('fuel_type', data.fuelTypes, 'Any Fuel Type');
+                populateOptions('body_type', data.bodyTypes, 'Any Shape');
+                populateOptions('drivetrain', data.drivetrains, 'Any Drivetrain');
+            }
+            const modelSel = document.getElementById('model');
+            const prevModel = modelSel ? modelSel.value : '';
+            populateOptions('model', data.models, 'Any Model');
+            if (data.models.includes(prevModel)) modelSel.value = prevModel;
+        } catch(e) { console.error("Error loading options:", e); }
+    }
+
+    function renderCars(carsData, append = false) {
+        const carsContainer = document.getElementById('carsContainer');
+        if (!append) { carsContainer.innerHTML = ''; cachedCarsList = []; }
+        cachedCarsList = cachedCarsList.concat(carsData);
+        
+        if (carsData.length === 0 && !append) {
+            carsContainer.innerHTML = `
+                <div class="col-span-full py-20 text-center">
+                    <i class="fa-solid fa-car-side text-5xl text-gray-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-400">No cars matched your filters</h3>
+                    <p class="text-gray-600 mt-2">Try adjusting or clearing your filters.</p>
+                </div>`;
+            return;
+        }
+
+        carsData.forEach(car => {
+            const images = parseImagesLogic(car.image_paths);
+            const displayImage = images.length > 0 ? images[0] : 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop';
+
+            const card = document.createElement('div');
+            card.className = "bg-dark-700 border border-white/5 rounded-2xl overflow-hidden hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 flex flex-col group cursor-pointer";
+            
+            card.onclick = () => {
+                updateListStateUrl(); 
+                sessionStorage.setItem('3arabeetak_scroll', document.querySelector('main').scrollTop);
+                sessionStorage.setItem('3arabeetak_cache_url', window.location.href);
+                sessionStorage.setItem('3arabeetak_cache_data', JSON.stringify(cachedCarsList));
+                sessionStorage.setItem('3arabeetak_cache_offset', currentOffset);
+                sessionStorage.setItem('3arabeetak_cache_count', document.getElementById('resultsCount').textContent);
+                sessionStorage.setItem('3arabeetak_cache_moreBtn', !document.getElementById('showMoreBtn').classList.contains('hidden'));
+                window.location.href = `/car/${car.car_id}`;
+            };
+
+            let statsHtml = '';
+            if (conditionContext === 'used') {
+                const formattedMileage = car.mileage ? Number(car.mileage).toLocaleString() + ' km' : '0 km';
+                const dispCondition = car.condition || 'Used';
+                statsHtml = `
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Mileage</span>
+                    <span class="text-sm font-semibold text-gray-300">${formattedMileage}</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Condition</span>
+                    <span class="text-sm font-semibold text-gray-300 truncate capitalize" title="${dispCondition}">${dispCondition}</span>
+                </div>`;
+            } else {
+                const dispCondition = car.car_condition || 'New';
+                statsHtml = `
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Condition</span>
+                    <span class="text-sm font-semibold text-gray-300 truncate capitalize" title="${dispCondition}">${dispCondition}</span>
+                </div>`;
+            }
+
+            const formattedPrice = car.price ? Number(car.price).toLocaleString() + ' EGP' : 'N/A';
+            const currentCompareList = getCompareList();
+            const isCompared = currentCompareList.some(c => String(c.id) === String(car.car_id));
+            const compareBtnClass = isCompared ? 'bg-emerald-500 text-white border-emerald-500' : 'bg-blue-600 hover:bg-blue-500 text-white border-transparent';
+            const compareBtnText = isCompared ? '<i class="fa-solid fa-check mr-1"></i> Added' : '<i class="fa-solid fa-plus mr-1"></i> Compare';
+            
+            card.innerHTML = `
+                <div class="relative h-48 bg-dark-800 overflow-hidden">
+                    <img src="${displayImage}" alt="${car.brand} ${car.model}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800'">
+                    <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded shadow-sm z-10">
+                        <span class="text-xs font-black text-white">${car.year || ''}</span>
+                    </div>
+                    <button class="btn-compare-icon absolute top-3 left-3 px-2.5 py-1 rounded shadow-sm text-xs font-bold border transition-colors z-20 ${compareBtnClass}" data-car-id="${car.car_id}">
+                        ${compareBtnText}
+                    </button>
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="text-lg font-black text-gray-100 leading-tight group-hover:text-blue-400 transition-colors">${car.brand} <span class="font-normal text-gray-400">${car.model}</span></h3>
+                    ${car.trim ? `<p class="text-sm text-gray-500 font-medium mt-0.5 line-clamp-1" title="${car.trim}">${car.trim}</p>` : ''}
+                    <div class="text-blue-400 font-extrabold text-lg mt-1 mb-4">${formattedPrice}</div>
+                    <div class="grid grid-cols-2 gap-y-3 gap-x-2 mt-auto pt-4 border-t border-white/5">
+                        ${statsHtml}
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Trans</span>
+                            <span class="text-sm font-semibold text-gray-300 truncate capitalize">${car.transmission || 'N/A'}</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Fuel</span>
+                            <span class="text-sm font-semibold text-gray-300 truncate capitalize">${car.fuel_type || 'N/A'}</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Body</span>
+                            <span class="text-sm font-semibold text-gray-300 truncate capitalize">${car.body_type || 'N/A'}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const compareBtn = card.querySelector('.btn-compare-icon');
+            if (compareBtn) {
+                compareBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    if (typeof toggleCompare !== 'function') return;
+                    toggleCompare(event, car.car_id, `${car.brand} ${car.model}`, displayImage);
+                });
+            }
+            document.getElementById('carsContainer').appendChild(card);
+        });
+    }
+
+    async function loadCars(append = false, overrideLimit = null) {
+        const loading = document.getElementById('loading');
+        const showMoreBtn = document.getElementById('showMoreBtn');
+        const carsContainer = document.getElementById('carsContainer');
+        if(!append && !overrideLimit) currentOffset = 0;
+        loading.classList.remove('hidden');
+        showMoreBtn.classList.add('hidden');
+        
+        const params = new URLSearchParams(new FormData(form)); // Fixed logic
+        for (const [key, value] of [...params.entries()]) { if (!value) params.delete(key); }
+        params.append('condition', conditionContext);
+        const activeLimit = overrideLimit || LIMIT;
+        const activeOffset = overrideLimit ? 0 : currentOffset;
+        params.append('limit', activeLimit);
+        params.append('offset', activeOffset);
+        
+        try {
+            const res = await fetch(`/api/cars?${params.toString()}`);
+            const data = await res.json();
+            document.getElementById('resultsCount').textContent = `${data.totalCount.toLocaleString()} results found`;
+            renderCars(data.cars, append);
+            if (activeOffset + activeLimit < data.totalCount) showMoreBtn.classList.remove('hidden');
+            updateListStateUrl();
+        } catch(e) {
+            console.error("Error loading cars:", e);
+            carsContainer.innerHTML = '<p class="text-red-400 p-4">Error loading cars. Please try again.</p>';
+        } finally { loading.classList.add('hidden'); }
+    }
+
+    brandSelect.addEventListener('change', async (e) => {
+        await loadOptions(e.target.value);
+        loadCars(false);
+    });
+    form.addEventListener('change', (e) => { if (e.target.id !== 'brand') loadCars(false); });
+    const inputs = form.querySelectorAll('input[type="number"]');
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            clearTimeout(input.timeout);
+            input.timeout = setTimeout(() => loadCars(false), 800);
+        });
+    });
+    
+    document.getElementById('showMoreBtn').addEventListener('click', () => { currentOffset += LIMIT; loadCars(true); });
+    document.getElementById('resetBtn').addEventListener('click', async (e) => {
+        e.preventDefault();
+        form.reset();
+        await loadOptions('');
+        loadCars(false);
+    });
+
+    async function init() {
+        const currentUrl = window.location.href;
+        const cacheUrl = sessionStorage.getItem('3arabeetak_cache_url');
+        
+        if (cacheUrl === currentUrl && sessionStorage.getItem('3arabeetak_cache_data')) {
+            try {
+                const savedData = JSON.parse(sessionStorage.getItem('3arabeetak_cache_data'));
+                currentOffset = parseInt(sessionStorage.getItem('3arabeetak_cache_offset'), 10) || 0;
+                document.getElementById('resultsCount').textContent = sessionStorage.getItem('3arabeetak_cache_count');
+                renderCars(savedData, false);
+                if (sessionStorage.getItem('3arabeetak_cache_moreBtn') === 'true') document.getElementById('showMoreBtn').classList.remove('hidden');
+                
+                const scrollPos = parseInt(sessionStorage.getItem('3arabeetak_scroll') || '0', 10);
+                setTimeout(() => document.querySelector('main').scrollTo({ top: scrollPos, behavior: 'instant' }), 0);
+                loadOptions(brandSelect.value).then(() => applyFiltersFromUrl());
+                sessionStorage.removeItem('3arabeetak_cache_url');
+                return; 
+            } catch (e) {
+                console.error("Cache restore error:", e);
+                sessionStorage.removeItem('3arabeetak_cache_url');
+                sessionStorage.removeItem('3arabeetak_cache_data');
+            }
+        }
+        await loadOptions();
+        applyFiltersFromUrl();
+        if (brandSelect.value) { await loadOptions(brandSelect.value); applyFiltersFromUrl(); }
+        
+        const query = new URLSearchParams(window.location.search);
+        const requestedOffset = Math.max(0, parseInt(query.get('offset') || '0', 10) || 0);
+        if (requestedOffset > 0) { currentOffset = requestedOffset; await loadCars(false, requestedOffset + LIMIT); }
+        else { await loadCars(false); }
+    }
+    init();
+    </script>
+<%- include('partials/footer') %>

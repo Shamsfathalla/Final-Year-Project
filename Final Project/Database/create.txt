@@ -1,0 +1,61 @@
+CREATE TABLE price_history (
+    brand VARCHAR(100),
+    model VARCHAR(100),
+    year INT,
+    month_year VARCHAR(20),
+    average_price NUMERIC,
+    min_price NUMERIC,
+    max_price NUMERIC
+);
+
+
+CREATE TABLE price_history (
+    brand VARCHAR(100) NOT NULL,
+    model VARCHAR(100) NOT NULL,
+    production_years VARCHAR(50),  
+    month_year VARCHAR(20) NOT NULL, 
+    average_price BIGINT,
+    min_price BIGINT,
+    max_price BIGINT
+);
+
+
+CREATE TABLE cars (
+    car_id VARCHAR(50) PRIMARY KEY,
+    brand VARCHAR(100),
+    model VARCHAR(100),
+    trim VARCHAR(100),
+    year INT,
+    price NUMERIC,
+    mileage NUMERIC,
+    color VARCHAR(50),
+    brand_tier VARCHAR(50),
+    transmission VARCHAR(50),
+    fuel_type VARCHAR(50),
+    body_type VARCHAR(50),
+    condition VARCHAR(50),
+    car_condition VARCHAR(50),
+    engine VARCHAR(50),
+    engine_capacity NUMERIC,
+    cylinder_count NUMERIC,
+    turbo_count NUMERIC,
+    horsepower NUMERIC,
+    torque NUMERIC,
+    max_speed NUMERIC,
+    acceleration NUMERIC,
+    drivetrain VARCHAR(50),
+    number_of_gears NUMERIC,
+    fuel_tank_capacity NUMERIC,
+    fuel_consumption NUMERIC,
+    electric_fuel_consumption NUMERIC,
+    max_electric_driving_range NUMERIC,
+    width NUMERIC,
+    length NUMERIC,
+    height NUMERIC,
+    wheelbase NUMERIC,
+    seats NUMERIC,
+    image_paths TEXT,
+    model_average_price NUMERIC,
+    model_min_price NUMERIC,
+    model_max_price NUMERIC
+);

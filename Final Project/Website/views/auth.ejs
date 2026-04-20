@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <%- include('partials/head', { title: 'Sign In' }) %>
+    <style>
+        .auth-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%;
+            padding: 40px 16px;
+        }
+        .auth-wrapper {
+            width: 100%;
+            max-width: 420px;
+        }
+        .auth-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .auth-header .logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #3b82f6;
+            letter-spacing: -0.04em;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .auth-header p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .auth-card {
+            background: #1a1a25;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 36px 32px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        /* Tab toggles */
+        .auth-tabs {
+            display: flex;
+            background: #12121a;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #9ca3af;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .auth-tab.active {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+        }
+        .auth-tab:not(.active):hover { color: #f0f0f5; }
+
+        /* Form fields */
+        .auth-field { margin-bottom: 18px; }
+        .auth-field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #d1d5db;
+            margin-bottom: 8px;
+        }
+        .auth-field .input-wrap {
+            position: relative;
+        }
+        .auth-field .input-wrap > i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+            font-size: 0.9rem;
+            pointer-events: none;
+            transition: color 0.2s;
+        }
+        .auth-field input {
+            width: 100%;
+            height: 48px;
+            padding: 0 44px !important;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            background: #12121a !important;
+            color: #f0f0f5 !important;
+            font: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .auth-field input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+        }
+        .auth-field input:focus + i { color: #3b82f6; }
+        .auth-field input::placeholder { color: #6b7280; }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 4px;
+            transition: color 0.2s;
+        }
+        .password-toggle:hover { color: #f0f0f5; }
+
+        /* Remember / Forgot */
+        .auth-extras {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+            font-size: 0.85rem;
+        }
+        .auth-extras label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #9ca3af;
+            cursor: pointer;
+        }
+        .auth-extras label input[type="checkbox"] {
+            width: 16px !important;
+            height: 16px !important;
+            min-height: auto !important;
+            accent-color: #3b82f6;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .auth-extras a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .auth-extras a:hover { color: #60a5fa; }
+
+        /* Submit button */
+        .auth-submit {
+            width: 100%;
+            height: 48px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            font: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .auth-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(59,130,246,0.4);
+        }
+        .auth-submit:active { transform: translateY(0); }
+
+
+
+        /* Toast notification */
+        .auth-toast {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            padding: 14px 22px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 100;
+            transform: translateX(120%);
+            transition: transform 0.35s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .auth-toast.show { transform: translateX(0); }
+        .auth-toast.success { background: #065f46; color: #a7f3d0; border: 1px solid rgba(16,185,129,0.3); }
+        .auth-toast.error { background: #7f1d1d; color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+
+        /* Animations */
+        @keyframes authSlideIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .auth-card { animation: authSlideIn 0.4s ease-out; }
+
+        @media (max-width: 480px) {
+            .auth-card { padding: 28px 20px; }
+            .auth-page { padding: 20px 12px; }
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-100 h-screen overflow-hidden flex flex-col md:flex-row font-outfit">
+    <%- include('partials/sidebar', { activePage: 'profile' }) %>
+
+    <main class="flex-1 overflow-y-auto w-full h-full relative bg-dark-900">
+        <div class="auth-page">
+            <div class="auth-wrapper">
+                <div class="auth-header">
+                    <a href="/" class="logo">3arabeetak.</a>
+                    <p id="authSubtitle">Sign in to your account</p>
+                </div>
+
+                <div id="loading" class="text-gray-400 text-xl font-semibold flex items-center justify-center gap-3 py-10 w-full mb-8">
+                    <i class="fa-solid fa-spinner fa-spin text-blue-500"></i> Checking status...
+                </div>
+                <div class="auth-card" id="authCard" style="display: none;">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" id="tabSignIn" onclick="switchTab('signin')">Sign In</button>
+                        <button class="auth-tab" id="tabSignUp" onclick="switchTab('signup')">Sign Up</button>
+                    </div>
+
+                    <!-- Sign In Form -->
+                    <form id="signInForm" onsubmit="handleSignIn(event)">
+                        <div class="auth-field">
+                            <label for="signin-email">Email</label>
+                            <div class="input-wrap">
+                                <input type="email" id="signin-email" placeholder="you@example.com" required autocomplete="email">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="auth-field">
+                            <label for="signin-password">Password</label>
+                            <div class="input-wrap">
+                                <input type="password" id="signin-password" placeholder="Enter your password" required autocomplete="current-password">
+                                <i class="fa-solid fa-lock"></i>
+                                <button type="button" class="password-toggle" onclick="togglePassword('signin-password', this)">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="auth-extras">
+                            <label><input type="checkbox"> Remember me</label>
+                            <a href="/forgot-password">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="auth-submit">
+                            <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                        </button>
+                    </form>
+
+                    <!-- Sign Up Form -->
+                    <form id="signUpForm" style="display:none;" onsubmit="handleSignUp(event)">
+                        <div class="auth-field">
+                            <label for="signup-name">Full Name</label>
+                            <div class="input-wrap">
+                                <input type="text" id="signup-name" placeholder="John Doe" required autocomplete="name">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="auth-field">
+                            <label for="signup-email">Email</label>
+                            <div class="input-wrap">
+                                <input type="email" id="signup-email" placeholder="you@example.com" required autocomplete="email">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="auth-field">
+                            <label for="signup-password">Password</label>
+                            <div class="input-wrap">
+                                <input type="password" id="signup-password" placeholder="Create a password" required minlength="8" autocomplete="new-password">
+                                <i class="fa-solid fa-lock"></i>
+                                <button type="button" class="password-toggle" onclick="togglePassword('signup-password', this)">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="auth-field">
+                            <label for="signup-confirm">Confirm Password</label>
+                            <div class="input-wrap">
+                                <input type="password" id="signup-confirm" placeholder="Re-enter your password" required minlength="8" autocomplete="new-password">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <button type="button" class="password-toggle" onclick="togglePassword('signup-confirm', this)">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="auth-submit" style="margin-top:6px;">
+                            <i class="fa-solid fa-user-plus"></i> Create Account
+                        </button>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="auth-toast" id="authToast"></div>
+    </main>
+
+<script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+    import { firebaseConfig } from "/firebase-config.js";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.switchTab = function(tab) {
+        const signInForm = document.getElementById('signInForm');
+        const signUpForm = document.getElementById('signUpForm');
+        const tabSignIn = document.getElementById('tabSignIn');
+        const tabSignUp = document.getElementById('tabSignUp');
+        const subtitle = document.getElementById('authSubtitle');
+
+        if (tab === 'signup') {
+            signInForm.style.display = 'none';
+            signUpForm.style.display = 'block';
+            tabSignIn.classList.remove('active');
+            tabSignUp.classList.add('active');
+            subtitle.textContent = 'Create your account';
+        } else {
+            signUpForm.style.display = 'none';
+            signInForm.style.display = 'block';
+            tabSignUp.classList.remove('active');
+            tabSignIn.classList.add('active');
+            subtitle.textContent = 'Sign in to your account';
+        }
+    }
+
+    window.togglePassword = function(inputId, btn) {
+        const inp = document.getElementById(inputId);
+        const icon = btn.querySelector('i');
+        if (inp.type === 'password') {
+            inp.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            inp.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    }
+
+    window.showToast = function(msg, type = 'success') {
+        const toast = document.getElementById('authToast');
+        toast.textContent = msg;
+        toast.className = 'auth-toast ' + type;
+        setTimeout(() => toast.classList.add('show'), 10);
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    // Sync user to PostgreSQL after Firebase auth
+    async function syncUserToDatabase(user) {
+        console.log('[AUTH SYNC] ▶ Starting user sync to database...');
+        try {
+            const idToken = await user.getIdToken();
+            console.log('[AUTH SYNC] ✓ ID token generated, length:', idToken.length);
+            console.log('[AUTH SYNC] ▶ Sending POST to /api/auth/sync-user...');
+            
+            const response = await fetch('/api/auth/sync-user', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ idToken })
+            });
+            
+            const data = await response.json();
+            console.log('[AUTH SYNC] ✓ Server response:', response.status, data);
+            
+            if (!response.ok) {
+                console.error('[AUTH SYNC] ✖ Server returned error:', data);
+            }
+        } catch (syncErr) {
+            console.error('[AUTH SYNC] ✖ Sync request failed:', syncErr.message);
+            console.error('[AUTH SYNC] ✖ Full error:', syncErr);
+        }
+    }
+
+    window.handleSignIn = async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('signin-email').value;
+        const pass = document.getElementById('signin-password').value;
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        
+        try {
+            console.log('[AUTH] ▶ Signing in with email:', email);
+            const userCredential = await signInWithEmailAndPassword(auth, email, pass);
+            console.log('[AUTH] ✓ Sign-in successful, UID:', userCredential.user.uid);
+            
+            await syncUserToDatabase(userCredential.user);
+            
+            showToast('Signed in successfully!', 'success');
+            setTimeout(() => {
+                window.location.href = '/profile';
+            }, 1000);
+        } catch(err) {
+            console.error('[AUTH] ✖ Sign-in failed:', err.message);
+            showToast(err.message, 'error');
+            submitBtn.disabled = false;
+        }
+    }
+
+    window.handleSignUp = async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('signup-email').value;
+        const pass = document.getElementById('signup-password').value;
+        const confirm = document.getElementById('signup-confirm').value;
+        
+        if (pass !== confirm) {
+            showToast('Passwords do not match!', 'error');
+            return;
+        }
+        
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        
+        try {
+            console.log('[AUTH] ▶ Creating account for:', email);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+            console.log('[AUTH] ✓ Account created, UID:', userCredential.user.uid);
+            
+            await syncUserToDatabase(userCredential.user);
+            
+            showToast('Account created successfully!', 'success');
+            setTimeout(() => {
+                window.location.href = '/profile';
+            }, 1000);
+        } catch(err) {
+            console.error('[AUTH] ✖ Sign-up failed:', err.message);
+            showToast(err.message, 'error');
+            submitBtn.disabled = false;
+        }
+    }
+
+    // Check URL param on load
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('mode') === 'signup') {
+        window.switchTab('signup');
+    }
+
+    // Auto redirect if already logged in
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            window.location.replace('/profile');
+        } else {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('authCard').style.display = 'block';
+        }
+    });
+</script>
+
+<%- include('partials/footer') %>

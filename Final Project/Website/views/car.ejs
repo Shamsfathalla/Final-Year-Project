@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <%- include('partials/head', { title: 'Car Detail' }) %>
+    <script type="module">
+        import { initializeApp } from "firebase/app";
+        import { getAuth, onAuthStateChanged } from "firebase/auth";
+        import { firebaseConfig } from "/firebase-config.js";
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        onAuthStateChanged(auth, (user) => {
+            window.firebaseUser = user;
+            const favBtn = document.getElementById('btn-favorite');
+            if (favBtn) favBtn.style.display = user ? 'flex' : 'none';
+            if (user) checkFavoriteState();
+        });
+    </script>
+</head>
+<body class="bg-dark-900 text-gray-100 h-screen overflow-hidden flex flex-col md:flex-row font-outfit">
+    <%- include('partials/sidebar', { activePage: 'car' }) %>
+
+    <main class="flex-1 overflow-y-auto w-full h-full relative" id="detail-content">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <!-- Loading State -->
+        <div id="loading" class="flex justify-center py-20">
+            <i class="fa-solid fa-spinner fa-spin text-4xl text-blue-500"></i>
+        </div>
+        
+        <!-- Error State -->
+        <div id="error-msg" class="hidden text-center py-20 text-red-400 font-bold text-xl"></div>
+        
+        <!-- Content Container -->
+        <div id="car-data" class="hidden animate-fade-in-up">
+            <div class="mb-6 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+                <div>
+                    <button id="btn-back-to-list" onclick="handleBackToList()" class="text-gray-500 hover:text-blue-400 mb-4 font-semibold text-sm transition-colors"><i class="fa-solid fa-arrow-left mr-1"></i> Back</button>
+                    <h1 id="car-title" class="text-4xl md:text-5xl font-black text-gray-100 tracking-tight">Car Title</h1>
+                    <p id="car-subtitle" class="text-lg text-gray-500 font-medium mt-1">Subtitle</p>
+                </div>
+                <div class="text-right flex-shrink-0">
+                    <div id="car-price" class="text-3xl md:text-4xl font-black text-blue-400 mb-3">Price</div>
+                    <div class="flex gap-3 items-center justify-end">
+                        <button id="btn-favorite" style="display: none;" class="favorite-btn px-5 py-2.5 bg-dark-700 border border-white/10 text-gray-400 font-bold rounded-xl shadow-lg hover:border-pink-500/30 transition-all focus:ring-4 focus:ring-pink-500/20 flex items-center justify-center gap-2" onclick="toggleFavorite()">
+                            <i class="fa-regular fa-heart text-lg"></i> <span>Favorite</span>
+                        </button>
+                        <button id="detail-btn-compare" data-car-id="<%= carId %>" class="px-6 py-2.5 bg-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-all focus:ring-4 focus:ring-blue-500/20 flex items-center justify-center gap-2 w-full md:w-auto">
+                            <i class="fa-solid fa-plus"></i> Add to Compare
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="mb-12 bg-dark-700 p-4 rounded-3xl shadow-lg border border-white/5">
+                <div class="gallery-container aspect-[16/9] w-full rounded-2xl overflow-hidden mb-4 bg-dark-800 relative">
+                    <img id="main-img" src="" class="w-full h-full object-cover transition-opacity duration-300" alt="Car Image">
+                    <button id="gallery-prev" class="gallery-nav-btn prev hidden" onclick="galleryNavigate(-1)">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="gallery-next" class="gallery-nav-btn next hidden" onclick="galleryNavigate(1)">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <div id="gallery-counter" class="gallery-counter hidden">1 / 1</div>
+                </div>
+                <div id="thumbnail-strip" class="flex gap-3 overflow-x-auto pb-2 custom-scrollbar">
+                    <!-- Thumbnails -->
+                </div>
+            </div>
+
+            <!-- Specs Grid -->
+            <div>
+                <h2 class="text-2xl font-bold text-gray-100 mb-6 border-b border-white/5 pb-4">Vehicle Specifications</h2>
+                <div id="specs-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Specs injected here -->
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script>
+        const carId = "<%= carId %>";
+        const DEFAULT_IMG = 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800';
+        let galleryImages = [];
+        let galleryIndex = 0;
+
+        function isCarCompared(id) {
+            try {
+                const list = JSON.parse(localStorage.getItem('compareList') || '[]');
+                return list.some(c => String(c.id) === String(id));
+            } catch (e) { return false; }
+        }
+
+        function handleBackToList() {
+            const lastRoute = sessionStorage.getItem('3arabeetak_last_list_route');
+            if (lastRoute === 'chatbot') { window.location.href = '/'; return; }
+            if (typeof lastRoute === 'string' && (lastRoute.startsWith('/new') || lastRoute.startsWith('/used'))) {
+                const ref = document.referrer || '';
+                const sameOrigin = ref.startsWith(window.location.origin);
+                const fromCarsList = sameOrigin && (ref.includes('/new') || ref.includes('/used'));
+                if (fromCarsList || history.length > 1) { history.back(); return; }
+                window.location.href = lastRoute; return;
+            }
+            if (document.referrer) { history.back(); return; }
+            window.location.href = '/';
+        }
+
+        window.galleryNavigate = function(dir) {
+            if (galleryImages.length <= 1) return;
+            galleryIndex = (galleryIndex + dir + galleryImages.length) % galleryImages.length;
+            updateGallery();
+        }
+
+        function updateGallery() {
+            const mainImg = document.getElementById('main-img');
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = galleryImages[galleryIndex];
+                mainImg.style.opacity = '1';
+            }, 150);
+            document.getElementById('gallery-counter').textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
+            // Update thumbnail selection
+            document.querySelectorAll('#thumbnail-strip img').forEach((el, i) => {
+                if (i === galleryIndex) {
+                    el.classList.remove('border-transparent', 'opacity-50');
+                    el.classList.add('border-blue-500', 'opacity-100');
+                } else {
+                    el.classList.remove('border-blue-500', 'opacity-100');
+                    el.classList.add('border-transparent', 'opacity-50');
+                }
+            });
+        }
+
+        async function loadCarDetails() {
+            try {
+                const res = await fetch(`/api/cars/${carId}`);
+                if (!res.ok) throw new Error('Car not found');
+                const car = await res.json();
+                
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('car-data').classList.remove('hidden');
+
+                document.getElementById('car-title').innerText = `${car.brand} ${car.model}`;
+                document.getElementById('car-subtitle').innerText = car.trim || (car.year ? `${car.year} Model` : '');
+                document.getElementById('car-price').innerText = car.price ? Number(car.price).toLocaleString() + ' EGP' : 'Contact for Price';
+
+                // Images using shared parseImagesLogic
+                galleryImages = parseImagesLogic(car.image_paths);
+                const coverImg = galleryImages.length > 0 ? galleryImages[0] : DEFAULT_IMG;
+                if (galleryImages.length === 0) galleryImages = [DEFAULT_IMG];
+                
+                document.getElementById('main-img').src = coverImg;
+
+                if (galleryImages.length > 1) {
+                    document.getElementById('gallery-prev').classList.remove('hidden');
+                    document.getElementById('gallery-next').classList.remove('hidden');
+                    document.getElementById('gallery-counter').classList.remove('hidden');
+                    document.getElementById('gallery-counter').textContent = `1 / ${galleryImages.length}`;
+                }
+
+                const thumbStrip = document.getElementById('thumbnail-strip');
+                if (galleryImages.length > 1) {
+                    galleryImages.forEach((url, i) => {
+                        const img = document.createElement('img');
+                        img.src = url;
+                        img.className = `w-28 h-20 object-cover rounded-xl cursor-pointer transition-all duration-200 border-2 flex-shrink-0 ${i===0 ? 'border-blue-500 opacity-100' : 'border-transparent opacity-50 hover:opacity-80'}`;
+                        img.onerror = function() { this.src = DEFAULT_IMG; };
+                        img.onclick = () => {
+                            galleryIndex = i;
+                            updateGallery();
+                        };
+                        thumbStrip.appendChild(img);
+                    });
+                }
+
+                // Compare button
+                const isCompared = isCarCompared(car.car_id);
+                const btn = document.getElementById('detail-btn-compare');
+                if (isCompared) {
+                    btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                    btn.classList.add('bg-emerald-500', 'hover:bg-emerald-600');
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Added to Compare';
+                }
+                btn.onclick = (e) => {
+                    if (typeof toggleCompare !== 'function') return;
+                    toggleCompare(e, car.car_id, `${car.brand} ${car.model}`, coverImg);
+                };
+
+                // Specs
+                const specsGrid = document.getElementById('specs-grid');
+                const specs = [
+                    { label: 'Condition', val: (car.condition && car.condition.toLowerCase().includes('new')) ? (car.car_condition || 'New') : (car.condition || 'Used') },
+                    { label: 'Brand Tier', val: car.brand_tier },
+                    { label: 'Year', val: car.year },
+                    { label: 'Mileage', val: car.mileage ? Number(car.mileage).toLocaleString() + ' km' : null },
+                    { label: 'Color', val: car.color },
+                    { label: 'Seats', val: car.seats },
+                    { label: 'Transmission', val: car.transmission },
+                    { label: 'Number of Gears', val: car.number_of_gears },
+                    { label: 'Fuel Type', val: car.fuel_type },
+                    { label: 'Body Type', val: car.body_type },
+                    { label: 'Engine', val: car.engine },
+                    { label: 'Capacity', val: car.engine_capacity ? car.engine_capacity + 'L' : null },
+                    { label: 'Cylinders', val: car.cylinder_count },
+                    { label: 'Turbos', val: car.turbo_count },
+                    { label: 'Horsepower', val: car.horsepower ? car.horsepower + ' HP' : null },
+                    { label: 'Torque', val: car.torque ? car.torque + ' Nm' : null },
+                    { label: '0-100 km/h', val: car.acceleration ? car.acceleration + 's' : null },
+                    { label: 'Max Speed', val: car.max_speed ? car.max_speed + ' km/h' : null },
+                    { label: 'Drivetrain', val: car.drivetrain },
+                    { label: 'Fuel Cons.', val: car.fuel_consumption ? car.fuel_consumption + ' L/100km' : null },
+                    { label: 'Fuel Tank', val: car.fuel_tank_capacity ? car.fuel_tank_capacity + 'L' : null },
+                    { label: 'EV Cons.', val: car.electric_fuel_consumption ? car.electric_fuel_consumption + ' kWh/100km' : null },
+                    { label: 'EV Range', val: car.max_electric_driving_range ? car.max_electric_driving_range + ' km' : null },
+                    { label: 'Length', val: car.length ? car.length + ' mm' : null },
+                    { label: 'Width', val: car.width ? car.width + ' mm' : null },
+                    { label: 'Height', val: car.height ? car.height + ' mm' : null },
+                    { label: 'Wheelbase', val: car.wheelbase ? car.wheelbase + ' mm' : null },
+                    { label: 'Avg Price', val: car.model_average_price ? Number(car.model_average_price).toLocaleString() + ' EGP' : null },
+                    { label: 'Min Price', val: car.model_min_price ? Number(car.model_min_price).toLocaleString() + ' EGP' : null },
+                    { label: 'Max Price', val: car.model_max_price ? Number(car.model_max_price).toLocaleString() + ' EGP' : null }
+                ];
+
+                specs.forEach(s => {
+                    if (s.val) {
+                        const div = document.createElement('div');
+                        div.className = 'bg-dark-700 p-4 rounded-xl border border-white/5 flex flex-col justify-center hover:border-blue-500/20 transition-colors';
+                        div.innerHTML = `<span class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">${s.label}</span><span class="font-semibold text-gray-200 text-lg">${s.val}</span>`;
+                        specsGrid.appendChild(div);
+                    }
+                });
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('loading').classList.add('hidden');
+                const errEl = document.getElementById('error-msg');
+                errEl.classList.remove('hidden');
+                errEl.innerText = 'Error loading car details.';
+            }
+        }
+
+        // Keyboard navigation for gallery
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') galleryNavigate(-1);
+            if (e.key === 'ArrowRight') galleryNavigate(1);
+        });
+
+        document.addEventListener('DOMContentLoaded', loadCarDetails);
+
+        // === Favorite functionality ===
+        let isFavorited = false;
+
+        async function checkFavoriteState() {
+            if (!window.firebaseUser) return;
+            try {
+                const token = await window.firebaseUser.getIdToken();
+                const res = await fetch('/api/favorites', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.ok) {
+                    const favs = await res.json();
+                    isFavorited = favs.some(c => String(c.car_id) === String(carId));
+                    updateFavoriteButton();
+                }
+            } catch(e) { console.error('Error checking favorite:', e); }
+        }
+
+        function updateFavoriteButton() {
+            const btn = document.getElementById('btn-favorite');
+            if (!btn) return;
+            if (isFavorited) {
+                btn.classList.remove('bg-dark-700', 'border-white/10', 'text-gray-400');
+                btn.classList.add('bg-pink-500/15', 'border-pink-500/40', 'text-pink-400');
+                btn.innerHTML = '<i class="fa-solid fa-heart text-lg"></i> <span>Favorited</span>';
+            } else {
+                btn.classList.remove('bg-pink-500/15', 'border-pink-500/40', 'text-pink-400');
+                btn.classList.add('bg-dark-700', 'border-white/10', 'text-gray-400');
+                btn.innerHTML = '<i class="fa-regular fa-heart text-lg"></i> <span>Favorite</span>';
+            }
+        }
+
+        window.toggleFavorite = async function() {
+            if (!window.firebaseUser) {
+                window.location.href = '/auth';
+                return;
+            }
+            try {
+                const token = await window.firebaseUser.getIdToken();
+                if (isFavorited) {
+                    await fetch('/api/favorites/' + carId, {
+                        method: 'DELETE',
+                        headers: { 'Authorization': 'Bearer ' + token }
+                    });
+                    isFavorited = false;
+                } else {
+                    await fetch('/api/favorites', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+                        body: JSON.stringify({ carId: carId })
+                    });
+                    isFavorited = true;
+                }
+                updateFavoriteButton();
+            } catch(e) { console.error('Error toggling favorite:', e); }
+        };
+    </script>
+</body>
+</html>
